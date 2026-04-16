@@ -5,11 +5,14 @@ local UserInputService = game:GetService("UserInputService")
 local TweenService = game:GetService("TweenService")
 local Debris = game:GetService("Debris")
 
-local Player = Players.LocalPlayer
+local Player : Player = Players.LocalPlayer
 local Connections = {}
+
 local GerpService = ReplicatedStorage:WaitForChild("GerpService")
+
 local Vfx = GerpService:WaitForChild("VFX")
 local Gerpies = GerpService:WaitForChild("Gerpie")
+
 local GerpieParent = workspace.Gerpies
 local Live = workspace.Live
 
@@ -18,16 +21,20 @@ _G.DashOnCD = false
 local PlayerGui = Player.PlayerGui
 local GerpGui = PlayerGui:WaitForChild("Gerp")
 
-local function GetProfile(plr)
+local function GetProfile(plr : Player)
 	return Players:GetUserThumbnailAsync(plr.UserId, Enum.ThumbnailType.HeadShot, Enum.ThumbnailSize.Size420x420)
 end
 
 local InfoFrame = GerpGui:WaitForChild("Info")
 local ExtraFrame = GerpGui:WaitForChild("Extra")
-local Smoothness = ExtraFrame:WaitForChild("Smoothness")
-local TechsFrame = InfoFrame:FindFirstChild("Holder")
 
-local function GuiToggle(ui, enabled)
+local Smoothness = ExtraFrame:WaitForChild("Smoothness")
+local CDFrame = ExtraFrame:WaitForChild("CD")
+
+local TechsFrame = InfoFrame:FindFirstChild("Holder")
+local ProfileFrame = InfoFrame:FindFirstChild("Profile")
+
+local function GuiToggle(ui : TextLabel?,enabled : boolean)
 	ui.Text = enabled and ui.Name..': <font color="rgb(0,255,0)">Enabled</font>' or ui.Name..': <font color="rgb(255,0,0)">Disabled</font>'
 	if ui:FindFirstChild("Shadow") then
 		ui:FindFirstChild("Shadow").Text = enabled and ui.Name..': Enabled' or ui.Name..': Disabled'
@@ -36,103 +43,187 @@ end
 
 local Mouse = Player:GetMouse()
 
-local SilentAimService = {
-	Toggled = false,
-	Lerp = 1,
-	Target = nil,
-	WasToggled = false,
-	Highlight = nil
-}
-
-local Inputs = {}
-local Techs = {
-	Toggles = {Dripz = false, Twisted = false, ["Old Stare"] = false},
-	All = {},
-	MaxDistance = 7
-}
-
-local DashId = "rbxassetid://10479335397"
-local BackDashId = "rbxassetid://10491993682"
-local UppercutIDS = {"rbxassetid://10503381238", "rbxassetid://13379003796"}
-
-local ColorTween = TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut)
-local HighlightTween = TweenInfo.new(0.4, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out)
-
-local DisableThread, EnableThread
-
 local function GetCharacter()
 	local char = Player.Character
-	if not char then return nil, nil, nil end
-	return char, char:FindFirstChildOfClass("Humanoid"), char:FindFirstChild("HumanoidRootPart")
+	if not char then Player.CharacterAdded:Wait() end
+	char = Player.Character
+	return char, char:WaitForChild("Humanoid"), char:WaitForChild("HumanoidRootPart")
 end
 
+local SilentAimService = {Toggled = false, Lerp = 1, Target = nil}
+local Inputs = {}
+
+local Techs = {}
+Techs.Toggles = {Dripz = false, Twisted = false, ["Old Stare"] = false}
+Techs.All = {}
+
 local function closestChar()
-	local closest, closestDistance = nil, math.huge
-	for _, v in Live:GetChildren() do
+	local closest = nil
+	local closestDistance = math.huge
+	for _,v in pairs(Live:GetChildren()) do
 		local hum = v:FindFirstChildOfClass("Humanoid")
 		if v:IsA("Model") and hum and hum.Health > 0 and v:FindFirstChild("HumanoidRootPart") and v ~= Player.Character then
-			local dist = (v.HumanoidRootPart.Position - Mouse.Hit.Position).Magnitude
-			if dist < closestDistance then
+			local distance = (v.HumanoidRootPart.Position - Mouse.Hit.Position).Magnitude
+			if distance < closestDistance then
 				closest = v
-				closestDistance = dist
+				closestDistance = distance
 			end
 		end
 	end
 	return closest
 end
 
-local function Gerpie(cf)
-	local count = #GerpieParent:GetChildren()
-	if count >= 6 then return cf and cf.Position or Vector3.new() end
-
-	local template = Gerpies:FindFirstChild(tostring(count + 1))
-	if not template then return cf and cf.Position or Vector3.new() end
-
-	local gerp = template:Clone()
-	gerp.Parent = GerpieParent
-	if cf then gerp.CFrame = cf end
-	Debris:AddItem(gerp, 1)
-	return cf and cf.Position or Vector3.new()
+local function Gerpie(cf : CFrame?)
+	local childName = #GerpieParent:GetChildren() < 6 and #GerpieParent:GetChildren() + 1 or "nil"
+	local Gerp = Gerpies:FindFirstChild(childName):Clone()
+	Gerp.Parent = GerpieParent
+	Gerp.CFrame = cf
+	Debris:AddItem(Gerp,1)
+	return cf.Position
 end
 
-local function GerpStare(p1, pos)
+local function GerpStare(p1 : Part, pos : Vector3)
 	if Techs.Toggles["Old Stare"] then
 		p1.CFrame = CFrame.lookAt(p1.Position, pos)
 	else
-		local dir = (pos - p1.Position).Unit
-		local hDir = Vector3.new(dir.X, 0, dir.Z).Unit
-		p1.CFrame = CFrame.new(p1.Position) * CFrame.Angles(0, math.atan2(-hDir.X, -hDir.Z), 0)
+		local direction = (pos - p1.Position).Unit
+		local HorizontalDir = Vector3.new(direction.X, 0, direction.Z).Unit
+		p1.CFrame = CFrame.new(p1.Position) * CFrame.Angles(0, math.atan2(-HorizontalDir.X, -HorizontalDir.Z), 0)
 	end
 end
 
-local function LookAt(p1, pos)
+local function LookAt(p1 : Part, pos : Vector3)
 	local cf
 	if Techs.Toggles["Old Stare"] then
 		cf = CFrame.lookAt(p1.Position, pos)
 	else
-		local dir = (pos - p1.Position).Unit
-		local hDir = Vector3.new(dir.X, 0, dir.Z).Unit
-		cf = CFrame.new(p1.Position) * CFrame.Angles(0, math.atan2(-hDir.X, -hDir.Z), 0)
+		local direction = (pos - p1.Position).Unit
+		local HorizontalDir = Vector3.new(direction.X, 0, direction.Z).Unit
+		cf = CFrame.new(p1.Position) * CFrame.Angles(0, math.atan2(-HorizontalDir.X, -HorizontalDir.Z), 0)
 	end
+	if SilentAimService.Lerp ~= 1 then
+		p1.CFrame = p1.CFrame:Lerp(cf, SilentAimService.Lerp)
+	else
+		p1.CFrame = cf
+	end
+end
 
-	p1.CFrame = (SilentAimService.Lerp ~= 1) and p1.CFrame:Lerp(cf, SilentAimService.Lerp) or cf
+local DashId = "rbxassetid://10479335397"
+local BackDashId = "rbxassetid://10491993682"
+
+local UppercutIDS = { "rbxassetid://10503381238", "rbxassetid://13379003796" }
+
+function Run()
+	task.wait(1)
+	local char, hum : Humanoid, hrp : Part = GetCharacter()
+
+	local animator = hum:FindFirstChildOfClass("Animator")
+	Connections["anims"] = animator.AnimationPlayed:Connect(function(track)
+		local animId = track.Animation.AnimationId
+
+		if animId == DashId or animId == BackDashId then
+			_G.DashOnCD = true
+			task.wait(5)
+			_G.DashOnCD = false
+		end
+
+		if Techs.Toggles.Dripz and table.find(UppercutIDS, animId) and SilentAimService.Target then
+			task.wait(0.35)
+			Techs.All.Dripz()
+		end
+	end)
+
+	Connections["stare"] = RunService.RenderStepped:Connect(function()
+		if SilentAimService.Toggled and SilentAimService.Target and not char:FindFirstChild("Ragdoll") and UserInputService.MouseBehavior ~= Enum.MouseBehavior.LockCenter then
+			local head = SilentAimService.Target:FindFirstChild("Head")
+			if head then
+				LookAt(hrp, head.Position)
+			end
+		end
+	end)
+
+	Connections["ragdolled"] = char.ChildAdded:Connect(function(child)
+		if child.Name == "Ragdoll" then
+			SilentAimService.WasToggled = SilentAimService.Toggled
+			SilentAimService.DisableTemp()
+		end
+	end)
+
+	Connections["unragdolled"] = char.ChildRemoved:Connect(function(child)
+		if child.Name == "Ragdoll" then
+			SilentAimService.EnableTemp("bro")
+		end
+	end)
+
+	hum.Died:Once(function()
+		Connections["anims"]:Disconnect()
+		Connections["stare"]:Disconnect()
+		Connections["ragdolled"]:Disconnect()
+		Connections["unragdolled"]:Disconnect()
+
+		Connections["anims"] = nil
+		Connections["stare"] = nil
+		Connections["ragdolled"] = nil
+		Connections["unragdolled"] = nil
+	end)
 end
 
 local function GetTarget()
-	local t = SilentAimService.Target
-	if not t or typeof(t) == "string" then return nil, nil, nil end
-	return t, t:FindFirstChild("Humanoid"), t:FindFirstChild("HumanoidRootPart")
+	local char = SilentAimService.Target
+	if not char or typeof(char) == "string" then return nil, nil, nil end 
+	return char, char:FindFirstChild("Humanoid"), char:FindFirstChild("HumanoidRootPart")
 end
 
-local function TargetVFX(remove)
-	local target, hum = GetTarget()
+function Input(key:string, action)
+	Inputs[Enum.KeyCode[key]] = action
+end
+
+function RemoveInput(key)
+	Inputs[Enum.KeyCode[key]] = nil
+end
+
+local ColorTween = TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut)
+
+local function toggledColor()
+	return SilentAimService.Toggled and Color3.new(0,1,0) or Color3.new(1,0,0)
+end
+
+Input("T",function()
+	SilentAimService.Toggled = not SilentAimService.Toggled
+	GuiToggle(TechsFrame:FindFirstChild("Silent Aim"), SilentAimService.Toggled)
+	if SilentAimService.Highlight then
+		TweenService:Create(SilentAimService.Highlight, ColorTween, {FillColor = toggledColor()}):Play()
+		Vfx:FindFirstChild("H").FillColor = toggledColor()
+	end
+end)
+
+local function TechToggle(key : string?, tech : string)
+	for _, ui in TechsFrame:GetChildren() do
+		if ui.Name:find(tech) then
+			Input(key, function()
+				Techs.Toggles[tech] = not Techs.Toggles[tech]
+				GuiToggle(ui, Techs.Toggles[tech])
+			end)
+			break
+		end
+	end
+end
+
+TechToggle("E","Dripz")
+TechToggle("U","Twisted")
+TechToggle("X","Old Stare")
+
+local HighlightTween = TweenInfo.new(0.4, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out)
+
+local function TargetVFX(remove : boolean)
+	local target, hum, _ = GetTarget()
 	if remove then
 		if not target then return end
 		local h = target:FindFirstChild("H")
 		local head = target:FindFirstChild("Head")
 		if head then
-			local gui = head:FindFirstChild("Target")
-			if gui then gui:Destroy() end
+			local targetGui = head:FindFirstChild("Target")
+			if targetGui then targetGui:Destroy() end
 		end
 		if Connections["targetHP"] then
 			Connections["targetHP"]:Disconnect()
@@ -147,108 +238,21 @@ local function TargetVFX(remove)
 		end
 		return
 	end
-
 	if not target then return end
-
 	local h = Vfx.H:Clone()
 	h.Parent = target
 	TweenService:Create(h, HighlightTween, {FillTransparency = 0.4}):Play()
 	SilentAimService.Highlight = h
-
 	local gui = Vfx.Target:Clone()
-	gui.Parent = target:FindFirstChild("Head")
+	gui.Parent = SilentAimService.Target:FindFirstChild("Head")
 
 	Connections["targetHP"] = hum.HealthChanged:Connect(function()
-		local txt = "HP: ["..hum.Health.."% / "..hum.MaxHealth.."% ]"
-		gui.Text.Text = txt
-		gui.Text.Shadow.Text = txt
+		gui.Text.Text = "HP: ["..hum.Health.."% / "..hum.MaxHealth.."% ]"
+		gui.Text.Shadow.Text = "HP: ["..hum.Health.."% / "..hum.MaxHealth.."% ]"
 	end)
 end
 
-local function CleanupConnections()
-	for _, conn in Connections do
-		if conn then conn:Disconnect() end
-	end
-	table.clear(Connections)
-end
-
-local function Run()
-	task.wait(1)
-	local char, hum, hrp = GetCharacter()
-	if not char or not hum or not hrp then return end
-
-	CleanupConnections()
-
-	local animator = hum:FindFirstChildOfClass("Animator")
-
-	Connections["anims"] = animator.AnimationPlayed:Connect(function(track)
-		local id = track.Animation.AnimationId
-		if id == DashId or id == BackDashId then
-			_G.DashOnCD = true
-			task.delay(5, function() _G.DashOnCD = false end)
-		end
-		if Techs.Toggles.Dripz and table.find(UppercutIDS, id) and SilentAimService.Target then
-			task.delay(0.35, Techs.All.Dripz)
-		end
-	end)
-
-	Connections["stare"] = RunService.RenderStepped:Connect(function()
-		if SilentAimService.Toggled and SilentAimService.Target and not char:FindFirstChild("Ragdoll") and UserInputService.MouseBehavior ~= Enum.MouseBehavior.LockCenter then
-			local head = SilentAimService.Target:FindFirstChild("Head")
-			if head then LookAt(hrp, head.Position) end
-		end
-	end)
-
-	Connections["ragdolled"] = char.ChildAdded:Connect(function(child)
-		if child.Name == "Ragdoll" then
-			SilentAimService.WasToggled = SilentAimService.Toggled
-			SilentAimService.DisableTemp()
-		end
-	end)
-
-	Connections["unragdolled"] = char.ChildRemoved:Connect(function(child)
-		if child.Name == "Ragdoll" then
-			SilentAimService.EnableTemp("restore")
-		end
-	end)
-
-	hum.Died:Once(CleanupConnections)
-end
-
-local function toggledColor()
-	return SilentAimService.Toggled and Color3.new(0,1,0) or Color3.new(1,0,0)
-end
-
-local function Input(key, action)
-	Inputs[Enum.KeyCode[key]] = action
-end
-
-Input("T", function()
-	SilentAimService.Toggled = not SilentAimService.Toggled
-	GuiToggle(TechsFrame:FindFirstChild("Silent Aim"), SilentAimService.Toggled)
-	if SilentAimService.Highlight then
-		TweenService:Create(SilentAimService.Highlight, ColorTween, {FillColor = toggledColor()}):Play()
-		Vfx.H.FillColor = toggledColor()
-	end
-end)
-
-local function TechToggle(key, tech)
-	for _, ui in TechsFrame:GetChildren() do
-		if ui.Name:find(tech) then
-			Input(key, function()
-				Techs.Toggles[tech] = not Techs.Toggles[tech]
-				GuiToggle(ui, Techs.Toggles[tech])
-			end)
-			break
-		end
-	end
-end
-
-TechToggle("E", "Dripz")
-TechToggle("U", "Twisted")
-TechToggle("X", "Old Stare")
-
-Input("Y", function()
+Input("Y",function()
 	if Connections["targetDied"] then
 		Connections["targetDied"]:Disconnect()
 		Connections["targetDied"] = nil
@@ -270,23 +274,24 @@ Input("Y", function()
 	end
 
 	if SilentAimService.Target and typeof(SilentAimService.Target) ~= "string" then
-		local thum = SilentAimService.Target:FindFirstChildOfClass("Humanoid")
-		if thum then
-			Connections["targetDied"] = thum.Died:Once(function()
+		local targetHum = SilentAimService.Target:FindFirstChildOfClass("Humanoid")
+		if targetHum then
+			Connections["targetDied"] = targetHum.Died:Once(function()
 				TargetVFX(true)
-				SilentAimService.Target = SilentAimService.Target.Name
+				SilentAimService.Target = SilentAimService.Target.Name  -- store name for respawn tracking
 			end)
 		end
 	end
 
-	local name = p and p.DisplayName or (dude and dude.Name) or "Script By Gerp!"
-	InfoFrame.Username.Text = name
-	InfoFrame.Username.Shadow.Text = name
+	InfoFrame.Username.Text = p and p.DisplayName or (dude and dude.Name) or "Script By Gerp!"
+	InfoFrame.Username.Shadow.Text = p and p.DisplayName or (dude and dude.Name) or "Script By Gerp!"
 
-	InfoFrame.Profile:FindFirstChild("Image").Image = p and GetProfile(p) or "rbxthumb://type=AvatarHeadShot&id=7530861005&w=420&h=420"
+	if p then
+		InfoFrame.Profile:FindFirstChild("Image").Image = GetProfile(p)
+	else
+		InfoFrame.Profile:FindFirstChild("Image").Image = "rbxthumb://type=AvatarHeadShot&id=7530861005&w=420&h=420"
+	end
 end)
-
-Input("R", Techs.All.Twisted)
 
 UserInputService.InputBegan:Connect(function(inp, gpe)
 	if not gpe and Inputs[inp.KeyCode] then
@@ -294,89 +299,108 @@ UserInputService.InputBegan:Connect(function(inp, gpe)
 	end
 end)
 
-SilentAimService.DisableTemp = function(t)
-	local was = SilentAimService.Toggled
-	SilentAimService.Toggled = false
+local DisableThread
+local EnableThread
 
+SilentAimService.DisableTemp = function(t : number)
+	local oh = SilentAimService.Toggled
+	SilentAimService.Toggled = false
 	if SilentAimService.Highlight then
 		TweenService:Create(SilentAimService.Highlight, ColorTween, {FillColor = Color3.new(1,1,0)}):Play()
-		Vfx.H.FillColor = Color3.new(1,1,0)
+		Vfx:FindFirstChild("H").FillColor = Color3.new(1,1,0)
 	end
 
-	if DisableThread then task.cancel(DisableThread) DisableThread = nil end
-	if EnableThread then task.cancel(EnableThread) EnableThread = nil end
+	if DisableThread then
+		task.cancel(DisableThread)
+		DisableThread = nil
+	end
+
+	if EnableThread then
+		task.cancel(EnableThread)
+		EnableThread = nil
+	end
 
 	if t then
 		DisableThread = task.delay(t, function()
-			SilentAimService.Toggled = was
+			SilentAimService.Toggled = oh
 			if SilentAimService.Highlight then
 				TweenService:Create(SilentAimService.Highlight, ColorTween, {FillColor = toggledColor()}):Play()
-				Vfx.H.FillColor = toggledColor()
+				Vfx:FindFirstChild("H").FillColor = toggledColor()
 			end
 		end)
 	end
 end
 
-SilentAimService.EnableTemp = function(t)
+SilentAimService.EnableTemp = function(t : number)
 	if typeof(t) == "string" then
 		SilentAimService.Toggled = SilentAimService.WasToggled
 		if SilentAimService.Highlight then
 			TweenService:Create(SilentAimService.Highlight, ColorTween, {FillColor = toggledColor()}):Play()
-			Vfx.H.FillColor = toggledColor()
+			Vfx:FindFirstChild("H").FillColor = toggledColor()
 		end
 		return
 	end
-
-	local was = SilentAimService.Toggled
+	local oh = SilentAimService.Toggled
 	SilentAimService.Toggled = true
-
 	if SilentAimService.Highlight then
 		TweenService:Create(SilentAimService.Highlight, ColorTween, {FillColor = Color3.new(0,1,1)}):Play()
-		Vfx.H.FillColor = Color3.new(0,1,1)
+		Vfx:FindFirstChild("H").FillColor = Color3.new(0,1,1)
 	end
 
-	if DisableThread then task.cancel(DisableThread) DisableThread = nil end
-	if EnableThread then task.cancel(EnableThread) EnableThread = nil end
+	if DisableThread then
+		task.cancel(DisableThread)
+		DisableThread = nil
+	end
+
+	if EnableThread then
+		task.cancel(EnableThread)
+		EnableThread = nil
+	end
 
 	if t then
 		EnableThread = task.delay(t, function()
-			SilentAimService.Toggled = was
+			SilentAimService.Toggled = oh
 			if SilentAimService.Highlight then
 				TweenService:Create(SilentAimService.Highlight, ColorTween, {FillColor = toggledColor()}):Play()
-				Vfx.H.FillColor = toggledColor()
+				Vfx:FindFirstChild("H").FillColor = toggledColor()
 			end
 		end)
 	end
 end
 
--- Smoothness buttons
 Smoothness:FindFirstChild("Plus").MouseButton1Click:Connect(function()
-	if SilentAimService.Lerp >= 1 then return end
-	SilentAimService.Lerp = math.round((SilentAimService.Lerp + 0.1) * 10) / 10
-	local txt = "Smoothness: " .. SilentAimService.Lerp
-	TechsFrame:FindFirstChild("Smooth").Text = txt
-	TechsFrame:FindFirstChild("Smooth").Shadow.Text = txt
+	if SilentAimService.Lerp >= 1 then SilentAimService.Lerp = 1 return end
+
+	SilentAimService.Lerp += 0.1
+	SilentAimService.Lerp = math.round(SilentAimService.Lerp * 10) / 10
+
+	TechsFrame:FindFirstChild("Smooth").Text = "Smoothness: ".. SilentAimService.Lerp
+	TechsFrame:FindFirstChild("Smooth").Shadow.Text = "Smoothness: ".. SilentAimService.Lerp
 end)
 
 Smoothness:FindFirstChild("Minus").MouseButton1Click:Connect(function()
-	if SilentAimService.Lerp <= 0.1 then return end
-	SilentAimService.Lerp = math.round((SilentAimService.Lerp - 0.1) * 10) / 10
-	local txt = "Smoothness: " .. SilentAimService.Lerp
-	TechsFrame:FindFirstChild("Smooth").Text = txt
-	TechsFrame:FindFirstChild("Smooth").Shadow.Text = txt
+	if SilentAimService.Lerp <= 0.1 then SilentAimService.Lerp = 0.1 return end
+
+	SilentAimService.Lerp -= 0.1
+	SilentAimService.Lerp = math.round(SilentAimService.Lerp * 10) / 10
+
+	TechsFrame:FindFirstChild("Smooth").Text = "Smoothness: ".. SilentAimService.Lerp
+	TechsFrame:FindFirstChild("Smooth").Shadow.Text = "Smoothness: ".. SilentAimService.Lerp
 end)
 
+Techs.MaxDistance = 7
+
 local function FrontDash()
-	local _, _, root = GetCharacter()
-	if root and root.Parent and root:FindFirstChild("Communicate") then
-		root.Communicate:FireServer({Dash = Enum.KeyCode.W, Key = Enum.KeyCode.Q, Goal = "KeyPress"})
+	local char = GetCharacter()
+	if char and char:FindFirstChild("Communicate") then
+		char.Communicate:FireServer({Dash = Enum.KeyCode.W, Key = Enum.KeyCode.Q, Goal = "KeyPress"})
 	end
 end
 
 local function JumpOnHead(hrp, targetHrp)
 	task.spawn(function()
-		for _ = 0, 1, 1/3 do
-			if not (hrp and hrp.Parent and targetHrp and targetHrp.Parent) then break end
+		for i = 0, 1, 1 / 3 do
+			if not hrp or not hrp.Parent or not targetHrp or not targetHrp.Parent then break end
 			hrp.CFrame = targetHrp.CFrame * CFrame.new(0, 5, 0)
 			task.wait()
 		end
@@ -385,13 +409,16 @@ end
 
 Techs.All.Dripz = function()
 	if _G.DashOnCD then return end
-	local _, hum, root = GetCharacter()
-	local _, _, targetRoot = GetTarget()
-	if not root or not targetRoot then return end
-	if (targetRoot.Position - root.Position).Magnitude > Techs.MaxDistance then return end
+	local char, hum, root = GetCharacter()
+	local target, targetHum, targetRoot = GetTarget()
 
+	if not root or not targetRoot then return end
+
+	if (targetRoot.Position - root.Position).Magnitude > Techs.MaxDistance then return end
+	local e = SilentAimService.Toggled
 	SilentAimService.DisableTemp(0.35)
 	JumpOnHead(root, targetRoot)
+
 	FrontDash()
 
 	local pos = Gerpie(root.CFrame * CFrame.new(0, 0, -5))
@@ -400,14 +427,7 @@ Techs.All.Dripz = function()
 	hum.AutoRotate = false
 	GerpStare(root, pos)
 	task.wait(0.14)
-
-	-- Force silent aim back on after the short disable (this fixes the main bug you mentioned)
-	SilentAimService.Toggled = true
-	if SilentAimService.Highlight then
-		TweenService:Create(SilentAimService.Highlight, ColorTween, {FillColor = Color3.new(0,1,1)}):Play()
-		Vfx.H.FillColor = Color3.new(0,1,1)
-	end
-
+	SilentAimService.EnableTemp(0.2)
 	task.wait(0.2)
 	GerpStare(root, pos2)
 	hum.AutoRotate = true
@@ -415,11 +435,11 @@ end
 
 Techs.All.Twisted = function()
 	if _G.DashOnCD then return end
-	local _, hum, root = GetCharacter()
-	if not root then return end
-
+	local char, hum, root = GetCharacter()
 	hum.AutoRotate = false
+
 	SilentAimService.DisableTemp(0.7)
+
 	FrontDash()
 
 	local one = Gerpie(root.CFrame * CFrame.new(6,0,1))
@@ -432,16 +452,16 @@ Techs.All.Twisted = function()
 	task.wait(0.12)
 	GerpStare(root, three)
 	task.wait(0.4)
+
 	hum.AutoRotate = true
 end
 
--- Initial run + respawn handling
-Player.CharacterAdded:Connect(Run)
-if Player.Character then
-	Run()
-end
+Input("R",Techs.All.Twisted)
 
--- Target respawn tracking
+Run()
+
+Player.CharacterAdded:Connect(Run)
+
 Live.ChildAdded:Connect(function(child)
 	if typeof(SilentAimService.Target) == "string" and child.Name == SilentAimService.Target then
 		SilentAimService.Target = child
