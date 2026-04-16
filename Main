@@ -426,7 +426,7 @@ Techs.All.Dripz = function()
 	hum.AutoRotate = false
 	GerpStare(root, pos)
 	task.wait(0.14)
-	SilentAimService.EnableTemp(0.15)
+	SilentAimService.EnableTemp(0.2)
 	task.wait(0.2)
 	GerpStare(root, pos2)
 	task.wait(0.3)
