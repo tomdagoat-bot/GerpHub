@@ -397,11 +397,11 @@ local function FrontDash()
 	end
 end
 
-local function JumpOnHead(hrp, targetHrp)
+local function GoUp(hrp)
 	task.spawn(function()
-		for i = 0, 1, 1 / 3 do
-			if not hrp or not hrp.Parent or not targetHrp or not targetHrp.Parent then break end
-			hrp.CFrame = targetHrp.CFrame * CFrame.new(0, 5.1, 0)
+		for i = 0, 1, 1 / 6 do
+			if not hrp or not hrp.Parent then break end
+			hrp.CFrame *= CFrame.new(0, 5 * i, 0)
 			task.wait()
 		end
 	end)
@@ -416,19 +416,19 @@ Techs.All.Dripz = function()
 
 	if (targetRoot.Position - root.Position).Magnitude > Techs.MaxDistance then return end
 	SilentAimService.DisableTemp(0.35)
-	JumpOnHead(root, targetRoot)
+	GoUp(root, targetRoot)
 
 	FrontDash()
 
 	local pos = Gerpie(root.CFrame * CFrame.new(0, 0, -5))
 	Gerpie(root.CFrame)
-	local pos2 = Gerpie(root.CFrame * CFrame.new(0, 0, 5))
+	local pos2 = Gerpie(root.CFrame * CFrame.new(0, 1, 5))
 
 	hum.AutoRotate = false
 	GerpStare(root, pos)
-	task.wait(0.14)
-	SilentAimService.EnableTemp(0.15)
-	task.wait(0.2)
+	task.wait(0.15)
+	SilentAimService.EnableTemp(0.1)
+	task.wait(0.25)
 	GerpStare(root, pos2)
 	task.wait(0.3)
 	hum.AutoRotate = true
@@ -450,7 +450,7 @@ Techs.All.Twisted = function()
 	GerpStare(root, one)
 	task.wait(0.1)
 	GerpStare(root, two)
-	task.wait(0.12)
+	task.wait(0.1)
 	GerpStare(root, three)
 	task.wait(0.4)
 
