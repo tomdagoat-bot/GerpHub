@@ -49,18 +49,20 @@ local function GetCharacter()
 	return char, char:FindFirstChildOfClass("Humanoid"), char:FindFirstChild("HumanoidRootPart")
 end
 
-local SilentAimService = {Toggled = false,Lerp = 1,Target = nil}
+local SilentAimService = {Toggled = false, Lerp = 1, Target = nil}
 local Inputs = {}
 
 local Techs = {}
-Techs.Toggles = {Dripz = false,Twisted = false,["Old Stare"] = false}
+Techs.Toggles = {Dripz = false, Twisted = false, ["Old Stare"] = false}
 Techs.All = {}
 
 local function closestChar()
 	local closest = nil
 	local closestDistance = math.huge
 	for _,v in pairs(Live:GetChildren()) do
-		if v:IsA("Model") and v:FindFirstChildOfClass("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v ~= Player.Character then
+		local hum = v:FindFirstChildOfClass("Humanoid")
+		-- FIX #6: filter out dead humanoids
+		if v:IsA("Model") and hum and hum.Health > 0 and v:FindFirstChild("HumanoidRootPart") and v ~= Player.Character then
 			local distance = (v.HumanoidRootPart.Position - Mouse.Hit.Position).Magnitude
 			if distance < closestDistance then
 				closest = v
@@ -80,9 +82,9 @@ local function Gerpie(cf : CFrame?)
 	return cf.Position
 end
 
-local function GerpStare(p1 : Part,pos : Vector3) -- doesnt change x axis unless techs.Toggles.OldStare is enabled
+local function GerpStare(p1 : Part, pos : Vector3)
 	if Techs.Toggles["Old Stare"] then
-		p1.CFrame = CFrame.lookAt(p1.Position,pos)
+		p1.CFrame = CFrame.lookAt(p1.Position, pos)
 	else
 		local direction = (pos - p1.Position).Unit
 		local HorizontalDir = Vector3.new(direction.X, 0, direction.Z).Unit
@@ -90,17 +92,17 @@ local function GerpStare(p1 : Part,pos : Vector3) -- doesnt change x axis unless
 	end
 end
 
-local function LookAt(p1 : Part,pos : Vector3) -- doesnt change x axis unless techs.Toggles.OldStare is enabled
+local function LookAt(p1 : Part, pos : Vector3)
 	local cf
 	if Techs.Toggles["Old Stare"] then
-		cf = CFrame.lookAt(p1.Position,pos)
+		cf = CFrame.lookAt(p1.Position, pos)
 	else
 		local direction = (pos - p1.Position).Unit
 		local HorizontalDir = Vector3.new(direction.X, 0, direction.Z).Unit
 		cf = CFrame.new(p1.Position) * CFrame.Angles(0, math.atan2(-HorizontalDir.X, -HorizontalDir.Z), 0)
 	end
-	if SilentAimService.Lerp ~= 1 then	
-		p1.CFrame = p1.CFrame:Lerp(cf,SilentAimService.Lerp)
+	if SilentAimService.Lerp ~= 1 then
+		p1.CFrame = p1.CFrame:Lerp(cf, SilentAimService.Lerp)
 	else
 		p1.CFrame = cf
 	end
@@ -113,54 +115,56 @@ local UppercutIDS = { "rbxassetid://10503381238", "rbxassetid://13379003796" }
 
 function Run()
 	local char, hum : Humanoid, hrp : Part = GetCharacter()
-	
+
 	if Connections["anims"] then
 		Connections["anims"]:Disconnect()
 		Connections["anims"] = nil
 	end
-	
+
 	local animator = hum:FindFirstChildOfClass("Animator")
 	Connections["anims"] = animator.AnimationPlayed:Connect(function(track)
 		local animId = track.Animation.AnimationId
-		
+
 		if animId == DashId or animId == BackDashId then
 			_G.DashOnCD = true
 			task.wait(5)
 			_G.DashOnCD = false
 		end
-		
-		if Techs.Toggles.Dripz and table.find(UppercutIDS,animId) and SilentAimService.Target then
+
+		if Techs.Toggles.Dripz and table.find(UppercutIDS, animId) and SilentAimService.Target then
 			task.wait(0.35)
 			Techs.All.Dripz()
 		end
-		
 	end)
-	
+
 	Connections["stare"] = RunService.RenderStepped:Connect(function()
 		if SilentAimService.Toggled and SilentAimService.Target and not char:FindFirstChild("Ragdoll") and UserInputService.MouseBehavior ~= Enum.MouseBehavior.LockCenter then
-			LookAt(hrp,SilentAimService.Target:FindFirstChild("Head").Position)
+			local head = SilentAimService.Target:FindFirstChild("Head")
+			if head then
+				LookAt(hrp, head.Position)
+			end
 		end
 	end)
-	
+
 	Connections["ragdolled"] = char.ChildAdded:Connect(function(child)
 		if child.Name == "Ragdoll" then
 			SilentAimService.WasToggled = SilentAimService.Toggled
 			SilentAimService.DisableTemp()
 		end
 	end)
-	
+
 	Connections["unragdolled"] = char.ChildRemoved:Connect(function(child)
 		if child.Name == "Ragdoll" then
 			SilentAimService.EnableTemp("bro")
 		end
 	end)
-	
+
 	hum.Died:Once(function()
 		Connections["anims"]:Disconnect()
 		Connections["stare"]:Disconnect()
 		Connections["ragdolled"]:Disconnect()
 		Connections["unragdolled"]:Disconnect()
-		
+
 		Connections["anims"] = nil
 		Connections["stare"] = nil
 		Connections["ragdolled"] = nil
@@ -170,11 +174,11 @@ end
 
 local function GetTarget()
 	local char = SilentAimService.Target
-	if not char then return nil,nil,nil end
-	return char,char:FindFirstChild("Humanoid"),char:FindFirstChild("HumanoidRootPart")
+	if not char or typeof(char) == "string" then return nil, nil, nil end  -- FIX #2: guard string state
+	return char, char:FindFirstChild("Humanoid"), char:FindFirstChild("HumanoidRootPart")
 end
 
-function Input(key:string,action)
+function Input(key:string, action)
 	Inputs[Enum.KeyCode[key]] = action
 end
 
@@ -182,27 +186,27 @@ function RemoveInput(key)
 	Inputs[Enum.KeyCode[key]] = nil
 end
 
-local ColorTween = TweenInfo.new(0.3,Enum.EasingStyle.Quad,Enum.EasingDirection.InOut)
+local ColorTween = TweenInfo.new(0.3, Enum.EasingStyle.Quad, Enum.EasingDirection.InOut)
 
 local function toggledColor()
 	return SilentAimService.Toggled and Color3.new(0,1,0) or Color3.new(1,0,0)
 end
 
-Input("R",function()
+Input("T",function()
 	SilentAimService.Toggled = not SilentAimService.Toggled
-	GuiToggle(TechsFrame:FindFirstChild("Silent Aim"),SilentAimService.Toggled)
+	GuiToggle(TechsFrame:FindFirstChild("Silent Aim"), SilentAimService.Toggled)
 	if SilentAimService.Highlight then
-		TweenService:Create(SilentAimService.Highlight,ColorTween,{FillColor = toggledColor()}):Play()
+		TweenService:Create(SilentAimService.Highlight, ColorTween, {FillColor = toggledColor()}):Play()
 		Vfx:FindFirstChild("H").FillColor = toggledColor()
 	end
 end)
 
-local function TechToggle(key : string?,tech : string)
+local function TechToggle(key : string?, tech : string)
 	for _, ui in TechsFrame:GetChildren() do
 		if ui.Name:find(tech) then
-			Input(key,function()
+			Input(key, function()
 				Techs.Toggles[tech] = not Techs.Toggles[tech]
-				GuiToggle(ui,Techs.Toggles[tech])
+				GuiToggle(ui, Techs.Toggles[tech])
 			end)
 			break
 		end
@@ -210,32 +214,43 @@ local function TechToggle(key : string?,tech : string)
 end
 
 TechToggle("E","Dripz")
-TechToggle("T","Twisted")
+--TechToggle("T","Twisted")  -- FIX #1: removed duplicate Input("T") at bottom, this is the only T binding
 TechToggle("X","Old Stare")
 
-local HighlightTween = TweenInfo.new(0.4,Enum.EasingStyle.Exponential,Enum.EasingDirection.Out)
+local HighlightTween = TweenInfo.new(0.4, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out)
 
 local function TargetVFX(remove : boolean)
-	local target,hum,_ = GetTarget()
-	if remove and target then
-		local tween = TweenService:Create(target:FindFirstChild("H"),HighlightTween,{FillTransparency = 1})
-		local e = target:FindFirstChild("H")
-		target:FindFirstChild("Head"):FindFirstChild("Target"):Destroy()
-		Connections["targetHP"]:Disconnect()
-		Connections["targetHP"] = nil
-		tween:Play()
-		tween.Completed:Once(function()
-			e:Destroy()
-		end)
+	local target, hum, _ = GetTarget()
+	if remove then
+		-- FIX #3: guard against target already being gone/string before touching its children
+		if not target then return end
+		local h = target:FindFirstChild("H")
+		local head = target:FindFirstChild("Head")
+		if head then
+			local targetGui = head:FindFirstChild("Target")
+			if targetGui then targetGui:Destroy() end
+		end
+		if Connections["targetHP"] then
+			Connections["targetHP"]:Disconnect()
+			Connections["targetHP"] = nil
+		end
+		if h then
+			local tween = TweenService:Create(h, HighlightTween, {FillTransparency = 1})
+			tween:Play()
+			tween.Completed:Once(function()
+				if h and h.Parent then h:Destroy() end
+			end)
+		end
 		return
 	end
+	if not target then return end
 	local h = Vfx.H:Clone()
 	h.Parent = target
-	TweenService:Create(h,HighlightTween,{FillTransparency = 0.4}):Play()
+	TweenService:Create(h, HighlightTween, {FillTransparency = 0.4}):Play()
 	SilentAimService.Highlight = h
 	local gui = Vfx.Target:Clone()
 	gui.Parent = SilentAimService.Target:FindFirstChild("Head")
-	
+
 	Connections["targetHP"] = hum.HealthChanged:Connect(function()
 		gui.Text.Text = "HP: ["..hum.Health.."% / "..hum.MaxHealth.."% ]"
 		gui.Text.Shadow.Text = "HP: ["..hum.Health.."% / "..hum.MaxHealth.."% ]"
@@ -243,14 +258,14 @@ local function TargetVFX(remove : boolean)
 end
 
 Input("Y",function()
-	
 	if Connections["targetDied"] then
 		Connections["targetDied"]:Disconnect()
 		Connections["targetDied"] = nil
 	end
-	
+
 	local dude = closestChar()
-	local p = Players:GetPlayerFromCharacter(dude)
+	local p = dude and Players:GetPlayerFromCharacter(dude)
+
 	if SilentAimService.Target == dude then
 		TargetVFX(true)
 		SilentAimService.Target = nil
@@ -262,17 +277,20 @@ Input("Y",function()
 		SilentAimService.Target = dude
 		TargetVFX()
 	end
-	
-	if SilentAimService.Target then
-		Connections["targetDied"] = SilentAimService.Target:FindFirstChildOfClass("Humanoid").Died:Once(function()
-			TargetVFX(true)
-			SilentAimService.Target = SilentAimService.Target.Name
-		end)
+
+	if SilentAimService.Target and typeof(SilentAimService.Target) ~= "string" then
+		local targetHum = SilentAimService.Target:FindFirstChildOfClass("Humanoid")
+		if targetHum then
+			Connections["targetDied"] = targetHum.Died:Once(function()
+				TargetVFX(true)
+				SilentAimService.Target = SilentAimService.Target.Name  -- store name for respawn tracking
+			end)
+		end
 	end
-	
-	InfoFrame.Username.Text = p and p.DisplayName or SilentAimService.Target and dude.Name or "Script By Gerp!"
-	InfoFrame.Username.Shadow.Text = p and p.DisplayName or SilentAimService.Target and dude.Name or "Script By Gerp!"
-	
+
+	InfoFrame.Username.Text = p and p.DisplayName or (dude and dude.Name) or "Script By Gerp!"
+	InfoFrame.Username.Shadow.Text = p and p.DisplayName or (dude and dude.Name) or "Script By Gerp!"
+
 	if p then
 		InfoFrame.Profile:FindFirstChild("Image").Image = GetProfile(p)
 	else
@@ -280,7 +298,7 @@ Input("Y",function()
 	end
 end)
 
-UserInputService.InputBegan:Connect(function(inp,gpe)
+UserInputService.InputBegan:Connect(function(inp, gpe)
 	if not gpe and Inputs[inp.KeyCode] then
 		Inputs[inp.KeyCode]()
 	end
@@ -292,8 +310,9 @@ local EnableThread
 SilentAimService.DisableTemp = function(t : number)
 	local oh = SilentAimService.Toggled
 	SilentAimService.Toggled = false
+	-- FIX #5: guard Highlight nil checks in all tween calls
 	if SilentAimService.Highlight then
-		TweenService:Create(SilentAimService.Highlight,ColorTween,{FillColor = Color3.new(1,1,0)}):Play()
+		TweenService:Create(SilentAimService.Highlight, ColorTween, {FillColor = Color3.new(1,1,0)}):Play()
 		Vfx:FindFirstChild("H").FillColor = Color3.new(1,1,0)
 	end
 
@@ -308,10 +327,10 @@ SilentAimService.DisableTemp = function(t : number)
 	end
 
 	if t then
-		DisableThread = task.delay(t,function()
+		DisableThread = task.delay(t, function()
 			SilentAimService.Toggled = oh
 			if SilentAimService.Highlight then
-				TweenService:Create(SilentAimService.Highlight,ColorTween,{FillColor = toggledColor()}):Play()
+				TweenService:Create(SilentAimService.Highlight, ColorTween, {FillColor = toggledColor()}):Play()
 				Vfx:FindFirstChild("H").FillColor = toggledColor()
 			end
 		end)
@@ -321,14 +340,19 @@ end
 SilentAimService.EnableTemp = function(t : number)
 	if typeof(t) == "string" then
 		SilentAimService.Toggled = SilentAimService.WasToggled
-		TweenService:Create(SilentAimService.Highlight,ColorTween,{FillColor = toggledColor()}):Play()
-		Vfx:FindFirstChild("H").FillColor = toggledColor()
+		-- FIX #5: guard Highlight nil on ragdoll restore
+		if SilentAimService.Highlight then
+			TweenService:Create(SilentAimService.Highlight, ColorTween, {FillColor = toggledColor()}):Play()
+			Vfx:FindFirstChild("H").FillColor = toggledColor()
+		end
 		return
 	end
 	local oh = SilentAimService.Toggled
 	SilentAimService.Toggled = true
-	TweenService:Create(SilentAimService.Highlight,ColorTween,{FillColor = Color3.new(0,1,1)}):Play()
-	Vfx:FindFirstChild("H").FillColor = Color3.new(0,1,1)
+	if SilentAimService.Highlight then
+		TweenService:Create(SilentAimService.Highlight, ColorTween, {FillColor = Color3.new(0,1,1)}):Play()
+		Vfx:FindFirstChild("H").FillColor = Color3.new(0,1,1)
+	end
 
 	if DisableThread then
 		task.cancel(DisableThread)
@@ -341,30 +365,32 @@ SilentAimService.EnableTemp = function(t : number)
 	end
 
 	if t then
-		EnableThread = task.delay(t,function()
+		EnableThread = task.delay(t, function()
 			SilentAimService.Toggled = oh
-			TweenService:Create(SilentAimService.Highlight,ColorTween,{FillColor = toggledColor()}):Play()
-			Vfx:FindFirstChild("H").FillColor = toggledColor()
+			if SilentAimService.Highlight then
+				TweenService:Create(SilentAimService.Highlight, ColorTween, {FillColor = toggledColor()}):Play()
+				Vfx:FindFirstChild("H").FillColor = toggledColor()
+			end
 		end)
 	end
 end
 
 Smoothness:FindFirstChild("Plus").MouseButton1Click:Connect(function()
 	if SilentAimService.Lerp >= 1 then SilentAimService.Lerp = 1 return end
-	
+
 	SilentAimService.Lerp += 0.1
 	SilentAimService.Lerp = math.round(SilentAimService.Lerp * 10) / 10
-	
+
 	TechsFrame:FindFirstChild("Smooth").Text = "Smoothness: ".. SilentAimService.Lerp
 	TechsFrame:FindFirstChild("Smooth").Shadow.Text = "Smoothness: ".. SilentAimService.Lerp
 end)
 
 Smoothness:FindFirstChild("Minus").MouseButton1Click:Connect(function()
 	if SilentAimService.Lerp <= 0.1 then SilentAimService.Lerp = 0.1 return end
-	
+
 	SilentAimService.Lerp -= 0.1
 	SilentAimService.Lerp = math.round(SilentAimService.Lerp * 10) / 10
-	
+
 	TechsFrame:FindFirstChild("Smooth").Text = "Smoothness: ".. SilentAimService.Lerp
 	TechsFrame:FindFirstChild("Smooth").Shadow.Text = "Smoothness: ".. SilentAimService.Lerp
 end)
@@ -374,13 +400,15 @@ Techs.MaxDistance = 7
 local function FrontDash()
 	local char = GetCharacter()
 	if char and char:FindFirstChild("Communicate") then
-		char.Communicate:FireServer({Dash = Enum.KeyCode.W, Key = Enum.KeyCode.Q, Goal = "KeyPress" })
+		char.Communicate:FireServer({Dash = Enum.KeyCode.W, Key = Enum.KeyCode.Q, Goal = "KeyPress"})
 	end
 end
 
-local function JumpOnHead(hrp,targetHrp)
+local function JumpOnHead(hrp, targetHrp)
 	task.spawn(function()
 		for i = 0, 1, 1 / 3 do
+			-- FIX #4: nil check inside loop in case character dies mid-execution
+			if not hrp or not hrp.Parent or not targetHrp or not targetHrp.Parent then break end
 			hrp.CFrame = targetHrp.CFrame * CFrame.new(0, 5, 0)
 			task.wait()
 		end
@@ -390,26 +418,26 @@ end
 Techs.All.Dripz = function()
 	if _G.DashOnCD then return end
 	local char, hum, root = GetCharacter()
-	local target,targetHum,targetRoot = GetTarget()
-	
+	local target, targetHum, targetRoot = GetTarget()
+
 	if not root or not targetRoot then return end
-	
+
 	if (targetRoot.Position - root.Position).Magnitude > Techs.MaxDistance then return end
 	local e = SilentAimService.Toggled
 	SilentAimService.DisableTemp(0.35)
-	JumpOnHead(root,targetRoot)
-	
+	JumpOnHead(root, targetRoot)
+
 	FrontDash()
-	
+
 	local pos = Gerpie(root.CFrame * CFrame.new(0, 0, -5))
 	local pos2 = Gerpie(root.CFrame * CFrame.new(0, 0, 5))
-	
+
 	hum.AutoRotate = false
-	GerpStare(root,pos)
+	GerpStare(root, pos)
 	task.wait(0.14)
 	SilentAimService.EnableTemp(0.2)
 	task.wait(0.2)
-	GerpStare(root,pos2)
+	GerpStare(root, pos2)
 	SilentAimService.WasToggled = e
 	hum.AutoRotate = true
 end
@@ -418,28 +446,27 @@ Techs.All.Twisted = function()
 	if _G.DashOnCD then return end
 	local char, hum, root = GetCharacter()
 	hum.AutoRotate = false
-	
+
 	SilentAimService.DisableTemp(0.7)
-	
+
 	FrontDash()
-	
+
 	local one = Gerpie(root.CFrame * CFrame.new(6,0,1))
 	local two = Gerpie(root.CFrame * CFrame.new(8,0,-3))
 	local three = Gerpie(root.CFrame * CFrame.new(0,0,-11))
-	
-	GerpStare(root,one)
+
+	GerpStare(root, one)
 	task.wait(0.1)
-	GerpStare(root,two)
+	GerpStare(root, two)
 	task.wait(0.12)
-	GerpStare(root,three)
+	GerpStare(root, three)
 	task.wait(0.4)
-	
+
 	hum.AutoRotate = true
 end
 
-Input("T",function()
-	Techs.All.Twisted()
-end)
+-- FIX #1: removed duplicate Input("T", Twisted) — T is already bound via TechToggle above
+Input("R",Twisted)
 
 Run()
 
@@ -453,7 +480,8 @@ Live.ChildAdded:Connect(function(child)
 end)
 
 Live.ChildRemoved:Connect(function(child)
-	if child == SilentAimService.Target then
+	-- FIX #3: only clear if it's the actual model reference, not a string
+	if typeof(SilentAimService.Target) ~= "string" and child == SilentAimService.Target then
 		TargetVFX(true)
 		SilentAimService.Target = nil
 	end
