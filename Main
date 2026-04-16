@@ -399,9 +399,9 @@ end
 
 local function JumpOnHead(hrp, targetHrp)
 	task.spawn(function()
-		for i = 0, 1, 1 / 4 do
+		for i = 0, 1, 1 / 3 do
 			if not hrp or not hrp.Parent or not targetHrp or not targetHrp.Parent then break end
-			hrp.CFrame = targetHrp.CFrame * CFrame.new(0, 5.2, 0)
+			hrp.CFrame = targetHrp.CFrame * CFrame.new(0, 5.1, 0)
 			task.wait()
 		end
 	end)
@@ -421,12 +421,13 @@ Techs.All.Dripz = function()
 	FrontDash()
 
 	local pos = Gerpie(root.CFrame * CFrame.new(0, 0, -5))
+	Gerpie(root.CFrame)
 	local pos2 = Gerpie(root.CFrame * CFrame.new(0, 0, 5))
 
 	hum.AutoRotate = false
 	GerpStare(root, pos)
 	task.wait(0.14)
-	SilentAimService.EnableTemp(0.2)
+	SilentAimService.EnableTemp(0.15)
 	task.wait(0.2)
 	GerpStare(root, pos2)
 	task.wait(0.3)
