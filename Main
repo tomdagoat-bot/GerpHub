@@ -397,11 +397,11 @@ local function FrontDash()
 	end
 end
 
-local function GoUp(hrp)
+local function GoUp(hrp,part1)
 	task.spawn(function()
 		for i = 0, 1, 1 / 6 do
 			if not hrp or not hrp.Parent then break end
-			hrp.CFrame *= CFrame.new(0, 5, 0)
+			hrp.CFrame = part1.CFrame * CFrame.new(0, 5, -4)
 			task.wait()
 		end
 	end)
