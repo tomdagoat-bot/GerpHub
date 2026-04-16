@@ -214,7 +214,7 @@ local function TechToggle(key : string?, tech : string)
 end
 
 TechToggle("E","Dripz")
---TechToggle("T","Twisted")  -- FIX #1: removed duplicate Input("T") at bottom, this is the only T binding
+TechToggle("U","Twisted")  -- FIX #1: removed duplicate Input("T") at bottom, this is the only T binding
 TechToggle("X","Old Stare")
 
 local HighlightTween = TweenInfo.new(0.4, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out)
@@ -438,7 +438,6 @@ Techs.All.Dripz = function()
 	SilentAimService.EnableTemp(0.2)
 	task.wait(0.2)
 	GerpStare(root, pos2)
-	SilentAimService.WasToggled = e
 	hum.AutoRotate = true
 end
 
@@ -466,7 +465,7 @@ Techs.All.Twisted = function()
 end
 
 -- FIX #1: removed duplicate Input("T", Twisted) — T is already bound via TechToggle above
-Input("R",Twisted)
+Input("R",Techs.All.Twisted)
 
 Run()
 
