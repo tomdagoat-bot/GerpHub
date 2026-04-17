@@ -401,7 +401,7 @@ local function GoUp(hrp,part1)
 	task.spawn(function()
 		for i = 0, 1, 1 / 6 do
 			if not hrp or not hrp.Parent then break end
-			hrp.CFrame = part1.CFrame * CFrame.new(0, 5, -4)
+			hrp.CFrame = part1.CFrame * CFrame.new(0, 5, 0)
 			task.wait()
 		end
 	end)
@@ -420,15 +420,15 @@ Techs.All.Dripz = function()
 
 	FrontDash()
 
-	local pos = Gerpie(root.CFrame * CFrame.new(0, 0, -5))
+	local pos = Gerpie(root.CFrame * CFrame.new(5, 0, -5))
 	Gerpie(root.CFrame)
-	local pos2 = Gerpie(root.CFrame * CFrame.new(0, 1, 5))
+	local pos2 = Gerpie(root.CFrame * CFrame.new(0, 0, 5))
 
 	hum.AutoRotate = false
 	GerpStare(root, pos)
-	task.wait(0.15)
-	SilentAimService.EnableTemp(0.1)
-	task.wait(0.25)
+	task.wait(0.14)
+	SilentAimService.EnableTemp(0.2)
+	task.wait(0.2)
 	GerpStare(root, pos2)
 	task.wait(0.3)
 	hum.AutoRotate = true
