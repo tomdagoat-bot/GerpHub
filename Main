@@ -114,6 +114,12 @@ local UppercutIDS = {"rbxassetid://10503381238", "rbxassetid://13379003796"}
 
 local Cooldowns = {FrontDash = 5,SideDash = 2}
 
+function GetTarget()
+	local char = SilentAimService.Target
+	if not char or typeof(char) == "string" then return nil, nil, nil end 
+	return char, char:FindFirstChild("Humanoid"), char:FindFirstChild("HumanoidRootPart")
+end
+
 local t = 0
 local JumpDuration = 1 / 8
 
@@ -194,12 +200,6 @@ function Run()
 		Connections["ragdolled"] = nil
 		Connections["unragdolled"] = nil
 	end)
-end
-
-function GetTarget()
-	local char = SilentAimService.Target
-	if not char or typeof(char) == "string" then return nil, nil, nil end 
-	return char, char:FindFirstChild("Humanoid"), char:FindFirstChild("HumanoidRootPart")
 end
 
 function Input(key:string, action)
