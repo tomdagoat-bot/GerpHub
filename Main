@@ -420,7 +420,7 @@ Techs.All.Dripz = function()
 
 	FrontDash()
 
-	local pos = Gerpie(root.CFrame * CFrame.new(5, 0, -5))
+	local pos = Gerpie(root.CFrame * CFrame.new(0, 0, -5))
 	Gerpie(root.CFrame)
 	local pos2 = Gerpie(root.CFrame * CFrame.new(0, 0, 5))
 
