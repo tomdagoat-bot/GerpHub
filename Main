@@ -441,7 +441,7 @@ Techs.All.Dripz = function()
 	if (targetRoot.Position - root.Position).Magnitude > Techs.MaxDistance then return end
 
 	if Techs.Toggles.Jump then
-		GoUp(hrp)
+		GoUp(root)
 	end
 
 	task.wait(0.35)
