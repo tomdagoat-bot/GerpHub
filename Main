@@ -132,6 +132,9 @@ function Run()
 		end
 
 		if Techs.Toggles.Dripz and table.find(UppercutIDS, animId) and SilentAimService.Target then
+			if Techs.Toggles.Jump then
+				GoUp(root, targetRoot)
+			end
 			task.wait(0.36)
 			Techs.All.Dripz()
 		end
@@ -440,16 +443,12 @@ Techs.All.Dripz = function()
 
 	if (targetRoot.Position - root.Position).Magnitude > Techs.MaxDistance then return end
 	SilentAimService.DisableTemp(0.5)
-	
-	if Techs.Toggles.Jump then
-		GoUp(root, targetRoot)
-	end
 
 	FrontDash()
 
 	local pos = Gerpie(root.CFrame * CFrame.new(0, 0, -5))
 	Gerpie(root.CFrame)
-	local pos2 = Gerpie(root.CFrame * CFrame.new(0, 1, 5))
+	local pos2 = Gerpie(root.CFrame * CFrame.new(0, 0, 5))
 
 	hum.AutoRotate = false
 	GerpStare(root, pos)
