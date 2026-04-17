@@ -399,7 +399,7 @@ end
 
 local function GoUp(hrp,part1)
 	task.spawn(function()
-		for i = 0, 1, 1 / 6 do
+		for i = 0, 1, 1 / 3 do
 			if not hrp or not hrp.Parent then break end
 			hrp.CFrame = part1.CFrame * CFrame.new(0, 5, 0)
 			task.wait()
@@ -415,7 +415,7 @@ Techs.All.Dripz = function()
 	if not root or not targetRoot then return end
 
 	if (targetRoot.Position - root.Position).Magnitude > Techs.MaxDistance then return end
-	SilentAimService.DisableTemp(0.35)
+	SilentAimService.DisableTemp(0.5)
 	GoUp(root, targetRoot)
 
 	FrontDash()
@@ -427,10 +427,10 @@ Techs.All.Dripz = function()
 	hum.AutoRotate = false
 	GerpStare(root, pos)
 	task.wait(0.14)
-	SilentAimService.EnableTemp(0.2)
+	SilentAimService.EnableTemp(0.15)
 	task.wait(0.2)
 	GerpStare(root, pos2)
-	task.wait(0.3)
+	task.wait(0.5)
 	hum.AutoRotate = true
 end
 
@@ -444,13 +444,13 @@ Techs.All.Twisted = function()
 	FrontDash()
 
 	local one = Gerpie(root.CFrame * CFrame.new(6,0,1))
-	local two = Gerpie(root.CFrame * CFrame.new(8,0,-3))
+	local two = Gerpie(root.CFrame * CFrame.new(8,0,-4))
 	local three = Gerpie(root.CFrame * CFrame.new(0,0,-11))
 
 	GerpStare(root, one)
 	task.wait(0.1)
 	GerpStare(root, two)
-	task.wait(0.1)
+	task.wait(0.08)
 	GerpStare(root, three)
 	task.wait(0.4)
 
@@ -464,6 +464,7 @@ Run()
 Player.CharacterAdded:Connect(Run)
 
 Live.ChildAdded:Connect(function(child)
+	task.wait(1)
 	if typeof(SilentAimService.Target) == "string" and child.Name == SilentAimService.Target then
 		SilentAimService.Target = child
 		TargetVFX()
