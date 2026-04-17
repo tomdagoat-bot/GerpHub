@@ -415,14 +415,15 @@ local function FrontDash()
 end
 
 local t = 0
-local JumpDuration = 1 / 6
+local JumpDuration = 1 / 8
 
 local function GoUp(hrp)
 	local _, _, targetRoot = GetTarget()
+	hrp.Anchored = true
 	Connections["jump"] = RunService.RenderStepped:Connect(function(dt)
 		if t >= JumpDuration then
-			hrp.CFrame = targetRoot.CFrame * CFrame.new(0, 5, 0)
 			t = 0
+			hrp.Anchored = false
 			Connections["jump"]:Disconnect()
 			Connections["jump"] = nil
 		end
@@ -430,7 +431,7 @@ local function GoUp(hrp)
 		t += dt
 		
 		local progress = math.clamp(t / JumpDuration,0,1)
-		hrp.CFrame = hrp.CFrame:Lerp(targetRoot.CFrame * CFrame.new(0, 5, 0), progress)
+		hrp.CFrame = hrp.CFrame:Lerp(targetRoot.CFrame * CFrame.new(0, 5.5, 0), progress)
 	end)
 end
 
@@ -452,7 +453,7 @@ Techs.All.Dripz = function()
 
 	hum.AutoRotate = false
 	GerpStare(root, pos)
-	task.wait(0.14)
+	task.wait(0.15)
 	SilentAimService.EnableTemp(0.15)
 	task.wait(0.25)
 	GerpStare(root, pos2)
