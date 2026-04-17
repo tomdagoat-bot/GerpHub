@@ -417,7 +417,7 @@ end
 local t = 0
 local JumpDuration = 1 / 8
 
-local function GoUp(hrp)
+function GoUp(hrp)
 	local _, _, targetRoot = GetTarget()
 	hrp.Anchored = true
 	Connections["jump"] = RunService.RenderStepped:Connect(function(dt)
