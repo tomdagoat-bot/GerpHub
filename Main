@@ -137,7 +137,7 @@ function GoUp(hrp)
 		t += dt
 		
 		local progress = math.clamp(t / JumpDuration,0,1)
-		hrp.CFrame = hrp.CFrame:Lerp(targetRoot.CFrame * CFrame.new(0, 5.5, 0), progress)
+		hrp.CFrame = hrp.CFrame:Lerp(targetRoot.CFrame * CFrame.new(0, 6, 0), progress)
 	end)
 end
 
