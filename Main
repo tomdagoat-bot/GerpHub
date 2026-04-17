@@ -121,7 +121,7 @@ function GetTarget()
 end
 
 local t = 0
-local JumpDuration = 1 / 8
+local JumpDuration = 1 / 9
 
 function GoUp(hrp)
 	if not hrp then
@@ -141,7 +141,7 @@ function GoUp(hrp)
 		t += dt
 		
 		local progress = math.clamp(t / JumpDuration,0,1)
-		hrp.CFrame = hrp.CFrame:Lerp(targetRoot.CFrame * CFrame.new(0, 6, 0), progress)
+		hrp.CFrame = hrp.CFrame:Lerp(targetRoot.CFrame * CFrame.new(0, 6.5, -3), progress)
 	end)
 end
 
@@ -448,7 +448,7 @@ Techs.All.Dripz = function()
 		GoUp(root)
 	end
 
-	task.wait(0.35)
+	task.wait(0.36)
 
 	SilentAimService.DisableTemp(0.4)
 
