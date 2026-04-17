@@ -97,7 +97,8 @@ local instancesdata = {
     {
         ["ClassName"] = "UIStroke",
         ["Properties"] = {
-            ["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border,
+			["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border,
+			["StrokeSizingMode"] = Enum.StrokeSizingMode.ScaledSize,
             ["Name"] = [[X]],
             ["Color"] = Color3.new(0.263, 0.463, 0.812),
             ["Parent"] = "&ID:6",
@@ -176,7 +177,8 @@ local instancesdata = {
     {
         ["ClassName"] = "UIStroke",
         ["Properties"] = {
-            ["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border,
+			["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border,
+			["StrokeSizingMode"] = Enum.StrokeSizingMode.ScaledSize,
             ["Name"] = [[Y]],
             ["Color"] = Color3.new(0.263, 0.463, 0.812),
             ["Parent"] = "&ID:6",
@@ -584,7 +586,8 @@ local instancesdata = {
     {
         ["ClassName"] = "UIStroke",
         ["Properties"] = {
-            ["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border,
+			["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border,
+			["StrokeSizingMode"] = Enum.StrokeSizingMode.ScaledSize,
             ["Name"] = [[Stroke]],
             ["Color"] = Color3.new(0.255, 0.255, 0.255),
             ["Parent"] = "&ID:30",
