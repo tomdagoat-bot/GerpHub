@@ -196,7 +196,7 @@ function Run()
 	end)
 end
 
-local function GetTarget()
+function GetTarget()
 	local char = SilentAimService.Target
 	if not char or typeof(char) == "string" then return nil, nil, nil end 
 	return char, char:FindFirstChild("Humanoid"), char:FindFirstChild("HumanoidRootPart")
