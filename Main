@@ -159,10 +159,6 @@ function Run()
 		end
 
 		if Techs.Toggles.Dripz and table.find(UppercutIDS, animId) and SilentAimService.Target then
-			if Techs.Toggles.Jump then
-				GoUp(hrp)
-			end
-			task.wait(0.36)
 			Techs.All.Dripz()
 		end
 	end)
@@ -443,7 +439,14 @@ Techs.All.Dripz = function()
 	if not root or not targetRoot then return end
 
 	if (targetRoot.Position - root.Position).Magnitude > Techs.MaxDistance then return end
-	SilentAimService.DisableTemp(0.5)
+
+	if Techs.Toggles.Jump then
+		GoUp(hrp)
+	end
+
+	task.wait(0.35)
+
+	SilentAimService.DisableTemp(0.4)
 
 	FrontDash()
 
@@ -453,9 +456,9 @@ Techs.All.Dripz = function()
 
 	hum.AutoRotate = false
 	GerpStare(root, pos)
-	task.wait(0.15)
-	SilentAimService.EnableTemp(0.15)
-	task.wait(0.25)
+	task.wait(0.14)
+	SilentAimService.EnableTemp(0.1)
+	task.wait(0.23)
 	GerpStare(root, pos2)
 	task.wait(0.3)
 	hum.AutoRotate = true
