@@ -54,7 +54,7 @@ local SilentAimService = {Toggled = false, Lerp = 1, Target = nil}
 local Inputs = {}
 
 local Techs = {}
-Techs.Toggles = {Dripz = false, Twisted = false, ["Old Stare"] = false}
+Techs.Toggles = {Dripz = false, Jump = false, ["Old Stare"] = false}
 Techs.All = {}
 
 local function closestChar()
@@ -108,10 +108,11 @@ local function LookAt(p1 : Part, pos : Vector3)
 	end
 end
 
-local DashId = "rbxassetid://10479335397"
-local BackDashId = "rbxassetid://10491993682"
+local DashIDS = {"rbxassetid://10491993682","rbxassetid://10479335397"}
+local SideDashIDS = {"rbxassetid://10480793962","rbxassetid://10480796021"}
+local UppercutIDS = {"rbxassetid://10503381238", "rbxassetid://13379003796"}
 
-local UppercutIDS = { "rbxassetid://10503381238", "rbxassetid://13379003796" }
+local Cooldowns = {FrontDash = 5,SideDash = 2}
 
 function Run()
 	task.wait(1)
@@ -121,14 +122,17 @@ function Run()
 	Connections["anims"] = animator.AnimationPlayed:Connect(function(track)
 		local animId = track.Animation.AnimationId
 
-		if animId == DashId or animId == BackDashId then
+		if table.find(DashIDS, animId) then
 			_G.DashOnCD = true
-			task.wait(5)
+			CD("FrontDash",Cooldowns.FrontDash)
+			task.wait(Cooldowns.FrontDash)
 			_G.DashOnCD = false
+		elseif table.find(SideDashIDS, animId) then
+			CD("SideDash",Cooldowns.SideDash)
 		end
 
 		if Techs.Toggles.Dripz and table.find(UppercutIDS, animId) and SilentAimService.Target then
-			task.wait(0.35)
+			task.wait(0.36)
 			Techs.All.Dripz()
 		end
 	end)
@@ -210,7 +214,7 @@ local function TechToggle(key : string?, tech : string)
 end
 
 TechToggle("E","Dripz")
-TechToggle("U","Twisted")
+TechToggle("U","Jump")
 TechToggle("X","Old Stare")
 
 local HighlightTween = TweenInfo.new(0.4, Enum.EasingStyle.Exponential, Enum.EasingDirection.Out)
@@ -390,6 +394,16 @@ end)
 
 Techs.MaxDistance = 7
 
+function CD(name : "SideDash" | "FrontDash",dur : number)
+	local frame : Frame? = CDFrame:FindFirstChild(name):WaitForChild("CD")
+	frame.Visible = true
+	frame.Size = UDim2.new(1,0,1,0)
+	TweenService:Create(frame,TweenInfo.new(dur,Enum.EasingStyle.Linear,Enum.EasingDirection.Out),{Size = UDim2.new(0,0,1,0)}):Play()
+	task.delay(dur,function()
+		frame.Visible = false
+	end)
+end
+
 local function FrontDash()
 	local char = GetCharacter()
 	if char and char:FindFirstChild("Communicate") then
@@ -397,13 +411,23 @@ local function FrontDash()
 	end
 end
 
-local function GoUp(hrp,part1)
-	task.spawn(function()
-		for i = 0, 1, 1 / 3 do
-			if not hrp or not hrp.Parent then break end
-			hrp.CFrame = part1.CFrame * CFrame.new(0, 5, 0)
-			task.wait()
+local t = 0
+local JumpDuration = 1 / 6
+
+local function GoUp(hrp)
+	local _, _, targetRoot = GetTarget()
+	Connections["jump"] = RunService.RenderStepped:Connect(function(dt)
+		if t >= JumpDuration then
+			hrp.CFrame = targetRoot.CFrame * CFrame.new(0, 5, 0)
+			t = 0
+			Connections["jump"]:Disconnect()
+			Connections["jump"] = nil
 		end
+		
+		t += dt
+		
+		local progress = math.clamp(t / JumpDuration,0,1)
+		hrp.CFrame = hrp.CFrame:Lerp(targetRoot.CFrame * CFrame.new(0, 5, 0), progress)
 	end)
 end
 
@@ -416,21 +440,24 @@ Techs.All.Dripz = function()
 
 	if (targetRoot.Position - root.Position).Magnitude > Techs.MaxDistance then return end
 	SilentAimService.DisableTemp(0.5)
-	GoUp(root, targetRoot)
+	
+	if Techs.Toggles.Jump then
+		GoUp(root, targetRoot)
+	end
 
 	FrontDash()
 
 	local pos = Gerpie(root.CFrame * CFrame.new(0, 0, -5))
 	Gerpie(root.CFrame)
-	local pos2 = Gerpie(root.CFrame * CFrame.new(0, 0, 5))
+	local pos2 = Gerpie(root.CFrame * CFrame.new(0, 1, 5))
 
 	hum.AutoRotate = false
 	GerpStare(root, pos)
 	task.wait(0.14)
 	SilentAimService.EnableTemp(0.15)
-	task.wait(0.2)
+	task.wait(0.25)
 	GerpStare(root, pos2)
-	task.wait(0.5)
+	task.wait(0.3)
 	hum.AutoRotate = true
 end
 
@@ -444,13 +471,13 @@ Techs.All.Twisted = function()
 	FrontDash()
 
 	local one = Gerpie(root.CFrame * CFrame.new(6,0,1))
-	local two = Gerpie(root.CFrame * CFrame.new(8,0,-4))
+	local two = Gerpie(root.CFrame * CFrame.new(8,0,-3))
 	local three = Gerpie(root.CFrame * CFrame.new(0,0,-11))
 
 	GerpStare(root, one)
 	task.wait(0.1)
 	GerpStare(root, two)
-	task.wait(0.08)
+	task.wait(0.1)
 	GerpStare(root, three)
 	task.wait(0.4)
 
@@ -464,7 +491,8 @@ Run()
 Player.CharacterAdded:Connect(Run)
 
 Live.ChildAdded:Connect(function(child)
-	task.wait(1)
+	child:WaitForChild("HumanoidRootPart")
+	task.wait(0.2)
 	if typeof(SilentAimService.Target) == "string" and child.Name == SilentAimService.Target then
 		SilentAimService.Target = child
 		TargetVFX()
