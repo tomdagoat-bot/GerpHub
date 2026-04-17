@@ -43,7 +43,7 @@ end
 
 local Mouse = Player:GetMouse()
 
-local function GetCharacter()
+function GetCharacter()
 	local char = Player.Character
 	if not char then Player.CharacterAdded:Wait() end
 	char = Player.Character
@@ -124,6 +124,10 @@ local t = 0
 local JumpDuration = 1 / 8
 
 function GoUp(hrp)
+	if not hrp then
+		warn("im a lying peace of shit and i say that hrp doesnt exist bc im a bitchass")
+		return
+	end
 	local _, _, targetRoot = GetTarget()
 	hrp.Anchored = true
 	Connections["jump"] = RunService.RenderStepped:Connect(function(dt)
@@ -425,7 +429,7 @@ function CD(name : "SideDash" | "FrontDash",dur : number)
 end
 
 local function FrontDash()
-	local char = GetCharacter()
+	local char,_,_ = GetCharacter()
 	if char and char:FindFirstChild("Communicate") then
 		char.Communicate:FireServer({Dash = Enum.KeyCode.W, Key = Enum.KeyCode.Q, Goal = "KeyPress"})
 	end
@@ -433,7 +437,7 @@ end
 
 Techs.All.Dripz = function()
 	if _G.DashOnCD then return end
-	local char, hum, root = GetCharacter()
+	local _, hum, root = GetCharacter()
 	local target, targetHum, targetRoot = GetTarget()
 
 	if not root or not targetRoot then return end
@@ -466,7 +470,7 @@ end
 
 Techs.All.Twisted = function()
 	if _G.DashOnCD then return end
-	local char, hum, root = GetCharacter()
+	local _, hum, root = GetCharacter()
 	hum.AutoRotate = false
 
 	SilentAimService.DisableTemp(0.7)
