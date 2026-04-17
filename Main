@@ -114,6 +114,27 @@ local UppercutIDS = {"rbxassetid://10503381238", "rbxassetid://13379003796"}
 
 local Cooldowns = {FrontDash = 5,SideDash = 2}
 
+local t = 0
+local JumpDuration = 1 / 8
+
+function GoUp(hrp)
+	local _, _, targetRoot = GetTarget()
+	hrp.Anchored = true
+	Connections["jump"] = RunService.RenderStepped:Connect(function(dt)
+		if t >= JumpDuration then
+			t = 0
+			hrp.Anchored = false
+			Connections["jump"]:Disconnect()
+			Connections["jump"] = nil
+		end
+		
+		t += dt
+		
+		local progress = math.clamp(t / JumpDuration,0,1)
+		hrp.CFrame = hrp.CFrame:Lerp(targetRoot.CFrame * CFrame.new(0, 5.5, 0), progress)
+	end)
+end
+
 function Run()
 	task.wait(1)
 	local char, hum : Humanoid, hrp : Part = GetCharacter()
@@ -133,7 +154,7 @@ function Run()
 
 		if Techs.Toggles.Dripz and table.find(UppercutIDS, animId) and SilentAimService.Target then
 			if Techs.Toggles.Jump then
-				GoUp(root, targetRoot)
+				GoUp(hrp)
 			end
 			task.wait(0.36)
 			Techs.All.Dripz()
@@ -412,27 +433,6 @@ local function FrontDash()
 	if char and char:FindFirstChild("Communicate") then
 		char.Communicate:FireServer({Dash = Enum.KeyCode.W, Key = Enum.KeyCode.Q, Goal = "KeyPress"})
 	end
-end
-
-local t = 0
-local JumpDuration = 1 / 8
-
-function GoUp(hrp)
-	local _, _, targetRoot = GetTarget()
-	hrp.Anchored = true
-	Connections["jump"] = RunService.RenderStepped:Connect(function(dt)
-		if t >= JumpDuration then
-			t = 0
-			hrp.Anchored = false
-			Connections["jump"]:Disconnect()
-			Connections["jump"] = nil
-		end
-		
-		t += dt
-		
-		local progress = math.clamp(t / JumpDuration,0,1)
-		hrp.CFrame = hrp.CFrame:Lerp(targetRoot.CFrame * CFrame.new(0, 5.5, 0), progress)
-	end)
 end
 
 Techs.All.Dripz = function()
