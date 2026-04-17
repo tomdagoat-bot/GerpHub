@@ -1,4 +1,7 @@
 -- Objects To Lua Made By HairBaconGamming --
+local g = Instance.new("Folder")
+g.Name = "Gerpies"
+g.Parent = workspace
 local Module_Scripts = {}
 local GerpService = Instance.new("Folder")
 local Gerpie = Instance.new("Folder")
