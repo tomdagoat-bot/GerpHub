@@ -1,864 +1,764 @@
 -- Objects To Lua Made By HairBaconGamming --
 local Module_Scripts = {}
-local instancesdata = {
-    {
-        ["ClassName"] = "ScreenGui",
-        ["Properties"] = {
-            ["ResetOnSpawn"] = false,
-            ["IgnoreGuiInset"] = true,
-            ["Name"] = [[Gerp]],
-            ["Parent"] = game.Players.LocalPlayer.PlayerGui,
-        },
-    },
-    {
-        ["ClassName"] = "Frame",
-        ["Properties"] = {
-            ["BorderColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["AnchorPoint"] = Vector2.new(1.000, 0.500),
-            ["Parent"] = "&ID:1",
-            ["BackgroundTransparency"] = 1,
-            ["Position"] = UDim2.new(1, -10, 0.7, 0),
-            ["Name"] = [[Info]],
-            ["Size"] = UDim2.new(0.2, 0, 0.185, 0),
-            ["BorderSizePixel"] = 0,
-            ["BackgroundColor3"] = Color3.new(1.000, 0.000, 0.016),
-        },
-    },
-    {
-        ["ClassName"] = "TextLabel",
-        ["Properties"] = {
-            ["TextWrapped"] = true,
-            ["Parent"] = "&ID:2",
-            ["TextStrokeTransparency"] = 0.4,
-            ["AnchorPoint"] = Vector2.new(0.000, 0.500),
-            ["ZIndex"] = 2,
-            ["BorderSizePixel"] = 0,
-            ["Size"] = UDim2.new(0.7, 0, 0.2, 0),
-            ["RichText"] = true,
-            ["TextColor3"] = Color3.new(1.000, 1.000, 1.000),
-            ["BorderColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["Text"] = [[Script By Gerp!]],
-            ["Name"] = [[Username]],
-            ["BackgroundTransparency"] = 1,
-            ["Position"] = UDim2.new(0, 0, 0.23, 0),
-            ["FontFace"] = Font.new("rbxasset://fonts/families/FredokaOne.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal),
-            ["TextSize"] = 14,
-            ["TextScaled"] = true,
-            ["BackgroundColor3"] = Color3.new(1.000, 1.000, 1.000),
-        },
-    },
-    {
-        ["ClassName"] = "TextLabel",
-        ["Properties"] = {
-            ["TextWrapped"] = true,
-            ["TextTransparency"] = 0.6,
-            ["TextStrokeTransparency"] = 0.6,
-            ["AnchorPoint"] = Vector2.new(0.500, 0.500),
-            ["TextSize"] = 14,
-            ["Size"] = UDim2.new(1, 0, 1, 0),
-            ["RichText"] = true,
-            ["TextColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["BorderColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["Text"] = [[Script By Gerp!]],
-            ["Parent"] = "&ID:3",
-            ["Name"] = [[Shadow]],
-            ["BackgroundTransparency"] = 1,
-            ["Position"] = UDim2.new(0.5, 2, 0.5, 3),
-            ["FontFace"] = Font.new("rbxasset://fonts/families/FredokaOne.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal),
-            ["BorderSizePixel"] = 0,
-            ["TextScaled"] = true,
-            ["BackgroundColor3"] = Color3.new(1.000, 1.000, 1.000),
-        },
-    },
-    {
-        ["ClassName"] = "UIAspectRatioConstraint",
-        ["Properties"] = {
-            ["Parent"] = "&ID:2",
-            ["AspectRatio"] = 2.043,
-            ["Name"] = [[Ratio]],
-        },
-    },
-    {
-        ["ClassName"] = "ImageLabel",
-        ["Properties"] = {
-            ["ScaleType"] = Enum.ScaleType.Crop,
-            ["BorderColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["Parent"] = "&ID:2",
-            ["AnchorPoint"] = Vector2.new(1.000, 0.500),
-            ["Image"] = [[rbxassetid://17582945577]],
-            ["BackgroundTransparency"] = 0.1,
-            ["Position"] = UDim2.new(0.9, 0, 0.23, 0),
-            ["Name"] = [[Profile]],
-            ["Size"] = UDim2.new(0.195, 0, 0.4, 0),
-            ["BorderSizePixel"] = 0,
-            ["BackgroundColor3"] = Color3.new(1.000, 1.000, 1.000),
-        },
-    },
-    {
-        ["ClassName"] = "UIStroke",
-        ["Properties"] = {
-			["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border,
-			["StrokeSizingMode"] = Enum.StrokeSizingMode.ScaledSize,
-            ["Name"] = [[X]],
-            ["Color"] = Color3.new(0.263, 0.463, 0.812),
-            ["Parent"] = "&ID:6",
-            ["Thickness"] = 0.05,
-        },
-    },
-    {
-        ["ClassName"] = "UIGradient",
-        ["Properties"] = {
-            ["Parent"] = "&ID:7",
-            ["Transparency"] = NumberSequence.new({NumberSequenceKeypoint.new(0.000, 1.000, 0.000), NumberSequenceKeypoint.new(0.250, 0.200, 0.000), NumberSequenceKeypoint.new(0.750, 0.200, 0.000), NumberSequenceKeypoint.new(1.000, 1.000, 0.000)}),
-            ["Name"] = [[Gradiant]],
-        },
-    },
-    {
-        ["ClassName"] = "ImageLabel",
-        ["Properties"] = {
-            ["BorderColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["Parent"] = "&ID:6",
-            ["Name"] = [[Image]],
-            ["AnchorPoint"] = Vector2.new(0.500, 0.500),
-            ["Image"] = [[rbxthumb://type=AvatarHeadShot&id=7530861005&w=420&h=420]],
-            ["BackgroundTransparency"] = 1,
-            ["Position"] = UDim2.new(0.5, 0, 0.5, 0),
-            ["Size"] = UDim2.new(1, 0, 1, 0),
-            ["ZIndex"] = 2,
-            ["BorderSizePixel"] = 0,
-            ["BackgroundColor3"] = Color3.new(1.000, 1.000, 1.000),
-        },
-    },
-    {
-        ["ClassName"] = "UIGradient",
-        ["Properties"] = {
-            ["Color"] = ColorSequence.new({ColorSequenceKeypoint.new(0.000, Color3.new(0.282, 0.263, 0.380)), ColorSequenceKeypoint.new(0.700, Color3.new(1.000, 1.000, 1.000)), ColorSequenceKeypoint.new(1.000, Color3.new(1.000, 1.000, 1.000))}),
-            ["Transparency"] = NumberSequence.new({NumberSequenceKeypoint.new(0.000, 1.000, 0.000), NumberSequenceKeypoint.new(0.300, 0.000, 0.000), NumberSequenceKeypoint.new(0.700, 0.000, 0.000), NumberSequenceKeypoint.new(1.000, 1.000, 0.000)}),
-            ["Name"] = [[Gradiant]],
-            ["Parent"] = "&ID:9",
-        },
-    },
-    {
-        ["ClassName"] = "UIGradient",
-        ["Properties"] = {
-            ["Rotation"] = 90,
-            ["Transparency"] = NumberSequence.new({NumberSequenceKeypoint.new(0.000, 0.500, 0.000), NumberSequenceKeypoint.new(1.000, 0.000, 0.000)}),
-            ["Name"] = [[Gradiant]],
-            ["Color"] = ColorSequence.new({ColorSequenceKeypoint.new(0.000, Color3.new(1.000, 1.000, 1.000)), ColorSequenceKeypoint.new(1.000, Color3.new(0.647, 0.659, 0.922))}),
-            ["Parent"] = "&ID:6",
-        },
-    },
-    {
-        ["ClassName"] = "ImageLabel",
-        ["Properties"] = {
-            ["ImageColor3"] = Color3.new(0.365, 0.369, 0.737),
-            ["ScaleType"] = Enum.ScaleType.Crop,
-            ["ImageTransparency"] = 0.2,
-            ["BorderColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["Parent"] = "&ID:6",
-            ["AnchorPoint"] = Vector2.new(0.500, 0.500),
-            ["Image"] = [[rbxassetid://7274452334]],
-            ["BackgroundTransparency"] = 1,
-            ["Position"] = UDim2.new(0.5, 0, 0.5, 0),
-            ["Name"] = [[Glow]],
-            ["Size"] = UDim2.new(2, 0, 2, 0),
-            ["BorderSizePixel"] = 0,
-            ["BackgroundColor3"] = Color3.new(1.000, 1.000, 1.000),
-        },
-    },
-    {
-        ["ClassName"] = "UIAspectRatioConstraint",
-        ["Properties"] = {
-            ["Parent"] = "&ID:6",
-            ["AspectRatio"] = 1.008,
-            ["Name"] = [[Ratio]],
-        },
-    },
-    {
-        ["ClassName"] = "UIStroke",
-        ["Properties"] = {
-			["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border,
-			["StrokeSizingMode"] = Enum.StrokeSizingMode.ScaledSize,
-            ["Name"] = [[Y]],
-            ["Color"] = Color3.new(0.263, 0.463, 0.812),
-            ["Parent"] = "&ID:6",
-            ["Thickness"] = 0.05,
-        },
-    },
-    {
-        ["ClassName"] = "UIGradient",
-        ["Properties"] = {
-            ["Rotation"] = 90,
-            ["Transparency"] = NumberSequence.new({NumberSequenceKeypoint.new(0.000, 1.000, 0.000), NumberSequenceKeypoint.new(0.250, 0.200, 0.000), NumberSequenceKeypoint.new(0.750, 0.200, 0.000), NumberSequenceKeypoint.new(1.000, 1.000, 0.000)}),
-            ["Name"] = [[Gradiant]],
-            ["Parent"] = "&ID:14",
-        },
-    },
-    {
-        ["ClassName"] = "Frame",
-        ["Properties"] = {
-            ["BorderColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["AnchorPoint"] = Vector2.new(0.500, 0.500),
-            ["Parent"] = "&ID:2",
-            ["BackgroundTransparency"] = 1,
-            ["Position"] = UDim2.new(0.5, 0, 1, 0),
-            ["Name"] = [[Holder]],
-            ["Size"] = UDim2.new(0.9, 0, 0.9, 0),
-            ["BorderSizePixel"] = 0,
-            ["BackgroundColor3"] = Color3.new(1.000, 1.000, 1.000),
-        },
-    },
-    {
-        ["ClassName"] = "TextLabel",
-        ["Properties"] = {
-            ["TextWrapped"] = true,
-            ["Parent"] = "&ID:16",
-            ["TextStrokeTransparency"] = 0.4,
-            ["AnchorPoint"] = Vector2.new(0.500, 0.500),
-            ["ZIndex"] = 2,
-            ["BorderSizePixel"] = 0,
-            ["Size"] = UDim2.new(0.8, 0, 0.18, 0),
-            ["RichText"] = true,
-            ["TextColor3"] = Color3.new(1.000, 1.000, 1.000),
-            ["BorderColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["Text"] = [[Silent Aim: <font color="rgb(255,23,0)">Disabled</font>]],
-            ["Name"] = [[Silent Aim]],
-            ["BackgroundTransparency"] = 1,
-            ["Position"] = UDim2.new(0.5, 0, 0.6, 0),
-            ["FontFace"] = Font.new("rbxasset://fonts/families/HighwayGothic.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal),
-            ["TextSize"] = 14,
-            ["TextScaled"] = true,
-            ["BackgroundColor3"] = Color3.new(1.000, 1.000, 1.000),
-        },
-    },
-    {
-        ["ClassName"] = "TextLabel",
-        ["Properties"] = {
-            ["TextWrapped"] = true,
-            ["TextTransparency"] = 0.6,
-            ["TextStrokeTransparency"] = 0.6,
-            ["AnchorPoint"] = Vector2.new(0.500, 0.500),
-            ["TextSize"] = 14,
-            ["Size"] = UDim2.new(1, 0, 1, 0),
-            ["RichText"] = true,
-            ["TextColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["BorderColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["Text"] = [[Silent Aim: Disabled]],
-            ["Parent"] = "&ID:17",
-            ["Name"] = [[Shadow]],
-            ["BackgroundTransparency"] = 1,
-            ["Position"] = UDim2.new(0.5, 2, 0.5, 2),
-            ["FontFace"] = Font.new("rbxasset://fonts/families/HighwayGothic.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal),
-            ["BorderSizePixel"] = 0,
-            ["TextScaled"] = true,
-            ["BackgroundColor3"] = Color3.new(1.000, 1.000, 1.000),
-        },
-    },
-    {
-        ["ClassName"] = "TextLabel",
-        ["Properties"] = {
-            ["TextWrapped"] = true,
-            ["Parent"] = "&ID:16",
-            ["TextStrokeTransparency"] = 0.4,
-            ["AnchorPoint"] = Vector2.new(0.500, 0.500),
-            ["ZIndex"] = 2,
-            ["BorderSizePixel"] = 0,
-            ["Size"] = UDim2.new(0.8, 0, 0.175, 0),
-            ["RichText"] = true,
-            ["TextColor3"] = Color3.new(1.000, 1.000, 1.000),
-            ["BorderColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["Text"] = [[Auto Jump: <font color="rgb(255,23,0)">Disabled</font>]],
-            ["Name"] = [[Auto Jump]],
-            ["BackgroundTransparency"] = 1,
-            ["Position"] = UDim2.new(0.5, 0, 1.1, 0),
-            ["FontFace"] = Font.new("rbxasset://fonts/families/HighwayGothic.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal),
-            ["TextSize"] = 14,
-            ["TextScaled"] = true,
-            ["BackgroundColor3"] = Color3.new(1.000, 1.000, 1.000),
-        },
-    },
-    {
-        ["ClassName"] = "TextLabel",
-        ["Properties"] = {
-            ["TextWrapped"] = true,
-            ["TextTransparency"] = 0.6,
-            ["TextStrokeTransparency"] = 0.6,
-            ["AnchorPoint"] = Vector2.new(0.500, 0.500),
-            ["TextSize"] = 14,
-            ["Size"] = UDim2.new(1, 0, 1, 0),
-            ["RichText"] = true,
-            ["TextColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["BorderColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["Text"] = [[Auto Jump: Disabled]],
-            ["Parent"] = "&ID:19",
-            ["Name"] = [[Shadow]],
-            ["BackgroundTransparency"] = 1,
-            ["Position"] = UDim2.new(0.5, 2, 0.51, 2),
-            ["FontFace"] = Font.new("rbxasset://fonts/families/HighwayGothic.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal),
-            ["BorderSizePixel"] = 0,
-            ["TextScaled"] = true,
-            ["BackgroundColor3"] = Color3.new(1.000, 1.000, 1.000),
-        },
-    },
-    {
-        ["ClassName"] = "TextLabel",
-        ["Properties"] = {
-            ["TextWrapped"] = true,
-            ["Parent"] = "&ID:16",
-            ["TextStrokeTransparency"] = 0.4,
-            ["AnchorPoint"] = Vector2.new(0.500, 0.500),
-            ["ZIndex"] = 2,
-            ["BorderSizePixel"] = 0,
-            ["Size"] = UDim2.new(0.8, 0, 0.18, 0),
-            ["RichText"] = true,
-            ["TextColor3"] = Color3.new(1.000, 1.000, 1.000),
-            ["BorderColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["Text"] = [[Auto Dripz: <font color="rgb(255,23,0)">Disabled</font>]],
-            ["Name"] = [[Auto Dripz]],
-            ["BackgroundTransparency"] = 1,
-            ["Position"] = UDim2.new(0.5, 0, 0.86, 0),
-            ["FontFace"] = Font.new("rbxasset://fonts/families/HighwayGothic.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal),
-            ["TextSize"] = 14,
-            ["TextScaled"] = true,
-            ["BackgroundColor3"] = Color3.new(1.000, 1.000, 1.000),
-        },
-    },
-    {
-        ["ClassName"] = "TextLabel",
-        ["Properties"] = {
-            ["TextWrapped"] = true,
-            ["TextTransparency"] = 0.6,
-            ["TextStrokeTransparency"] = 0.6,
-            ["AnchorPoint"] = Vector2.new(0.500, 0.500),
-            ["TextSize"] = 14,
-            ["Size"] = UDim2.new(1, 0, 1, 0),
-            ["RichText"] = true,
-            ["TextColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["BorderColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["Text"] = [[Auto Dripz: Disabled]],
-            ["Parent"] = "&ID:21",
-            ["Name"] = [[Shadow]],
-            ["BackgroundTransparency"] = 1,
-            ["Position"] = UDim2.new(0.5, 2, 0.51, 2),
-            ["FontFace"] = Font.new("rbxasset://fonts/families/HighwayGothic.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal),
-            ["BorderSizePixel"] = 0,
-            ["TextScaled"] = true,
-            ["BackgroundColor3"] = Color3.new(1.000, 1.000, 1.000),
-        },
-    },
-    {
-        ["ClassName"] = "UIListLayout",
-        ["Properties"] = {
-            ["Parent"] = "&ID:16",
-            ["Padding"] = UDim.new(0.1, 0),
-            ["HorizontalAlignment"] = Enum.HorizontalAlignment.Center,
-            ["Name"] = [[List]],
-        },
-    },
-    {
-        ["ClassName"] = "TextLabel",
-        ["Properties"] = {
-            ["TextWrapped"] = true,
-            ["Parent"] = "&ID:16",
-            ["TextStrokeTransparency"] = 0.4,
-            ["AnchorPoint"] = Vector2.new(0.500, 0.500),
-            ["ZIndex"] = 2,
-            ["BorderSizePixel"] = 0,
-            ["Size"] = UDim2.new(0.8, 0, 0.15, 0),
-            ["RichText"] = true,
-            ["TextColor3"] = Color3.new(1.000, 1.000, 1.000),
-            ["BorderColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["Text"] = [[Smoothness: 1]],
-            ["Name"] = [[Smooth]],
-            ["BackgroundTransparency"] = 1,
-            ["Position"] = UDim2.new(0.5, 0, 0.86, 0),
-            ["FontFace"] = Font.new("rbxasset://fonts/families/HighwayGothic.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal),
-            ["TextSize"] = 14,
-            ["TextScaled"] = true,
-            ["BackgroundColor3"] = Color3.new(1.000, 1.000, 1.000),
-        },
-    },
-    {
-        ["ClassName"] = "TextLabel",
-        ["Properties"] = {
-            ["TextWrapped"] = true,
-            ["TextTransparency"] = 0.6,
-            ["TextStrokeTransparency"] = 0.6,
-            ["AnchorPoint"] = Vector2.new(0.500, 0.500),
-            ["TextSize"] = 14,
-            ["Size"] = UDim2.new(1, 0, 1, 0),
-            ["RichText"] = true,
-            ["TextColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["BorderColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["Text"] = [[Smoothness: 1]],
-            ["Parent"] = "&ID:24",
-            ["Name"] = [[Shadow]],
-            ["BackgroundTransparency"] = 1,
-            ["Position"] = UDim2.new(0.5, 2, 0.51, 2),
-            ["FontFace"] = Font.new("rbxasset://fonts/families/HighwayGothic.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal),
-            ["BorderSizePixel"] = 0,
-            ["TextScaled"] = true,
-            ["BackgroundColor3"] = Color3.new(1.000, 1.000, 1.000),
-        },
-    },
-    {
-        ["ClassName"] = "TextLabel",
-        ["Properties"] = {
-            ["TextWrapped"] = true,
-            ["Parent"] = "&ID:16",
-            ["TextStrokeTransparency"] = 0.4,
-            ["AnchorPoint"] = Vector2.new(0.500, 0.500),
-            ["ZIndex"] = 2,
-            ["BorderSizePixel"] = 0,
-            ["Size"] = UDim2.new(0.8, 0, 0.18, 0),
-            ["RichText"] = true,
-            ["TextColor3"] = Color3.new(1.000, 1.000, 1.000),
-            ["BorderColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["Text"] = [[Old Stare: <font color="rgb(255,23,0)">Disabled</font>]],
-            ["Name"] = [[Old Stare]],
-            ["BackgroundTransparency"] = 1,
-            ["Position"] = UDim2.new(0.5, 0, 0.86, 0),
-            ["FontFace"] = Font.new("rbxasset://fonts/families/HighwayGothic.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal),
-            ["TextSize"] = 14,
-            ["TextScaled"] = true,
-            ["BackgroundColor3"] = Color3.new(1.000, 1.000, 1.000),
-        },
-    },
-    {
-        ["ClassName"] = "TextLabel",
-        ["Properties"] = {
-            ["TextWrapped"] = true,
-            ["TextTransparency"] = 0.6,
-            ["TextStrokeTransparency"] = 0.6,
-            ["AnchorPoint"] = Vector2.new(0.500, 0.500),
-            ["TextSize"] = 14,
-            ["Size"] = UDim2.new(1, 0, 1, 0),
-            ["RichText"] = true,
-            ["TextColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["BorderColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["Text"] = [[Old Stare: Disabled]],
-            ["Parent"] = "&ID:26",
-            ["Name"] = [[Shadow]],
-            ["BackgroundTransparency"] = 1,
-            ["Position"] = UDim2.new(0.5, 2, 0.51, 2),
-            ["FontFace"] = Font.new("rbxasset://fonts/families/HighwayGothic.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal),
-            ["BorderSizePixel"] = 0,
-            ["TextScaled"] = true,
-            ["BackgroundColor3"] = Color3.new(1.000, 1.000, 1.000),
-        },
-    },
-    {
-        ["ClassName"] = "Frame",
-        ["Properties"] = {
-            ["BorderColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["AnchorPoint"] = Vector2.new(0.000, 0.500),
-            ["Parent"] = "&ID:1",
-            ["BackgroundTransparency"] = 1,
-            ["Position"] = UDim2.new(0, 10, 0.75, 0),
-            ["Name"] = [[Extra]],
-            ["Size"] = UDim2.new(0.2, 0, 0.185, 0),
-            ["BorderSizePixel"] = 0,
-            ["BackgroundColor3"] = Color3.new(1.000, 0.000, 0.016),
-        },
-    },
-    {
-        ["ClassName"] = "UIAspectRatioConstraint",
-        ["Properties"] = {
-            ["Parent"] = "&ID:28",
-            ["AspectRatio"] = 2.043,
-            ["Name"] = [[Ratio]],
-        },
-    },
-    {
-        ["ClassName"] = "Frame",
-        ["Properties"] = {
-            ["AnchorPoint"] = Vector2.new(0.500, 0.500),
-            ["Parent"] = "&ID:28",
-            ["Name"] = [[Smoothness]],
-            ["Position"] = UDim2.new(0.5, 0, 1.2, 0),
-            ["BorderColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["Size"] = UDim2.new(0.282, 0, 0.411, 0),
-            ["BorderSizePixel"] = 0,
-            ["BackgroundColor3"] = Color3.new(0.227, 0.227, 0.227),
-        },
-    },
-    {
-        ["ClassName"] = "TextLabel",
-        ["Properties"] = {
-            ["Parent"] = "&ID:30",
-            ["TextWrapped"] = true,
-            ["Name"] = [[Title]],
-            ["TextColor3"] = Color3.new(1.000, 1.000, 1.000),
-            ["BorderColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["Text"] = [[Silent Aim Smoothness]],
-            ["TextSize"] = 14,
-            ["Size"] = UDim2.new(0.9, 0, 0.9, 0),
-            ["AnchorPoint"] = Vector2.new(0.500, 0.500),
-            ["BorderSizePixel"] = 0,
-            ["BackgroundTransparency"] = 1,
-            ["Position"] = UDim2.new(0.5, 0, 0.5, 0),
-            ["FontFace"] = Font.new("rbxassetid://12187376357", Enum.FontWeight.Regular, Enum.FontStyle.Normal),
-            ["ZIndex"] = 3,
-            ["TextScaled"] = true,
-            ["BackgroundColor3"] = Color3.new(1.000, 1.000, 1.000),
-        },
-    },
-    {
-        ["ClassName"] = "TextLabel",
-        ["Properties"] = {
-            ["TextWrapped"] = true,
-            ["Parent"] = "&ID:31",
-            ["TextColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["BorderColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["Text"] = [[Silent Aim Smoothness]],
-            ["Name"] = [[Shadow]],
-            ["FontFace"] = Font.new("rbxassetid://12187376357", Enum.FontWeight.Regular, Enum.FontStyle.Normal),
-            ["Size"] = UDim2.new(1, 0, 1, 0),
-            ["BorderSizePixel"] = 0,
-            ["BackgroundTransparency"] = 1,
-            ["Position"] = UDim2.new(0, -1, 0, -1),
-            ["TextSize"] = 14,
-            ["ZIndex"] = 2,
-            ["TextScaled"] = true,
-            ["BackgroundColor3"] = Color3.new(1.000, 1.000, 1.000),
-        },
-    },
-    {
-        ["ClassName"] = "TextButton",
-        ["Properties"] = {
-            ["TextWrapped"] = true,
-            ["Parent"] = "&ID:30",
-            ["TextColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["BorderColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["Text"] = [[+]],
-            ["BorderSizePixel"] = 0,
-            ["AutoButtonColor"] = false,
-            ["AnchorPoint"] = Vector2.new(0.500, 0.500),
-            ["Size"] = UDim2.new(0.429, 0, 0.6, 0),
-            ["Name"] = [[Plus]],
-            ["Position"] = UDim2.new(1.4, 0, 0.5, 0),
-            ["TextSize"] = 14,
-            ["FontFace"] = Font.new("rbxassetid://12187360881", Enum.FontWeight.Regular, Enum.FontStyle.Normal),
-            ["TextScaled"] = true,
-            ["BackgroundColor3"] = Color3.new(0.514, 1.000, 0.569),
-        },
-    },
-    {
-        ["ClassName"] = "UIStroke",
-        ["Properties"] = {
-            ["Color"] = Color3.new(0.259, 1.000, 0.310),
-            ["Parent"] = "&ID:33",
-            ["Thickness"] = 0.05,
-			["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border,
-			["StrokeSizingMode"] = Enum.StrokeSizingMode.ScaledSize,
-        },
-    },
-    {
-        ["ClassName"] = "TextButton",
-        ["Properties"] = {
-            ["TextWrapped"] = true,
-            ["Parent"] = "&ID:30",
-            ["TextColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["BorderColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["Text"] = [[-]],
-            ["BorderSizePixel"] = 0,
-            ["AutoButtonColor"] = false,
-            ["AnchorPoint"] = Vector2.new(0.500, 0.500),
-            ["Size"] = UDim2.new(0.429, 0, 0.6, 0),
-            ["Name"] = [[Minus]],
-            ["Position"] = UDim2.new(-0.4, 0, 0.5, 0),
-            ["TextSize"] = 14,
-            ["FontFace"] = Font.new("rbxassetid://12187360881", Enum.FontWeight.Regular, Enum.FontStyle.Normal),
-            ["TextScaled"] = true,
-            ["BackgroundColor3"] = Color3.new(1.000, 0.031, 0.000),
-        },
-    },
-    {
-        ["ClassName"] = "UIStroke",
-        ["Properties"] = {
-            ["Color"] = Color3.new(0.773, 0.000, 0.000),
-            ["Parent"] = "&ID:35",
-            ["Thickness"] = 0.05,
-			["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border,
-			["StrokeSizingMode"] = Enum.StrokeSizingMode.ScaledSize,
-        },
-    },
-    {
-        ["ClassName"] = "UIStroke",
-        ["Properties"] = {
-			["ApplyStrokeMode"] = Enum.ApplyStrokeMode.Border,
-			["StrokeSizingMode"] = Enum.StrokeSizingMode.ScaledSize,
-            ["Name"] = [[Stroke]],
-            ["Color"] = Color3.new(0.255, 0.255, 0.255),
-            ["Parent"] = "&ID:30",
-            ["Thickness"] = 0.03,
-        },
-    },
-    {
-        ["ClassName"] = "UICorner",
-        ["Properties"] = {
-            ["Parent"] = "&ID:30",
-            ["Name"] = [[Corner]],
-            ["CornerRadius"] = UDim.new(0.2, 0),
-        },
-    },
-    {
-        ["ClassName"] = "UIGradient",
-        ["Properties"] = {
-            ["Rotation"] = 90,
-            ["Parent"] = "&ID:30",
-            ["Name"] = [[Gradiant]],
-            ["Color"] = ColorSequence.new({ColorSequenceKeypoint.new(0.000, Color3.new(1.000, 1.000, 1.000)), ColorSequenceKeypoint.new(1.000, Color3.new(0.600, 0.600, 0.600))}),
-        },
-    },
-    {
-        ["ClassName"] = "UIAspectRatioConstraint",
-        ["Properties"] = {
-            ["Parent"] = "&ID:30",
-            ["AspectRatio"] = 1.4,
-            ["Name"] = [[Ratio]],
-        },
-    },
-    {
-        ["ClassName"] = "TextLabel",
-        ["Properties"] = {
-            ["Parent"] = "&ID:30",
-            ["TextWrapped"] = true,
-            ["Name"] = [[Note]],
-            ["TextColor3"] = Color3.new(1.000, 1.000, 1.000),
-            ["BorderColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["Text"] = [[Recommend: 0.5]],
-            ["TextSize"] = 14,
-            ["Size"] = UDim2.new(1.5, 0, 0.4, 0),
-            ["AnchorPoint"] = Vector2.new(0.500, 0.500),
-            ["BorderSizePixel"] = 0,
-            ["BackgroundTransparency"] = 1,
-            ["Position"] = UDim2.new(0.5, 0, 1.4, 0),
-            ["FontFace"] = Font.new("rbxasset://fonts/families/DenkOne.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal),
-            ["ZIndex"] = 3,
-            ["TextScaled"] = true,
-            ["BackgroundColor3"] = Color3.new(1.000, 1.000, 1.000),
-        },
-    },
-    {
-        ["ClassName"] = "TextLabel",
-        ["Properties"] = {
-            ["TextWrapped"] = true,
-            ["Parent"] = "&ID:41",
-            ["TextColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["BorderColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["Text"] = [[Recommend: 0.5]],
-            ["Name"] = [[Shadow]],
-            ["FontFace"] = Font.new("rbxasset://fonts/families/DenkOne.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal),
-            ["Size"] = UDim2.new(1, 0, 1, 0),
-            ["BorderSizePixel"] = 0,
-            ["BackgroundTransparency"] = 1,
-            ["Position"] = UDim2.new(0, -1, 0, -1),
-            ["TextSize"] = 14,
-            ["ZIndex"] = 2,
-            ["TextScaled"] = true,
-            ["BackgroundColor3"] = Color3.new(1.000, 1.000, 1.000),
-        },
-    },
-    {
-        ["ClassName"] = "Frame",
-        ["Properties"] = {
-            ["BorderColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["AnchorPoint"] = Vector2.new(0.500, 0.500),
-            ["Parent"] = "&ID:28",
-            ["BackgroundTransparency"] = 1,
-            ["Position"] = UDim2.new(0.5, 0, 0.5, 0),
-            ["Name"] = [[CD]],
-            ["Size"] = UDim2.new(1, 0, 1, 0),
-            ["BorderSizePixel"] = 0,
-            ["BackgroundColor3"] = Color3.new(1.000, 1.000, 1.000),
-        },
-    },
-    {
-        ["ClassName"] = "UIListLayout",
-        ["Properties"] = {
-            ["VerticalAlignment"] = Enum.VerticalAlignment.Center,
-            ["SortOrder"] = Enum.SortOrder.LayoutOrder,
-            ["HorizontalAlignment"] = Enum.HorizontalAlignment.Center,
-            ["Parent"] = "&ID:43",
-            ["Padding"] = UDim.new(0.4, 0),
-            ["Name"] = [[List]],
-        },
-    },
-    {
-        ["ClassName"] = "Frame",
-        ["Properties"] = {
-            ["AnchorPoint"] = Vector2.new(0.500, 0.500),
-            ["Parent"] = "&ID:43",
-            ["Name"] = [[FrontDash]],
-            ["Position"] = UDim2.new(0.5, 0, 0.5, 0),
-            ["BorderColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["Size"] = UDim2.new(0.82, 0, 0.084, 0),
-            ["BorderSizePixel"] = 0,
-            ["BackgroundColor3"] = Color3.new(1.000, 1.000, 1.000),
-        },
-    },
-    {
-        ["ClassName"] = "TextLabel",
-        ["Properties"] = {
-            ["Parent"] = "&ID:45",
-            ["TextWrapped"] = true,
-            ["Name"] = [[Text]],
-            ["TextColor3"] = Color3.new(1.000, 1.000, 1.000),
-            ["BorderColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["Text"] = [[Front Dash: 5/5s]],
-            ["Size"] = UDim2.new(1, 0, 2, 0),
-            ["TextStrokeTransparency"] = 0,
-            ["AnchorPoint"] = Vector2.new(0.500, 1.000),
-            ["BorderSizePixel"] = 0,
-            ["BackgroundTransparency"] = 1,
-            ["Position"] = UDim2.new(0.5, 0, -0.25, 0),
-            ["TextSize"] = 14,
-            ["FontFace"] = Font.new("rbxassetid://12187375716", Enum.FontWeight.Regular, Enum.FontStyle.Normal),
-            ["TextScaled"] = true,
-            ["BackgroundColor3"] = Color3.new(1.000, 1.000, 1.000),
-        },
-    },
-    {
-        ["ClassName"] = "UIGradient",
-        ["Properties"] = {
-            ["Rotation"] = 90,
-            ["Parent"] = "&ID:46",
-            ["Name"] = [[Gradiant]],
-            ["Color"] = ColorSequence.new({ColorSequenceKeypoint.new(0.000, Color3.new(0.549, 0.549, 0.549)), ColorSequenceKeypoint.new(0.500, Color3.new(1.000, 1.000, 1.000)), ColorSequenceKeypoint.new(1.000, Color3.new(0.459, 0.459, 0.459))}),
-        },
-    },
-    {
-        ["ClassName"] = "Frame",
-        ["Properties"] = {
-            ["AnchorPoint"] = Vector2.new(0.000, 0.500),
-            ["Parent"] = "&ID:45",
-            ["Name"] = [[CD]],
-            ["Position"] = UDim2.new(0, 0, 0.5, 0),
-            ["BorderColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["Size"] = UDim2.new(0, 0, 1, 0),
-            ["BorderSizePixel"] = 0,
-            ["BackgroundColor3"] = Color3.new(0.580, 1.000, 0.353),
-        },
-    },
-    {
-        ["ClassName"] = "UIGradient",
-        ["Properties"] = {
-            ["Rotation"] = 90,
-            ["Parent"] = "&ID:48",
-            ["Name"] = [[Gradiant]],
-            ["Color"] = ColorSequence.new({ColorSequenceKeypoint.new(0.000, Color3.new(1.000, 1.000, 1.000)), ColorSequenceKeypoint.new(1.000, Color3.new(0.620, 0.620, 0.620))}),
-        },
-    },
-    {
-        ["ClassName"] = "UIGradient",
-        ["Properties"] = {
-            ["Rotation"] = 90,
-            ["Parent"] = "&ID:45",
-            ["Name"] = [[Gradiant]],
-            ["Color"] = ColorSequence.new({ColorSequenceKeypoint.new(0.000, Color3.new(1.000, 1.000, 1.000)), ColorSequenceKeypoint.new(1.000, Color3.new(0.620, 0.620, 0.620))}),
-        },
-    },
-    {
-        ["ClassName"] = "Frame",
-        ["Properties"] = {
-            ["AnchorPoint"] = Vector2.new(0.500, 0.500),
-            ["Parent"] = "&ID:43",
-            ["Name"] = [[SideDash]],
-            ["Position"] = UDim2.new(0.5, 0, 0.5, 0),
-            ["BorderColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["Size"] = UDim2.new(0.82, 0, 0.084, 0),
-            ["BorderSizePixel"] = 0,
-            ["BackgroundColor3"] = Color3.new(1.000, 1.000, 1.000),
-        },
-    },
-    {
-        ["ClassName"] = "TextLabel",
-        ["Properties"] = {
-            ["Parent"] = "&ID:51",
-            ["TextWrapped"] = true,
-            ["Name"] = [[Text]],
-            ["TextColor3"] = Color3.new(1.000, 1.000, 1.000),
-            ["BorderColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["Text"] = [[Side Dash: 2/2s]],
-            ["Size"] = UDim2.new(1, 0, 2, 0),
-            ["TextStrokeTransparency"] = 0,
-            ["AnchorPoint"] = Vector2.new(0.500, 1.000),
-            ["BorderSizePixel"] = 0,
-            ["BackgroundTransparency"] = 1,
-            ["Position"] = UDim2.new(0.5, 0, -0.25, 0),
-            ["TextSize"] = 14,
-            ["FontFace"] = Font.new("rbxassetid://12187375716", Enum.FontWeight.Regular, Enum.FontStyle.Normal),
-            ["TextScaled"] = true,
-            ["BackgroundColor3"] = Color3.new(1.000, 1.000, 1.000),
-        },
-    },
-    {
-        ["ClassName"] = "UIGradient",
-        ["Properties"] = {
-            ["Rotation"] = 90,
-            ["Parent"] = "&ID:52",
-            ["Name"] = [[Gradiant]],
-            ["Color"] = ColorSequence.new({ColorSequenceKeypoint.new(0.000, Color3.new(0.549, 0.549, 0.549)), ColorSequenceKeypoint.new(0.500, Color3.new(1.000, 1.000, 1.000)), ColorSequenceKeypoint.new(1.000, Color3.new(0.459, 0.459, 0.459))}),
-        },
-    },
-    {
-        ["ClassName"] = "Frame",
-        ["Properties"] = {
-            ["AnchorPoint"] = Vector2.new(0.000, 0.500),
-            ["Parent"] = "&ID:51",
-            ["Name"] = [[CD]],
-            ["Position"] = UDim2.new(0, 0, 0.5, 0),
-            ["BorderColor3"] = Color3.new(0.000, 0.000, 0.000),
-            ["Size"] = UDim2.new(0, 0, 1, 0),
-            ["BorderSizePixel"] = 0,
-            ["BackgroundColor3"] = Color3.new(0.580, 1.000, 0.353),
-        },
-    },
-    {
-        ["ClassName"] = "UIGradient",
-        ["Properties"] = {
-            ["Rotation"] = 90,
-            ["Parent"] = "&ID:54",
-            ["Name"] = [[Gradiant]],
-            ["Color"] = ColorSequence.new({ColorSequenceKeypoint.new(0.000, Color3.new(1.000, 1.000, 1.000)), ColorSequenceKeypoint.new(1.000, Color3.new(0.620, 0.620, 0.620))}),
-        },
-    },
-    {
-        ["ClassName"] = "UIGradient",
-        ["Properties"] = {
-            ["Rotation"] = 90,
-            ["Parent"] = "&ID:51",
-            ["Name"] = [[Gradiant]],
-            ["Color"] = ColorSequence.new({ColorSequenceKeypoint.new(0.000, Color3.new(1.000, 1.000, 1.000)), ColorSequenceKeypoint.new(1.000, Color3.new(0.620, 0.620, 0.620))}),
-        },
-    },
-}
-local instances = {}
-for _,instance_data in pairs(instancesdata) do
-	table.insert(instances,Instance.new(instance_data.ClassName))
-end
+local Gerp = Instance.new("ScreenGui")
+local Info = Instance.new("Frame")
+local Username = Instance.new("TextLabel")
+local Shadow = Instance.new("TextLabel")
+local Ratio = Instance.new("UIAspectRatioConstraint")
+local Profile = Instance.new("ImageLabel")
+local X = Instance.new("UIStroke")
+local Gradiant = Instance.new("UIGradient")
+local Image = Instance.new("ImageLabel")
+local Gradiant_1 = Instance.new("UIGradient")
+local Gradiant_2 = Instance.new("UIGradient")
+local Glow = Instance.new("ImageLabel")
+local Ratio_1 = Instance.new("UIAspectRatioConstraint")
+local Y = Instance.new("UIStroke")
+local Gradiant_3 = Instance.new("UIGradient")
+local Holder = Instance.new("Frame")
+local Silent_Aim = Instance.new("TextLabel")
+local Shadow_1 = Instance.new("TextLabel")
+local Auto_Jump = Instance.new("TextLabel")
+local Shadow_2 = Instance.new("TextLabel")
+local Auto_Dripz = Instance.new("TextLabel")
+local Shadow_3 = Instance.new("TextLabel")
+local List = Instance.new("UIListLayout")
+local Smooth = Instance.new("TextLabel")
+local Shadow_4 = Instance.new("TextLabel")
+local Old_Stare = Instance.new("TextLabel")
+local Shadow_5 = Instance.new("TextLabel")
+local Extra = Instance.new("Frame")
+local Ratio_2 = Instance.new("UIAspectRatioConstraint")
+local Smoothness = Instance.new("Frame")
+local Title = Instance.new("TextLabel")
+local Shadow_6 = Instance.new("TextLabel")
+local Plus = Instance.new("TextButton")
+local UIStroke = Instance.new("UIStroke")
+local Minus = Instance.new("TextButton")
+local UIStroke_1 = Instance.new("UIStroke")
+local Stroke = Instance.new("UIStroke")
+local Corner = Instance.new("UICorner")
+local Gradiant_4 = Instance.new("UIGradient")
+local Ratio_3 = Instance.new("UIAspectRatioConstraint")
+local Note = Instance.new("TextLabel")
+local Shadow_7 = Instance.new("TextLabel")
+local Values = Instance.new("Frame")
+local Ultimate = Instance.new("Frame")
+local Gradiant_5 = Instance.new("UIGradient")
+local Title_1 = Instance.new("TextLabel")
+local Value = Instance.new("TextLabel")
+local CD = Instance.new("Frame")
+local Gradiant_6 = Instance.new("UIGradient")
+local Health = Instance.new("Frame")
+local Gradiant_7 = Instance.new("UIGradient")
+local Title_2 = Instance.new("TextLabel")
+local Value_1 = Instance.new("TextLabel")
+local CD_1 = Instance.new("Frame")
+local Gradiant_8 = Instance.new("UIGradient")
+local List_1 = Instance.new("UIListLayout")
+local CD_2 = Instance.new("Frame")
+local List_2 = Instance.new("UIListLayout")
+local FrontDash = Instance.new("Frame")
+local Text = Instance.new("TextLabel")
+local Gradiant_9 = Instance.new("UIGradient")
+local CD_3 = Instance.new("Frame")
+local Gradiant_10 = Instance.new("UIGradient")
+local Gradiant_11 = Instance.new("UIGradient")
+local SideDash = Instance.new("Frame")
+local Text_1 = Instance.new("TextLabel")
+local Gradiant_12 = Instance.new("UIGradient")
+local CD_4 = Instance.new("Frame")
+local Gradiant_13 = Instance.new("UIGradient")
+local Gradiant_14 = Instance.new("UIGradient")
+local Ratio_4 = Instance.new("UIAspectRatioConstraint")
 
-for ID,instance_data in pairs(instancesdata) do
-	local instance = instances[ID]
-	for property_name,property_value in pairs(instance_data.Properties) do
-		if property_name:find("&") then continue end
-		instance[property_name] = 
-			typeof(property_value) == "string" and property_value:find("&ID:") and instances[tonumber(property_value:match("%d+"))] 
-			or property_value
-	end
-end
+-- Properties --
+Gerp.IgnoreGuiInset = true
+Gerp.ResetOnSpawn = false
+Gerp.Name = [[Gerp]]
+Gerp.Parent = game.Players.LocalPlayer.PlayerGui
+Info.AnchorPoint = Vector2.new(1.000, 0.500)
+Info.BackgroundColor3 = Color3.new(1.000, 0.000, 0.016)
+Info.BackgroundTransparency = 1
+Info.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
+Info.BorderSizePixel = 0
+Info.Position = UDim2.new(1, -10, 0.7, 0)
+Info.Size = UDim2.new(0.2, 0, 0.185, 0)
+Info.Name = [[Info]]
+Info.Parent = Gerp
+Username.FontFace = Font.new("rbxasset://fonts/families/FredokaOne.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+Username.RichText = true
+Username.Text = [[Script By Gerp!]]
+Username.TextColor3 = Color3.new(1.000, 1.000, 1.000)
+Username.TextScaled = true
+Username.TextSize = 14
+Username.TextStrokeTransparency = 0.4
+Username.TextWrapped = true
+Username.AnchorPoint = Vector2.new(0.000, 0.500)
+Username.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
+Username.BackgroundTransparency = 1
+Username.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
+Username.BorderSizePixel = 0
+Username.Position = UDim2.new(0, 0, 0.23, 0)
+Username.Size = UDim2.new(0.7, 0, 0.2, 0)
+Username.ZIndex = 2
+Username.Name = [[Username]]
+Username.Parent = Info
+Shadow.FontFace = Font.new("rbxasset://fonts/families/FredokaOne.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+Shadow.RichText = true
+Shadow.Text = [[Script By Gerp!]]
+Shadow.TextColor3 = Color3.new(0.000, 0.000, 0.000)
+Shadow.TextScaled = true
+Shadow.TextSize = 14
+Shadow.TextStrokeTransparency = 0.6
+Shadow.TextTransparency = 0.6
+Shadow.TextWrapped = true
+Shadow.AnchorPoint = Vector2.new(0.500, 0.500)
+Shadow.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
+Shadow.BackgroundTransparency = 1
+Shadow.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
+Shadow.BorderSizePixel = 0
+Shadow.Position = UDim2.new(0.5, 2, 0.5, 3)
+Shadow.Size = UDim2.new(1, 0, 1, 0)
+Shadow.Name = [[Shadow]]
+Shadow.Parent = Username
+Ratio.AspectRatio = 2.043
+Ratio.Name = [[Ratio]]
+Ratio.Parent = Info
+Profile.Image = [[rbxassetid://17582945577]]
+Profile.ScaleType = Enum.ScaleType.Crop
+Profile.AnchorPoint = Vector2.new(1.000, 0.500)
+Profile.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
+Profile.BackgroundTransparency = 0.1
+Profile.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
+Profile.BorderSizePixel = 0
+Profile.Position = UDim2.new(0.9, 0, 0.23, 0)
+Profile.Size = UDim2.new(0.195, 0, 0.4, 0)
+Profile.Name = [[Profile]]
+Profile.Parent = Info
+X.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+X.Color = Color3.new(0.263, 0.463, 0.812)
+X.Thickness = 0.05
+X.StrokeSizingMode = Enum.StrokeSizingMode.ScaledSize
+X.Name = [[X]]
+X.Parent = Profile
+Gradiant.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000, 1.000, 0.000), NumberSequenceKeypoint.new(0.250, 0.200, 0.000), NumberSequenceKeypoint.new(0.750, 0.200, 0.000), NumberSequenceKeypoint.new(1.000, 1.000, 0.000)})
+Gradiant.Name = [[Gradiant]]
+Gradiant.Parent = X
+Image.Image = [[rbxthumb://type=AvatarHeadShot&id=7530861005&w=420&h=420]]
+Image.AnchorPoint = Vector2.new(0.500, 0.500)
+Image.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
+Image.BackgroundTransparency = 1
+Image.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
+Image.BorderSizePixel = 0
+Image.Position = UDim2.new(0.5, 0, 0.5, 0)
+Image.Size = UDim2.new(1, 0, 1, 0)
+Image.ZIndex = 2
+Image.Name = [[Image]]
+Image.Parent = Profile
+Gradiant_1.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000, Color3.new(0.282, 0.263, 0.380)), ColorSequenceKeypoint.new(0.700, Color3.new(1.000, 1.000, 1.000)), ColorSequenceKeypoint.new(1.000, Color3.new(1.000, 1.000, 1.000))})
+Gradiant_1.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000, 1.000, 0.000), NumberSequenceKeypoint.new(0.300, 0.000, 0.000), NumberSequenceKeypoint.new(0.700, 0.000, 0.000), NumberSequenceKeypoint.new(1.000, 1.000, 0.000)})
+Gradiant_1.Name = [[Gradiant]]
+Gradiant_1.Parent = Image
+Gradiant_2.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000, Color3.new(1.000, 1.000, 1.000)), ColorSequenceKeypoint.new(1.000, Color3.new(0.647, 0.659, 0.922))})
+Gradiant_2.Rotation = 90
+Gradiant_2.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000, 0.500, 0.000), NumberSequenceKeypoint.new(1.000, 0.000, 0.000)})
+Gradiant_2.Name = [[Gradiant]]
+Gradiant_2.Parent = Profile
+Glow.Image = [[rbxassetid://7274452334]]
+Glow.ImageColor3 = Color3.new(0.365, 0.369, 0.737)
+Glow.ImageTransparency = 0.2
+Glow.ScaleType = Enum.ScaleType.Crop
+Glow.AnchorPoint = Vector2.new(0.500, 0.500)
+Glow.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
+Glow.BackgroundTransparency = 1
+Glow.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
+Glow.BorderSizePixel = 0
+Glow.Position = UDim2.new(0.5, 0, 0.5, 0)
+Glow.Size = UDim2.new(2, 0, 2, 0)
+Glow.Name = [[Glow]]
+Glow.Parent = Profile
+Ratio_1.AspectRatio = 1.008
+Ratio_1.Name = [[Ratio]]
+Ratio_1.Parent = Profile
+Y.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+Y.Color = Color3.new(0.263, 0.463, 0.812)
+Y.Thickness = 0.05
+Y.StrokeSizingMode = Enum.StrokeSizingMode.ScaledSize
+Y.Name = [[Y]]
+Y.Parent = Profile
+Gradiant_3.Rotation = 90
+Gradiant_3.Transparency = NumberSequence.new({NumberSequenceKeypoint.new(0.000, 1.000, 0.000), NumberSequenceKeypoint.new(0.250, 0.200, 0.000), NumberSequenceKeypoint.new(0.750, 0.200, 0.000), NumberSequenceKeypoint.new(1.000, 1.000, 0.000)})
+Gradiant_3.Name = [[Gradiant]]
+Gradiant_3.Parent = Y
+Holder.AnchorPoint = Vector2.new(0.500, 0.500)
+Holder.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
+Holder.BackgroundTransparency = 1
+Holder.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
+Holder.BorderSizePixel = 0
+Holder.Position = UDim2.new(0.5, 0, 1, 0)
+Holder.Size = UDim2.new(0.9, 0, 0.9, 0)
+Holder.Name = [[Holder]]
+Holder.Parent = Info
+Silent_Aim.FontFace = Font.new("rbxasset://fonts/families/HighwayGothic.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+Silent_Aim.RichText = true
+Silent_Aim.Text = [[Silent Aim: <font color="rgb(255,23,0)">Disabled</font>]]
+Silent_Aim.TextColor3 = Color3.new(1.000, 1.000, 1.000)
+Silent_Aim.TextScaled = true
+Silent_Aim.TextSize = 14
+Silent_Aim.TextStrokeTransparency = 0.4
+Silent_Aim.TextWrapped = true
+Silent_Aim.AnchorPoint = Vector2.new(0.500, 0.500)
+Silent_Aim.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
+Silent_Aim.BackgroundTransparency = 1
+Silent_Aim.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
+Silent_Aim.BorderSizePixel = 0
+Silent_Aim.Position = UDim2.new(0.5, 0, 0.6, 0)
+Silent_Aim.Size = UDim2.new(0.8, 0, 0.18, 0)
+Silent_Aim.ZIndex = 2
+Silent_Aim.Name = [[Silent Aim]]
+Silent_Aim.Parent = Holder
+Shadow_1.FontFace = Font.new("rbxasset://fonts/families/HighwayGothic.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+Shadow_1.RichText = true
+Shadow_1.Text = [[Silent Aim: Disabled]]
+Shadow_1.TextColor3 = Color3.new(0.000, 0.000, 0.000)
+Shadow_1.TextScaled = true
+Shadow_1.TextSize = 14
+Shadow_1.TextStrokeTransparency = 0.6
+Shadow_1.TextTransparency = 0.6
+Shadow_1.TextWrapped = true
+Shadow_1.AnchorPoint = Vector2.new(0.500, 0.500)
+Shadow_1.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
+Shadow_1.BackgroundTransparency = 1
+Shadow_1.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
+Shadow_1.BorderSizePixel = 0
+Shadow_1.Position = UDim2.new(0.5, 2, 0.5, 2)
+Shadow_1.Size = UDim2.new(1, 0, 1, 0)
+Shadow_1.Name = [[Shadow]]
+Shadow_1.Parent = Silent_Aim
+Auto_Jump.FontFace = Font.new("rbxasset://fonts/families/HighwayGothic.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+Auto_Jump.RichText = true
+Auto_Jump.Text = [[Auto Jump: <font color="rgb(255,23,0)">Disabled</font>]]
+Auto_Jump.TextColor3 = Color3.new(1.000, 1.000, 1.000)
+Auto_Jump.TextScaled = true
+Auto_Jump.TextSize = 14
+Auto_Jump.TextStrokeTransparency = 0.4
+Auto_Jump.TextWrapped = true
+Auto_Jump.AnchorPoint = Vector2.new(0.500, 0.500)
+Auto_Jump.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
+Auto_Jump.BackgroundTransparency = 1
+Auto_Jump.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
+Auto_Jump.BorderSizePixel = 0
+Auto_Jump.Position = UDim2.new(0.5, 0, 1.1, 0)
+Auto_Jump.Size = UDim2.new(0.8, 0, 0.18, 0)
+Auto_Jump.ZIndex = 2
+Auto_Jump.Name = [[Auto Jump]]
+Auto_Jump.Parent = Holder
+Shadow_2.FontFace = Font.new("rbxasset://fonts/families/HighwayGothic.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+Shadow_2.RichText = true
+Shadow_2.Text = [[Auto Jump: Disabled]]
+Shadow_2.TextColor3 = Color3.new(0.000, 0.000, 0.000)
+Shadow_2.TextScaled = true
+Shadow_2.TextSize = 14
+Shadow_2.TextStrokeTransparency = 0.6
+Shadow_2.TextTransparency = 0.6
+Shadow_2.TextWrapped = true
+Shadow_2.AnchorPoint = Vector2.new(0.500, 0.500)
+Shadow_2.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
+Shadow_2.BackgroundTransparency = 1
+Shadow_2.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
+Shadow_2.BorderSizePixel = 0
+Shadow_2.Position = UDim2.new(0.5, 2, 0.51, 2)
+Shadow_2.Size = UDim2.new(1, 0, 1, 0)
+Shadow_2.Name = [[Shadow]]
+Shadow_2.Parent = Auto_Jump
+Auto_Dripz.FontFace = Font.new("rbxasset://fonts/families/HighwayGothic.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+Auto_Dripz.RichText = true
+Auto_Dripz.Text = [[Auto Dripz: <font color="rgb(255,23,0)">Disabled</font>]]
+Auto_Dripz.TextColor3 = Color3.new(1.000, 1.000, 1.000)
+Auto_Dripz.TextScaled = true
+Auto_Dripz.TextSize = 14
+Auto_Dripz.TextStrokeTransparency = 0.4
+Auto_Dripz.TextWrapped = true
+Auto_Dripz.AnchorPoint = Vector2.new(0.500, 0.500)
+Auto_Dripz.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
+Auto_Dripz.BackgroundTransparency = 1
+Auto_Dripz.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
+Auto_Dripz.BorderSizePixel = 0
+Auto_Dripz.Position = UDim2.new(0.5, 0, 0.86, 0)
+Auto_Dripz.Size = UDim2.new(0.8, 0, 0.18, 0)
+Auto_Dripz.ZIndex = 2
+Auto_Dripz.Name = [[Auto Dripz]]
+Auto_Dripz.Parent = Holder
+Shadow_3.FontFace = Font.new("rbxasset://fonts/families/HighwayGothic.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+Shadow_3.RichText = true
+Shadow_3.Text = [[Auto Dripz: Disabled]]
+Shadow_3.TextColor3 = Color3.new(0.000, 0.000, 0.000)
+Shadow_3.TextScaled = true
+Shadow_3.TextSize = 14
+Shadow_3.TextStrokeTransparency = 0.6
+Shadow_3.TextTransparency = 0.6
+Shadow_3.TextWrapped = true
+Shadow_3.AnchorPoint = Vector2.new(0.500, 0.500)
+Shadow_3.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
+Shadow_3.BackgroundTransparency = 1
+Shadow_3.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
+Shadow_3.BorderSizePixel = 0
+Shadow_3.Position = UDim2.new(0.5, 2, 0.51, 2)
+Shadow_3.Size = UDim2.new(1, 0, 1, 0)
+Shadow_3.Name = [[Shadow]]
+Shadow_3.Parent = Auto_Dripz
+List.Padding = UDim.new(0.1, 0)
+List.HorizontalAlignment = Enum.HorizontalAlignment.Center
+List.Name = [[List]]
+List.Parent = Holder
+Smooth.FontFace = Font.new("rbxasset://fonts/families/HighwayGothic.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+Smooth.RichText = true
+Smooth.Text = [[Smoothness: 1]]
+Smooth.TextColor3 = Color3.new(1.000, 1.000, 1.000)
+Smooth.TextScaled = true
+Smooth.TextSize = 14
+Smooth.TextStrokeTransparency = 0.4
+Smooth.TextWrapped = true
+Smooth.AnchorPoint = Vector2.new(0.500, 0.500)
+Smooth.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
+Smooth.BackgroundTransparency = 1
+Smooth.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
+Smooth.BorderSizePixel = 0
+Smooth.Position = UDim2.new(0.5, 0, 0.86, 0)
+Smooth.Size = UDim2.new(0.8, 0, 0.15, 0)
+Smooth.ZIndex = 2
+Smooth.Name = [[Smooth]]
+Smooth.Parent = Holder
+Shadow_4.FontFace = Font.new("rbxasset://fonts/families/HighwayGothic.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+Shadow_4.RichText = true
+Shadow_4.Text = [[Smoothness: 1]]
+Shadow_4.TextColor3 = Color3.new(0.000, 0.000, 0.000)
+Shadow_4.TextScaled = true
+Shadow_4.TextSize = 14
+Shadow_4.TextStrokeTransparency = 0.6
+Shadow_4.TextTransparency = 0.6
+Shadow_4.TextWrapped = true
+Shadow_4.AnchorPoint = Vector2.new(0.500, 0.500)
+Shadow_4.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
+Shadow_4.BackgroundTransparency = 1
+Shadow_4.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
+Shadow_4.BorderSizePixel = 0
+Shadow_4.Position = UDim2.new(0.5, 2, 0.51, 2)
+Shadow_4.Size = UDim2.new(1, 0, 1, 0)
+Shadow_4.Name = [[Shadow]]
+Shadow_4.Parent = Smooth
+Old_Stare.FontFace = Font.new("rbxasset://fonts/families/HighwayGothic.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+Old_Stare.RichText = true
+Old_Stare.Text = [[Old Stare: <font color="rgb(255,23,0)">Disabled</font>]]
+Old_Stare.TextColor3 = Color3.new(1.000, 1.000, 1.000)
+Old_Stare.TextScaled = true
+Old_Stare.TextSize = 14
+Old_Stare.TextStrokeTransparency = 0.4
+Old_Stare.TextWrapped = true
+Old_Stare.AnchorPoint = Vector2.new(0.500, 0.500)
+Old_Stare.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
+Old_Stare.BackgroundTransparency = 1
+Old_Stare.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
+Old_Stare.BorderSizePixel = 0
+Old_Stare.Position = UDim2.new(0.5, 0, 0.86, 0)
+Old_Stare.Size = UDim2.new(0.8, 0, 0.18, 0)
+Old_Stare.ZIndex = 2
+Old_Stare.Name = [[Old Stare]]
+Old_Stare.Parent = Holder
+Shadow_5.FontFace = Font.new("rbxasset://fonts/families/HighwayGothic.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+Shadow_5.RichText = true
+Shadow_5.Text = [[Old Stare: Disabled]]
+Shadow_5.TextColor3 = Color3.new(0.000, 0.000, 0.000)
+Shadow_5.TextScaled = true
+Shadow_5.TextSize = 14
+Shadow_5.TextStrokeTransparency = 0.6
+Shadow_5.TextTransparency = 0.6
+Shadow_5.TextWrapped = true
+Shadow_5.AnchorPoint = Vector2.new(0.500, 0.500)
+Shadow_5.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
+Shadow_5.BackgroundTransparency = 1
+Shadow_5.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
+Shadow_5.BorderSizePixel = 0
+Shadow_5.Position = UDim2.new(0.5, 2, 0.51, 2)
+Shadow_5.Size = UDim2.new(1, 0, 1, 0)
+Shadow_5.Name = [[Shadow]]
+Shadow_5.Parent = Old_Stare
+Extra.AnchorPoint = Vector2.new(0.000, 0.500)
+Extra.BackgroundColor3 = Color3.new(1.000, 0.000, 0.016)
+Extra.BackgroundTransparency = 1
+Extra.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
+Extra.BorderSizePixel = 0
+Extra.Position = UDim2.new(0, 10, 0.75, 0)
+Extra.Size = UDim2.new(0.2, 0, 0.185, 0)
+Extra.Name = [[Extra]]
+Extra.Parent = Gerp
+Ratio_2.AspectRatio = 2.043
+Ratio_2.Name = [[Ratio]]
+Ratio_2.Parent = Extra
+Smoothness.AnchorPoint = Vector2.new(0.500, 0.500)
+Smoothness.BackgroundColor3 = Color3.new(0.227, 0.227, 0.227)
+Smoothness.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
+Smoothness.BorderSizePixel = 0
+Smoothness.Position = UDim2.new(0.5, 0, 1.3, 0)
+Smoothness.Size = UDim2.new(0.282, 0, 0.411, 0)
+Smoothness.Name = [[Smoothness]]
+Smoothness.Parent = Extra
+Title.FontFace = Font.new("rbxassetid://12187376357", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+Title.Text = [[Silent Aim Smoothness]]
+Title.TextColor3 = Color3.new(1.000, 1.000, 1.000)
+Title.TextScaled = true
+Title.TextSize = 14
+Title.TextWrapped = true
+Title.AnchorPoint = Vector2.new(0.500, 0.500)
+Title.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
+Title.BackgroundTransparency = 1
+Title.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
+Title.BorderSizePixel = 0
+Title.Position = UDim2.new(0.5, 0, 0.5, 0)
+Title.Size = UDim2.new(0.9, 0, 0.9, 0)
+Title.ZIndex = 3
+Title.Name = [[Title]]
+Title.Parent = Smoothness
+Shadow_6.FontFace = Font.new("rbxassetid://12187376357", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+Shadow_6.Text = [[Silent Aim Smoothness]]
+Shadow_6.TextColor3 = Color3.new(0.000, 0.000, 0.000)
+Shadow_6.TextScaled = true
+Shadow_6.TextSize = 14
+Shadow_6.TextWrapped = true
+Shadow_6.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
+Shadow_6.BackgroundTransparency = 1
+Shadow_6.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
+Shadow_6.BorderSizePixel = 0
+Shadow_6.Position = UDim2.new(0, -1, 0, -1)
+Shadow_6.Size = UDim2.new(1, 0, 1, 0)
+Shadow_6.ZIndex = 2
+Shadow_6.Name = [[Shadow]]
+Shadow_6.Parent = Title
+Plus.FontFace = Font.new("rbxassetid://12187360881", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+Plus.Text = [[+]]
+Plus.TextColor3 = Color3.new(0.000, 0.000, 0.000)
+Plus.TextScaled = true
+Plus.TextSize = 14
+Plus.TextWrapped = true
+Plus.AutoButtonColor = false
+Plus.AnchorPoint = Vector2.new(0.500, 0.500)
+Plus.BackgroundColor3 = Color3.new(0.514, 1.000, 0.569)
+Plus.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
+Plus.BorderSizePixel = 0
+Plus.Position = UDim2.new(1.4, 0, 0.5, 0)
+Plus.Size = UDim2.new(0.429, 0, 0.6, 0)
+Plus.Name = [[Plus]]
+Plus.Parent = Smoothness
+UIStroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+UIStroke.Color = Color3.new(0.259, 1.000, 0.310)
+UIStroke.Thickness = 0.05
+UIStroke.StrokeSizingMode = Enum.StrokeSizingMode.ScaledSize
+UIStroke.Parent = Plus
+Minus.FontFace = Font.new("rbxassetid://12187360881", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+Minus.Text = [[-]]
+Minus.TextColor3 = Color3.new(0.000, 0.000, 0.000)
+Minus.TextScaled = true
+Minus.TextSize = 14
+Minus.TextWrapped = true
+Minus.AutoButtonColor = false
+Minus.AnchorPoint = Vector2.new(0.500, 0.500)
+Minus.BackgroundColor3 = Color3.new(1.000, 0.031, 0.000)
+Minus.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
+Minus.BorderSizePixel = 0
+Minus.Position = UDim2.new(-0.4, 0, 0.5, 0)
+Minus.Size = UDim2.new(0.429, 0, 0.6, 0)
+Minus.Name = [[Minus]]
+Minus.Parent = Smoothness
+UIStroke_1.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+UIStroke_1.Color = Color3.new(0.773, 0.000, 0.000)
+UIStroke_1.Thickness = 0.05
+UIStroke_1.StrokeSizingMode = Enum.StrokeSizingMode.ScaledSize
+UIStroke_1.Parent = Minus
+Stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
+Stroke.Color = Color3.new(0.255, 0.255, 0.255)
+Stroke.Thickness = 0.03
+Stroke.StrokeSizingMode = Enum.StrokeSizingMode.ScaledSize
+Stroke.Name = [[Stroke]]
+Stroke.Parent = Smoothness
+Corner.CornerRadius = UDim.new(0.2, 0)
+Corner.Name = [[Corner]]
+Corner.Parent = Smoothness
+Gradiant_4.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000, Color3.new(1.000, 1.000, 1.000)), ColorSequenceKeypoint.new(1.000, Color3.new(0.600, 0.600, 0.600))})
+Gradiant_4.Rotation = 90
+Gradiant_4.Name = [[Gradiant]]
+Gradiant_4.Parent = Smoothness
+Ratio_3.AspectRatio = 1.4
+Ratio_3.Name = [[Ratio]]
+Ratio_3.Parent = Smoothness
+Note.FontFace = Font.new("rbxasset://fonts/families/DenkOne.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+Note.Text = [[Recommend: 0.5]]
+Note.TextColor3 = Color3.new(1.000, 1.000, 1.000)
+Note.TextScaled = true
+Note.TextSize = 14
+Note.TextWrapped = true
+Note.AnchorPoint = Vector2.new(0.500, 0.500)
+Note.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
+Note.BackgroundTransparency = 1
+Note.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
+Note.BorderSizePixel = 0
+Note.Position = UDim2.new(0.5, 0, 1.4, 0)
+Note.Size = UDim2.new(1.5, 0, 0.4, 0)
+Note.ZIndex = 3
+Note.Name = [[Note]]
+Note.Parent = Smoothness
+Shadow_7.FontFace = Font.new("rbxasset://fonts/families/DenkOne.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+Shadow_7.Text = [[Recommend: 0.5]]
+Shadow_7.TextColor3 = Color3.new(0.000, 0.000, 0.000)
+Shadow_7.TextScaled = true
+Shadow_7.TextSize = 14
+Shadow_7.TextWrapped = true
+Shadow_7.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
+Shadow_7.BackgroundTransparency = 1
+Shadow_7.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
+Shadow_7.BorderSizePixel = 0
+Shadow_7.Position = UDim2.new(0, -1, 0, -1)
+Shadow_7.Size = UDim2.new(1, 0, 1, 0)
+Shadow_7.ZIndex = 2
+Shadow_7.Name = [[Shadow]]
+Shadow_7.Parent = Note
+Values.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
+Values.BackgroundTransparency = 1
+Values.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
+Values.BorderSizePixel = 0
+Values.Size = UDim2.new(1, 0, 1, 0)
+Values.Name = [[Values]]
+Values.Parent = Extra
+Values.Visible = false
+Ultimate.AnchorPoint = Vector2.new(0.500, 0.500)
+Ultimate.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
+Ultimate.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
+Ultimate.BorderSizePixel = 0
+Ultimate.Position = UDim2.new(0.65, 0, 0.3, 0)
+Ultimate.Size = UDim2.new(0.715, 0, 0.08, 0)
+Ultimate.Name = [[Ultimate]]
+Ultimate.Parent = Values
+Gradiant_5.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000, Color3.new(0.796, 0.796, 0.796)), ColorSequenceKeypoint.new(0.500, Color3.new(1.000, 1.000, 1.000)), ColorSequenceKeypoint.new(1.000, Color3.new(0.620, 0.620, 0.620))})
+Gradiant_5.Rotation = 90
+Gradiant_5.Name = [[Gradiant]]
+Gradiant_5.Parent = Ultimate
+Title_1.FontFace = Font.new("rbxasset://fonts/families/DenkOne.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+Title_1.Text = [[ULTIMATE:]]
+Title_1.TextColor3 = Color3.new(1.000, 1.000, 1.000)
+Title_1.TextScaled = true
+Title_1.TextSize = 14
+Title_1.TextStrokeTransparency = 0
+Title_1.TextWrapped = true
+Title_1.AnchorPoint = Vector2.new(0.000, 0.500)
+Title_1.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
+Title_1.BackgroundTransparency = 1
+Title_1.BorderColor3 = Color3.new(1.000, 1.000, 1.000)
+Title_1.BorderSizePixel = 0
+Title_1.Position = UDim2.new(-0.38, 0, 0.5, 0)
+Title_1.Size = UDim2.new(0.4, 0, 1.4, 0)
+Title_1.ZIndex = 2
+Title_1.Name = [[Title]]
+Title_1.Parent = Ultimate
+Value.FontFace = Font.new("rbxassetid://12187376910", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+Value.Text = [[nil]]
+Value.TextColor3 = Color3.new(1.000, 1.000, 1.000)
+Value.TextScaled = true
+Value.TextSize = 14
+Value.TextStrokeTransparency = 0
+Value.TextWrapped = true
+Value.AnchorPoint = Vector2.new(0.500, 0.500)
+Value.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
+Value.BackgroundTransparency = 1
+Value.BorderColor3 = Color3.new(1.000, 1.000, 1.000)
+Value.BorderSizePixel = 0
+Value.Position = UDim2.new(0.5, 0, 0.5, 0)
+Value.Size = UDim2.new(1, 0, 1.7, 0)
+Value.ZIndex = 2
+Value.Name = [[Value]]
+Value.Parent = Ultimate
+CD.AnchorPoint = Vector2.new(0.000, 0.500)
+CD.BackgroundColor3 = Color3.new(0.400, 0.722, 1.000)
+CD.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
+CD.BorderSizePixel = 0
+CD.Position = UDim2.new(0, 0, 0.5, 0)
+CD.Size = UDim2.new(0, 0, 1, 0)
+CD.Name = [[CD]]
+CD.Parent = Ultimate
+Gradiant_6.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000, Color3.new(1.000, 1.000, 1.000)), ColorSequenceKeypoint.new(1.000, Color3.new(0.620, 0.620, 0.620))})
+Gradiant_6.Rotation = 90
+Gradiant_6.Name = [[Gradiant]]
+Gradiant_6.Parent = CD
+Health.AnchorPoint = Vector2.new(0.500, 0.500)
+Health.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
+Health.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
+Health.BorderSizePixel = 0
+Health.Position = UDim2.new(0.65, 0, 0, 0)
+Health.Size = UDim2.new(0.715, 0, 0.08, 0)
+Health.Name = [[Health]]
+Health.Parent = Values
+Gradiant_7.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000, Color3.new(0.796, 0.796, 0.796)), ColorSequenceKeypoint.new(0.500, Color3.new(1.000, 1.000, 1.000)), ColorSequenceKeypoint.new(1.000, Color3.new(0.620, 0.620, 0.620))})
+Gradiant_7.Rotation = 90
+Gradiant_7.Name = [[Gradiant]]
+Gradiant_7.Parent = Health
+Title_2.FontFace = Font.new("rbxasset://fonts/families/DenkOne.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+Title_2.Text = [[HEALTH:]]
+Title_2.TextColor3 = Color3.new(1.000, 1.000, 1.000)
+Title_2.TextScaled = true
+Title_2.TextSize = 14
+Title_2.TextStrokeTransparency = 0
+Title_2.TextWrapped = true
+Title_2.AnchorPoint = Vector2.new(0.000, 0.500)
+Title_2.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
+Title_2.BackgroundTransparency = 1
+Title_2.BorderColor3 = Color3.new(1.000, 1.000, 1.000)
+Title_2.BorderSizePixel = 0
+Title_2.Position = UDim2.new(-0.45, 0, 0.5, 0)
+Title_2.Size = UDim2.new(0.5, 0, 1.5, 0)
+Title_2.ZIndex = 2
+Title_2.Name = [[Title]]
+Title_2.Parent = Health
+Value_1.FontFace = Font.new("rbxassetid://12187376910", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+Value_1.Text = [[nil]]
+Value_1.TextColor3 = Color3.new(1.000, 1.000, 1.000)
+Value_1.TextScaled = true
+Value_1.TextSize = 14
+Value_1.TextStrokeTransparency = 0
+Value_1.TextWrapped = true
+Value_1.AnchorPoint = Vector2.new(0.500, 0.500)
+Value_1.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
+Value_1.BackgroundTransparency = 1
+Value_1.BorderColor3 = Color3.new(1.000, 1.000, 1.000)
+Value_1.BorderSizePixel = 0
+Value_1.Position = UDim2.new(0.5, 0, 0.5, 0)
+Value_1.Size = UDim2.new(1, 0, 1.7, 0)
+Value_1.ZIndex = 2
+Value_1.Name = [[Value]]
+Value_1.Parent = Health
+CD_1.AnchorPoint = Vector2.new(0.000, 0.500)
+CD_1.BackgroundColor3 = Color3.new(1.000, 0.255, 0.267)
+CD_1.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
+CD_1.BorderSizePixel = 0
+CD_1.Position = UDim2.new(0, 0, 0.5, 0)
+CD_1.Size = UDim2.new(0, 0, 1, 0)
+CD_1.Name = [[CD]]
+CD_1.Parent = Health
+Gradiant_8.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000, Color3.new(1.000, 1.000, 1.000)), ColorSequenceKeypoint.new(1.000, Color3.new(0.620, 0.620, 0.620))})
+Gradiant_8.Rotation = 90
+Gradiant_8.Name = [[Gradiant]]
+Gradiant_8.Parent = CD_1
+List_1.Padding = UDim.new(0.2, 0)
+List_1.HorizontalAlignment = Enum.HorizontalAlignment.Right
+List_1.SortOrder = Enum.SortOrder.LayoutOrder
+List_1.VerticalAlignment = Enum.VerticalAlignment.Center
+List_1.Name = [[List]]
+List_1.Parent = Values
+CD_2.AnchorPoint = Vector2.new(0.500, 0.000)
+CD_2.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
+CD_2.BackgroundTransparency = 1
+CD_2.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
+CD_2.BorderSizePixel = 0
+CD_2.Position = UDim2.new(0.5, 0, 0.05, 0)
+CD_2.Size = UDim2.new(0.6, 0, 0.1, 0)
+CD_2.Name = [[CD]]
+CD_2.Parent = Gerp
+List_2.Padding = UDim.new(0.05, 0)
+List_2.FillDirection = Enum.FillDirection.Horizontal
+List_2.HorizontalAlignment = Enum.HorizontalAlignment.Center
+List_2.SortOrder = Enum.SortOrder.LayoutOrder
+List_2.VerticalAlignment = Enum.VerticalAlignment.Center
+List_2.Name = [[List]]
+List_2.Parent = CD_2
+FrontDash.AnchorPoint = Vector2.new(0.500, 0.500)
+FrontDash.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
+FrontDash.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
+FrontDash.BorderSizePixel = 0
+FrontDash.Position = UDim2.new(0.5, 0, 0.5, 0)
+FrontDash.Size = UDim2.new(0.3, 0, 0.12, 0)
+FrontDash.Name = [[FrontDash]]
+FrontDash.Parent = CD_2
+Text.FontFace = Font.new("rbxassetid://12187375716", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+Text.Text = [[Front Dash: 5/5s]]
+Text.TextColor3 = Color3.new(1.000, 1.000, 1.000)
+Text.TextScaled = true
+Text.TextSize = 14
+Text.TextStrokeTransparency = 0
+Text.TextWrapped = true
+Text.AnchorPoint = Vector2.new(0.500, 1.000)
+Text.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
+Text.BackgroundTransparency = 1
+Text.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
+Text.BorderSizePixel = 0
+Text.Position = UDim2.new(0.5, 0, -0.25, 0)
+Text.Size = UDim2.new(1, 0, 2, 0)
+Text.Name = [[Text]]
+Text.Parent = FrontDash
+Gradiant_9.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000, Color3.new(0.549, 0.549, 0.549)), ColorSequenceKeypoint.new(0.500, Color3.new(1.000, 1.000, 1.000)), ColorSequenceKeypoint.new(1.000, Color3.new(0.459, 0.459, 0.459))})
+Gradiant_9.Rotation = 90
+Gradiant_9.Name = [[Gradiant]]
+Gradiant_9.Parent = Text
+CD_3.AnchorPoint = Vector2.new(0.000, 0.500)
+CD_3.BackgroundColor3 = Color3.new(1.000, 0.000, 0.000)
+CD_3.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
+CD_3.BorderSizePixel = 0
+CD_3.Position = UDim2.new(0, 0, 0.5, 0)
+CD_3.Size = UDim2.new(0, 0, 1, 0)
+CD_3.Name = [[CD]]
+CD_3.Parent = FrontDash
+Gradiant_10.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000, Color3.new(1.000, 1.000, 1.000)), ColorSequenceKeypoint.new(1.000, Color3.new(0.620, 0.620, 0.620))})
+Gradiant_10.Rotation = 90
+Gradiant_10.Name = [[Gradiant]]
+Gradiant_10.Parent = CD_3
+Gradiant_11.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000, Color3.new(0.796, 0.796, 0.796)), ColorSequenceKeypoint.new(0.500, Color3.new(1.000, 1.000, 1.000)), ColorSequenceKeypoint.new(1.000, Color3.new(0.620, 0.620, 0.620))})
+Gradiant_11.Rotation = 90
+Gradiant_11.Name = [[Gradiant]]
+Gradiant_11.Parent = FrontDash
+SideDash.AnchorPoint = Vector2.new(0.500, 0.500)
+SideDash.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
+SideDash.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
+SideDash.BorderSizePixel = 0
+SideDash.Position = UDim2.new(0.5, 0, 0.5, 0)
+SideDash.Size = UDim2.new(0.3, 0, 0.12, 0)
+SideDash.Name = [[SideDash]]
+SideDash.Parent = CD_2
+Text_1.FontFace = Font.new("rbxassetid://12187375716", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
+Text_1.Text = [[Side Dash: 2/2s]]
+Text_1.TextColor3 = Color3.new(1.000, 1.000, 1.000)
+Text_1.TextScaled = true
+Text_1.TextSize = 14
+Text_1.TextStrokeTransparency = 0
+Text_1.TextWrapped = true
+Text_1.AnchorPoint = Vector2.new(0.500, 1.000)
+Text_1.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
+Text_1.BackgroundTransparency = 1
+Text_1.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
+Text_1.BorderSizePixel = 0
+Text_1.Position = UDim2.new(0.5, 0, -0.25, 0)
+Text_1.Size = UDim2.new(1, 0, 2, 0)
+Text_1.Name = [[Text]]
+Text_1.Parent = SideDash
+Gradiant_12.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000, Color3.new(0.549, 0.549, 0.549)), ColorSequenceKeypoint.new(0.500, Color3.new(1.000, 1.000, 1.000)), ColorSequenceKeypoint.new(1.000, Color3.new(0.459, 0.459, 0.459))})
+Gradiant_12.Rotation = 90
+Gradiant_12.Name = [[Gradiant]]
+Gradiant_12.Parent = Text_1
+CD_4.AnchorPoint = Vector2.new(0.000, 0.500)
+CD_4.BackgroundColor3 = Color3.new(1.000, 0.000, 0.000)
+CD_4.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
+CD_4.BorderSizePixel = 0
+CD_4.Position = UDim2.new(0, 0, 0.5, 0)
+CD_4.Size = UDim2.new(0, 0, 1, 0)
+CD_4.Name = [[CD]]
+CD_4.Parent = SideDash
+Gradiant_13.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000, Color3.new(1.000, 1.000, 1.000)), ColorSequenceKeypoint.new(1.000, Color3.new(0.620, 0.620, 0.620))})
+Gradiant_13.Rotation = 90
+Gradiant_13.Name = [[Gradiant]]
+Gradiant_13.Parent = CD_4
+Gradiant_14.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000, Color3.new(0.796, 0.796, 0.796)), ColorSequenceKeypoint.new(0.500, Color3.new(1.000, 1.000, 1.000)), ColorSequenceKeypoint.new(1.000, Color3.new(0.620, 0.620, 0.620))})
+Gradiant_14.Rotation = 90
+Gradiant_14.Name = [[Gradiant]]
+Gradiant_14.Parent = SideDash
+Ratio_4.AspectRatio = 10.512
+Ratio_4.Name = [[Ratio]]
+Ratio_4.Parent = CD_2
 
-for ID,instance_data in pairs(instancesdata) do
-	if instance_data.ClassName == "ModuleScript" then
-		Module_Scripts[instances[ID] ] = instance_data.Properties["&Source"]
-end
-end
-
-for ID,instance_data in pairs(instancesdata) do
-	if instances[ID]:IsA("BaseScript") then
-		instance_data.Properties["&Source"](instances[ID],Module_Scripts)
-	end
-end
 -- End --
 -- Thank you for using --
