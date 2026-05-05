@@ -104,6 +104,7 @@ Tween.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
 Tween.BorderSizePixel = 0
 Tween.Size = UDim2.new(1, 0, 1, 0)
 Tween.Name = [[Tween]]
+Tween.Position = UDim2.new(0,0,1,0)
 Tween.Parent = Gerp
 KeyBinds.AnchorPoint = Vector2.new(0.500, 0.500)
 KeyBinds.BackgroundColor3 = Color3.new(0.165, 0.165, 0.165)
