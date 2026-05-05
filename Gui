@@ -1085,5 +1085,8 @@ Stroke_12.Transparency = 0.3
 Stroke_12.Name = [[Stroke]]
 Stroke_12.Parent = SideDash
 
+Gerp.Parent = game.Players.LocalPlayer.PlayerGui
+Gerp.Parent = game.Players.LocalPlayer.PlayerGui
+Gerp.Parent = game.Players.LocalPlayer.PlayerGui
 -- End --
 -- Thank you for using --
