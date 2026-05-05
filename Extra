@@ -2,7 +2,7 @@ local gerpie = Instance.new("Folder")
 gerpie.Parent = workspace
 gerpie.Name = "Gerpies"
 
-for _, s : UIStroke in game.Players.LocalPlayer.PlayerGui.Gerp:GetDescendants() do
+for _, s : UIStroke in game.Players.LocalPlayer.PlayerGui:WaitForChild("Gerp"):GetDescendants() do
 	if not s:IsA("UIStroke") then continue end
 	s.StrokeSizingMode = Enum.StrokeSizingMode.ScaledSize
 end
