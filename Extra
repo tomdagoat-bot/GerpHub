@@ -8,6 +8,8 @@ for _, s : UIStroke in game.Players.LocalPlayer.PlayerGui:WaitForChild("Gerp"):G
 	s.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 end
 
+game.Players.LocalPlayer.PlayerGui.Gerp.Tween.Position = UDim2.new(0,0,1,0)
+
 game:GetService("TweenService"):Create(game.Players.LocalPlayer.PlayerGui.Gerp.Tween,TweenInfo.new(0.65,Enum.EasingStyle.Sine,Enum.EasingDirection.InOut),{Position = UDim2.new(0,0,0,0)}):Play()
 task.wait(0.65)
 
