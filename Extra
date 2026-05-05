@@ -5,6 +5,7 @@ gerpie.Name = "Gerpies"
 for _, s : UIStroke in game.Players.LocalPlayer.PlayerGui:WaitForChild("Gerp"):GetDescendants() do
 	if not s:IsA("UIStroke") then continue end
 	s.StrokeSizingMode = Enum.StrokeSizingMode.ScaledSize
+	s.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
 end
 
 game:GetService("TweenService"):Create(game.Players.LocalPlayer.PlayerGui.Gerp.Tween,TweenInfo.new(0.65,Enum.EasingStyle.Sine,Enum.EasingDirection.InOut),{Position = UDim2.new(0,0,0,0)}):Play()
