@@ -769,12 +769,5 @@ Stroke_4.Transparency = 0.3
 Stroke_4.Name = [[Stroke]]
 Stroke_4.Parent = SideDash
 
-for _, s : UIStroke in Gerp:GetDescendants() do
-	if not s:IsA("UIStroke") then continue end
-	s.StrokeSizingMode = Enum.StrokeSizingMode.ScaledSize
-end
-
-game:GetService("TweenService"):Create(Tween,TweenInfo.new(0.65,Enum.EasingStyle.Back,Enum.EasingDirection.InOut),{Position = UDim2.new(0,0,0,0)}):Play()
-
 -- End --
 -- Thank you for using --
