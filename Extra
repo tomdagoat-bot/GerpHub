@@ -1,14 +1,14 @@
-local g = Instance.new("Folder")
-g.Parent = workspace
-g.Name = "Gerpies"
+local gerpie = Instance.new("Folder")
+gerpie.Parent = workspace
+gerpie.Name = "Gerpies"
 
 for _, s : UIStroke in game.Players.LocalPlayer.PlayerGui.Gerp:GetDescendants() do
 	if not s:IsA("UIStroke") then continue end
 	s.StrokeSizingMode = Enum.StrokeSizingMode.ScaledSize
 end
 
-game:GetService("TweenService"):Create(game.Players.LocalPlayer.PlayerGui.Gerp.Tween,TweenInfo.new(0.65,Enum.EasingStyle.Back,Enum.EasingDirection.InOut),{Position = UDim2.new(0,0,0,0)}):Play()
-task.wait(0.7)
+game:GetService("TweenService"):Create(game.Players.LocalPlayer.PlayerGui.Gerp.Tween,TweenInfo.new(0.65,Enum.EasingStyle.Sine,Enum.EasingDirection.InOut),{Position = UDim2.new(0,0,0,0)}):Play()
+task.wait(0.65)
 
 for _, child in game.Players.LocalPlayer.PlayerGui.Gerp.Tween:GetChildren() do
   child.Parent = game.Players.LocalPlayer.PlayerGui.Gerp
