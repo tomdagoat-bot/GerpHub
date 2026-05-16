@@ -498,6 +498,7 @@ H.Name = [[H]]
 H.Parent = VFX
 Death.Active = true
 Death.AlwaysOnTop = true
+Death.ResetOnSpawn = false
 Death.ClipsDescendants = true
 Death.LightInfluence = 1
 Death.Size = UDim2.new(6, 0, 1, 0)
