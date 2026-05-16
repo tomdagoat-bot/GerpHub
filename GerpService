@@ -1,560 +1,997 @@
--- Objects To Lua Made By HairBaconGamming --
-local Module_Scripts = {}
-local GerpService = Instance.new("Folder")
-local Gerpie = Instance.new("Folder")
-local _6 = Instance.new("Part")
-local BillboardGui = Instance.new("BillboardGui")
-local TextLabel = Instance.new("TextLabel")
-local Highlight = Instance.new("Highlight")
-local _5 = Instance.new("Part")
-local BillboardGui_1 = Instance.new("BillboardGui")
-local TextLabel_1 = Instance.new("TextLabel")
-local Highlight_1 = Instance.new("Highlight")
-local _4 = Instance.new("Part")
-local BillboardGui_2 = Instance.new("BillboardGui")
-local TextLabel_2 = Instance.new("TextLabel")
-local Highlight_2 = Instance.new("Highlight")
-local _3 = Instance.new("Part")
-local BillboardGui_3 = Instance.new("BillboardGui")
-local TextLabel_3 = Instance.new("TextLabel")
-local Highlight_3 = Instance.new("Highlight")
-local _2 = Instance.new("Part")
-local BillboardGui_4 = Instance.new("BillboardGui")
-local TextLabel_4 = Instance.new("TextLabel")
-local Highlight_4 = Instance.new("Highlight")
-local _1 = Instance.new("Part")
-local BillboardGui_5 = Instance.new("BillboardGui")
-local TextLabel_5 = Instance.new("TextLabel")
-local Highlight_5 = Instance.new("Highlight")
-local _nil = Instance.new("Part")
-local BillboardGui_6 = Instance.new("BillboardGui")
-local TextLabel_6 = Instance.new("TextLabel")
-local Highlight_6 = Instance.new("Highlight")
-local VFX = Instance.new("Folder")
-local Target = Instance.new("Highlight")
-local Death = Instance.new("BillboardGui")
-local Text = Instance.new("TextLabel")
-local Shadow = Instance.new("TextLabel")
-local Gradiant = Instance.new("UIGradient")
-local TechVFX = Instance.new("BillboardGui")
-local Text_1 = Instance.new("TextLabel")
-local Shadow_1 = Instance.new("TextLabel")
-local Gradiant_1 = Instance.new("UIGradient")
-local Saitama = Instance.new("BillboardGui")
-local Text_2 = Instance.new("TextLabel")
-local Shadow_2 = Instance.new("TextLabel")
-local Gradiant_2 = Instance.new("UIGradient")
-local Awaken = Instance.new("Highlight")
-local Tech = Instance.new("TextLabel")
-local Shadow_3 = Instance.new("TextLabel")
-local Input = Instance.new("TextButton")
-local Stroke = Instance.new("UIStroke")
+local awaitRef = {}
+local objects = {}
+local coroutines = {}
 
--- Properties --
-GerpService.Name = [[GerpService]]
-GerpService.Parent = game[ [[ReplicatedStorage]] ]
-Gerpie.Name = [[Gerpie]]
-Gerpie.Parent = GerpService
-_6.Shape = Enum.PartType.Ball
-_6.Anchored = true
-_6.BottomSurface = Enum.SurfaceType.Smooth
-_6.BrickColor = BrickColor.new([[Flame reddish orange]])
-_6.CanCollide = false
-_6.CastShadow = false
-_6.Color = Color3.new(0.937, 0.345, 0.075)
-_6.Material = Enum.Material.Neon
-_6.Reflectance = 1
-_6.Size = Vector3.new(1.000, 1.000, 1.000)
-_6.TopSurface = Enum.SurfaceType.Smooth
-_6.Name = [[6]]
-_6.Parent = Gerpie
-BillboardGui.Active = true
-BillboardGui.Adornee = _6
-BillboardGui.AlwaysOnTop = true
-BillboardGui.ClipsDescendants = true
-BillboardGui.Size = UDim2.new(1, 0, 1, 0)
-BillboardGui.StudsOffset = Vector3.new(0.000, 1.500, 0.000)
-BillboardGui.ResetOnSpawn = false
-BillboardGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-BillboardGui.Parent = _6
-TextLabel.FontFace = Font.new("rbxassetid://12187375716", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-TextLabel.Text = [[6]]
-TextLabel.TextColor3 = Color3.new(1.000, 1.000, 1.000)
-TextLabel.TextScaled = true
-TextLabel.TextSize = 14
-TextLabel.TextStrokeTransparency = 0
-TextLabel.TextWrapped = true
-TextLabel.AnchorPoint = Vector2.new(0.500, 0.500)
-TextLabel.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
-TextLabel.BackgroundTransparency = 1
-TextLabel.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
-TextLabel.BorderSizePixel = 0
-TextLabel.Position = UDim2.new(0.5, 0, 0.5, 0)
-TextLabel.Size = UDim2.new(1, 0, 1, 0)
-TextLabel.Parent = BillboardGui
-Highlight.Adornee = _6
-Highlight.FillColor = Color3.new(1.000, 0.475, 0.149)
-Highlight.FillTransparency = 0
-Highlight.OutlineColor = Color3.new(0.980, 0.384, 0.039)
-Highlight.OutlineTransparency = 0.5
-Highlight.Parent = _6
-_5.Shape = Enum.PartType.Ball
-_5.Anchored = true
-_5.BottomSurface = Enum.SurfaceType.Smooth
-_5.BrickColor = BrickColor.new([[Toothpaste]])
-_5.CanCollide = false
-_5.CastShadow = false
-_5.Color = Color3.new(0.000, 1.000, 1.000)
-_5.Material = Enum.Material.Neon
-_5.Reflectance = 1
-_5.Size = Vector3.new(1.000, 1.000, 1.000)
-_5.TopSurface = Enum.SurfaceType.Smooth
-_5.Name = [[5]]
-_5.Parent = Gerpie
-BillboardGui_1.Active = true
-BillboardGui_1.Adornee = _5
-BillboardGui_1.AlwaysOnTop = true
-BillboardGui_1.ClipsDescendants = true
-BillboardGui_1.Size = UDim2.new(1, 0, 1, 0)
-BillboardGui_1.StudsOffset = Vector3.new(0.000, 1.500, 0.000)
-BillboardGui_1.ResetOnSpawn = false
-BillboardGui_1.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-BillboardGui_1.Parent = _5
-TextLabel_1.FontFace = Font.new("rbxassetid://12187375716", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-TextLabel_1.Text = [[5]]
-TextLabel_1.TextColor3 = Color3.new(1.000, 1.000, 1.000)
-TextLabel_1.TextScaled = true
-TextLabel_1.TextSize = 14
-TextLabel_1.TextStrokeTransparency = 0
-TextLabel_1.TextWrapped = true
-TextLabel_1.AnchorPoint = Vector2.new(0.500, 0.500)
-TextLabel_1.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
-TextLabel_1.BackgroundTransparency = 1
-TextLabel_1.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
-TextLabel_1.BorderSizePixel = 0
-TextLabel_1.Position = UDim2.new(0.5, 0, 0.5, 0)
-TextLabel_1.Size = UDim2.new(1, 0, 1, 0)
-TextLabel_1.Parent = BillboardGui_1
-Highlight_1.Adornee = _5
-Highlight_1.FillColor = Color3.new(0.133, 0.820, 0.796)
-Highlight_1.FillTransparency = 0
-Highlight_1.OutlineColor = Color3.new(0.173, 0.651, 0.855)
-Highlight_1.OutlineTransparency = 0.5
-Highlight_1.Parent = _5
-_4.Shape = Enum.PartType.Ball
-_4.Anchored = true
-_4.BottomSurface = Enum.SurfaceType.Smooth
-_4.BrickColor = BrickColor.new([[New Yeller]])
-_4.CanCollide = false
-_4.CastShadow = false
-_4.Color = Color3.new(1.000, 1.000, 0.000)
-_4.Material = Enum.Material.Neon
-_4.Reflectance = 1
-_4.Size = Vector3.new(1.000, 1.000, 1.000)
-_4.TopSurface = Enum.SurfaceType.Smooth
-_4.Name = [[4]]
-_4.Parent = Gerpie
-BillboardGui_2.Active = true
-BillboardGui_2.Adornee = _4
-BillboardGui_2.AlwaysOnTop = true
-BillboardGui_2.ClipsDescendants = true
-BillboardGui_2.Size = UDim2.new(1, 0, 1, 0)
-BillboardGui_2.StudsOffset = Vector3.new(0.000, 1.500, 0.000)
-BillboardGui_2.ResetOnSpawn = false
-BillboardGui_2.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-BillboardGui_2.Parent = _4
-TextLabel_2.FontFace = Font.new("rbxassetid://12187375716", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-TextLabel_2.Text = [[4]]
-TextLabel_2.TextColor3 = Color3.new(1.000, 1.000, 1.000)
-TextLabel_2.TextScaled = true
-TextLabel_2.TextSize = 14
-TextLabel_2.TextStrokeTransparency = 0
-TextLabel_2.TextWrapped = true
-TextLabel_2.AnchorPoint = Vector2.new(0.500, 0.500)
-TextLabel_2.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
-TextLabel_2.BackgroundTransparency = 1
-TextLabel_2.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
-TextLabel_2.BorderSizePixel = 0
-TextLabel_2.Position = UDim2.new(0.5, 0, 0.5, 0)
-TextLabel_2.Size = UDim2.new(1, 0, 1, 0)
-TextLabel_2.Parent = BillboardGui_2
-Highlight_2.Adornee = _4
-Highlight_2.FillColor = Color3.new(0.886, 1.000, 0.145)
-Highlight_2.FillTransparency = 0
-Highlight_2.OutlineColor = Color3.new(0.855, 0.827, 0.071)
-Highlight_2.Parent = _4
-_3.Shape = Enum.PartType.Ball
-_3.Anchored = true
-_3.BottomSurface = Enum.SurfaceType.Smooth
-_3.BrickColor = BrickColor.new([[Really blue]])
-_3.CanCollide = false
-_3.CastShadow = false
-_3.Color = Color3.new(0.000, 0.000, 1.000)
-_3.Material = Enum.Material.Neon
-_3.Reflectance = 1
-_3.Size = Vector3.new(1.000, 1.000, 1.000)
-_3.TopSurface = Enum.SurfaceType.Smooth
-_3.Name = [[3]]
-_3.Parent = Gerpie
-BillboardGui_3.Active = true
-BillboardGui_3.Adornee = _3
-BillboardGui_3.AlwaysOnTop = true
-BillboardGui_3.ClipsDescendants = true
-BillboardGui_3.Size = UDim2.new(1, 0, 1, 0)
-BillboardGui_3.StudsOffset = Vector3.new(0.000, 1.500, 0.000)
-BillboardGui_3.ResetOnSpawn = false
-BillboardGui_3.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-BillboardGui_3.Parent = _3
-TextLabel_3.FontFace = Font.new("rbxassetid://12187375716", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-TextLabel_3.Text = [[3]]
-TextLabel_3.TextColor3 = Color3.new(1.000, 1.000, 1.000)
-TextLabel_3.TextScaled = true
-TextLabel_3.TextSize = 14
-TextLabel_3.TextStrokeTransparency = 0
-TextLabel_3.TextWrapped = true
-TextLabel_3.AnchorPoint = Vector2.new(0.500, 0.500)
-TextLabel_3.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
-TextLabel_3.BackgroundTransparency = 1
-TextLabel_3.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
-TextLabel_3.BorderSizePixel = 0
-TextLabel_3.Position = UDim2.new(0.5, 0, 0.5, 0)
-TextLabel_3.Size = UDim2.new(1, 0, 1, 0)
-TextLabel_3.Parent = BillboardGui_3
-Highlight_3.Adornee = _3
-Highlight_3.FillColor = Color3.new(0.082, 0.082, 1.000)
-Highlight_3.FillTransparency = 0
-Highlight_3.OutlineColor = Color3.new(0.180, 0.153, 0.518)
-Highlight_3.OutlineTransparency = 0.5
-Highlight_3.Parent = _3
-_2.Shape = Enum.PartType.Ball
-_2.Anchored = true
-_2.BottomSurface = Enum.SurfaceType.Smooth
-_2.BrickColor = BrickColor.new([[Really red]])
-_2.CanCollide = false
-_2.CastShadow = false
-_2.Color = Color3.new(1.000, 0.000, 0.000)
-_2.Material = Enum.Material.Neon
-_2.Reflectance = 1
-_2.Size = Vector3.new(1.000, 1.000, 1.000)
-_2.TopSurface = Enum.SurfaceType.Smooth
-_2.Name = [[2]]
-_2.Parent = Gerpie
-BillboardGui_4.Active = true
-BillboardGui_4.Adornee = _2
-BillboardGui_4.AlwaysOnTop = true
-BillboardGui_4.ClipsDescendants = true
-BillboardGui_4.Size = UDim2.new(1, 0, 1, 0)
-BillboardGui_4.StudsOffset = Vector3.new(0.000, 1.500, 0.000)
-BillboardGui_4.ResetOnSpawn = false
-BillboardGui_4.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-BillboardGui_4.Parent = _2
-TextLabel_4.FontFace = Font.new("rbxassetid://12187375716", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-TextLabel_4.Text = [[2]]
-TextLabel_4.TextColor3 = Color3.new(1.000, 1.000, 1.000)
-TextLabel_4.TextScaled = true
-TextLabel_4.TextSize = 14
-TextLabel_4.TextStrokeTransparency = 0
-TextLabel_4.TextWrapped = true
-TextLabel_4.AnchorPoint = Vector2.new(0.500, 0.500)
-TextLabel_4.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
-TextLabel_4.BackgroundTransparency = 1
-TextLabel_4.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
-TextLabel_4.BorderSizePixel = 0
-TextLabel_4.Position = UDim2.new(0.5, 0, 0.5, 0)
-TextLabel_4.Size = UDim2.new(1, 0, 1, 0)
-TextLabel_4.Parent = BillboardGui_4
-Highlight_4.Adornee = _2
-Highlight_4.FillColor = Color3.new(1.000, 0.000, 0.016)
-Highlight_4.FillTransparency = 0
-Highlight_4.OutlineColor = Color3.new(0.518, 0.000, 0.008)
-Highlight_4.OutlineTransparency = 0.5
-Highlight_4.Parent = _2
-_1.Shape = Enum.PartType.Ball
-_1.Anchored = true
-_1.BottomSurface = Enum.SurfaceType.Smooth
-_1.BrickColor = BrickColor.new([[Lime green]])
-_1.CanCollide = false
-_1.CastShadow = false
-_1.Color = Color3.new(0.000, 1.000, 0.000)
-_1.Material = Enum.Material.Neon
-_1.Reflectance = 1
-_1.Size = Vector3.new(1.000, 1.000, 1.000)
-_1.TopSurface = Enum.SurfaceType.Smooth
-_1.Name = [[1]]
-_1.Parent = Gerpie
-BillboardGui_5.Active = true
-BillboardGui_5.Adornee = _1
-BillboardGui_5.AlwaysOnTop = true
-BillboardGui_5.ClipsDescendants = true
-BillboardGui_5.Size = UDim2.new(1, 0, 1, 0)
-BillboardGui_5.StudsOffset = Vector3.new(0.000, 1.500, 0.000)
-BillboardGui_5.ResetOnSpawn = false
-BillboardGui_5.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-BillboardGui_5.Parent = _1
-TextLabel_5.FontFace = Font.new("rbxassetid://12187375716", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-TextLabel_5.Text = [[1]]
-TextLabel_5.TextColor3 = Color3.new(1.000, 1.000, 1.000)
-TextLabel_5.TextScaled = true
-TextLabel_5.TextSize = 14
-TextLabel_5.TextStrokeTransparency = 0
-TextLabel_5.TextWrapped = true
-TextLabel_5.AnchorPoint = Vector2.new(0.500, 0.500)
-TextLabel_5.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
-TextLabel_5.BackgroundTransparency = 1
-TextLabel_5.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
-TextLabel_5.BorderSizePixel = 0
-TextLabel_5.Position = UDim2.new(0.5, 0, 0.5, 0)
-TextLabel_5.Size = UDim2.new(1, 0, 1, 0)
-TextLabel_5.Parent = BillboardGui_5
-Highlight_5.Adornee = _1
-Highlight_5.FillColor = Color3.new(0.431, 1.000, 0.573)
-Highlight_5.FillTransparency = 0
-Highlight_5.OutlineColor = Color3.new(0.424, 0.925, 0.361)
-Highlight_5.Parent = _1
-_nil.Shape = Enum.PartType.Ball
-_nil.Anchored = true
-_nil.BottomSurface = Enum.SurfaceType.Smooth
-_nil.BrickColor = BrickColor.new([[Royal purple]])
-_nil.CanCollide = false
-_nil.CastShadow = false
-_nil.Color = Color3.new(0.384, 0.145, 0.820)
-_nil.Material = Enum.Material.Neon
-_nil.Reflectance = 1
-_nil.Size = Vector3.new(1.000, 1.000, 1.000)
-_nil.TopSurface = Enum.SurfaceType.Smooth
-_nil.Name = [[nil]]
-_nil.Parent = Gerpie
-BillboardGui_6.Active = true
-BillboardGui_6.Adornee = _nil
-BillboardGui_6.AlwaysOnTop = true
-BillboardGui_6.ClipsDescendants = true
-BillboardGui_6.Size = UDim2.new(1, 0, 1, 0)
-BillboardGui_6.StudsOffset = Vector3.new(0.000, 1.500, 0.000)
-BillboardGui_6.ResetOnSpawn = false
-BillboardGui_6.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
-BillboardGui_6.Parent = _nil
-TextLabel_6.FontFace = Font.new("rbxassetid://12187375716", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-TextLabel_6.Text = [[?]]
-TextLabel_6.TextColor3 = Color3.new(1.000, 1.000, 1.000)
-TextLabel_6.TextScaled = true
-TextLabel_6.TextSize = 14
-TextLabel_6.TextStrokeTransparency = 0
-TextLabel_6.TextWrapped = true
-TextLabel_6.AnchorPoint = Vector2.new(0.500, 0.500)
-TextLabel_6.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
-TextLabel_6.BackgroundTransparency = 1
-TextLabel_6.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
-TextLabel_6.BorderSizePixel = 0
-TextLabel_6.Position = UDim2.new(0.5, 0, 0.5, 0)
-TextLabel_6.Size = UDim2.new(1, 0, 1, 0)
-TextLabel_6.Parent = BillboardGui_6
-Highlight_6.Adornee = _nil
-Highlight_6.FillColor = Color3.new(0.624, 0.192, 1.000)
-Highlight_6.FillTransparency = 0
-Highlight_6.OutlineColor = Color3.new(0.529, 0.400, 0.675)
-Highlight_6.OutlineTransparency = 0.5
-Highlight_6.Parent = _nil
-VFX.Name = [[VFX]]
-VFX.Parent = GerpService
-Target.FillTransparency = 1
-Target.OutlineTransparency = 1
-Target.Name = [[Target]]
-Target.Parent = VFX
-Death.Active = true
-Death.AlwaysOnTop = true
-Death.ClipsDescendants = true
-Death.LightInfluence = 1
-Death.Size = UDim2.new(8, 0, 2, 0)
-Death.Name = [[Death]]
-Death.Parent = VFX
-Text.FontFace = Font.new("rbxassetid://11322590111", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
-Text.Text = [[DEATH COUNTER]]
-Text.TextColor3 = Color3.new(1.000, 0.000, 0.000)
-Text.TextScaled = true
-Text.TextSize = 14
-Text.TextWrapped = true
-Text.AnchorPoint = Vector2.new(0.500, 0.500)
-Text.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
-Text.BackgroundTransparency = 1
-Text.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
-Text.BorderSizePixel = 0
-Text.Position = UDim2.new(0.5, 0, 0.5, 0)
-Text.Size = UDim2.new(1, 0, 1, 0)
-Text.ZIndex = 2
-Text.Name = [[Text]]
-Text.Parent = Death
-Shadow.FontFace = Font.new("rbxassetid://11322590111", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
-Shadow.Text = [[DEATH COUNTER]]
-Shadow.TextColor3 = Color3.new(0.000, 0.000, 0.000)
-Shadow.TextScaled = true
-Shadow.TextSize = 14
-Shadow.TextStrokeTransparency = 0.7
-Shadow.TextTransparency = 0.7
-Shadow.TextWrapped = true
-Shadow.AnchorPoint = Vector2.new(0.500, 0.500)
-Shadow.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
-Shadow.BackgroundTransparency = 1
-Shadow.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
-Shadow.BorderSizePixel = 0
-Shadow.Position = UDim2.new(0.5, 2, 0.5, 2)
-Shadow.Size = UDim2.new(1, 0, 1, 0)
-Shadow.Name = [[Shadow]]
-Shadow.Parent = Text
-Gradiant.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000, Color3.new(1.000, 1.000, 1.000)), ColorSequenceKeypoint.new(1.000, Color3.new(0.392, 0.392, 0.392))})
-Gradiant.Rotation = 90
-Gradiant.Name = [[Gradiant]]
-Gradiant.Parent = Text
-TechVFX.Active = true
-TechVFX.AlwaysOnTop = true
-TechVFX.ClipsDescendants = true
-TechVFX.LightInfluence = 1
-TechVFX.Size = UDim2.new(6, 0, 1, 0)
-TechVFX.Name = [[TechVFX]]
-TechVFX.Parent = VFX
-Text_1.FontFace = Font.new("rbxassetid://12187360881", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-Text_1.Text = [[TECH NAME]]
-Text_1.TextColor3 = Color3.new(0.255, 0.737, 1.000)
-Text_1.TextScaled = true
-Text_1.TextSize = 14
-Text_1.TextWrapped = true
-Text_1.AnchorPoint = Vector2.new(0.500, 0.500)
-Text_1.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
-Text_1.BackgroundTransparency = 1
-Text_1.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
-Text_1.BorderSizePixel = 0
-Text_1.Position = UDim2.new(0.5, 0, 0.5, 0)
-Text_1.Size = UDim2.new(1, 0, 1, 0)
-Text_1.ZIndex = 2
-Text_1.Name = [[Text]]
-Text_1.Parent = TechVFX
-Shadow_1.FontFace = Font.new("rbxassetid://12187360881", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-Shadow_1.Text = [[TECH NAME]]
-Shadow_1.TextColor3 = Color3.new(0.000, 0.000, 0.000)
-Shadow_1.TextScaled = true
-Shadow_1.TextSize = 14
-Shadow_1.TextStrokeTransparency = 0.7
-Shadow_1.TextTransparency = 0.7
-Shadow_1.TextWrapped = true
-Shadow_1.AnchorPoint = Vector2.new(0.500, 0.500)
-Shadow_1.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
-Shadow_1.BackgroundTransparency = 1
-Shadow_1.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
-Shadow_1.BorderSizePixel = 0
-Shadow_1.Position = UDim2.new(0.5, 2, 0.5, 2)
-Shadow_1.Size = UDim2.new(1, 0, 1, 0)
-Shadow_1.Name = [[Shadow]]
-Shadow_1.Parent = Text_1
-Gradiant_1.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000, Color3.new(1.000, 1.000, 1.000)), ColorSequenceKeypoint.new(1.000, Color3.new(0.055, 0.141, 0.345))})
-Gradiant_1.Rotation = 90
-Gradiant_1.Name = [[Gradiant]]
-Gradiant_1.Parent = Text_1
-Saitama.Active = true
-Saitama.AlwaysOnTop = true
-Saitama.ClipsDescendants = true
-Saitama.LightInfluence = 1
-Saitama.Size = UDim2.new(8, 0, 2, 0)
-Saitama.Name = [[Saitama]]
-Saitama.Parent = VFX
-Text_2.FontFace = Font.new("rbxassetid://11322590111", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
-Text_2.Text = [[SAITAMA ULTIMATE]]
-Text_2.TextColor3 = Color3.new(0.957, 1.000, 0.459)
-Text_2.TextScaled = true
-Text_2.TextSize = 14
-Text_2.TextWrapped = true
-Text_2.AnchorPoint = Vector2.new(0.500, 0.500)
-Text_2.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
-Text_2.BackgroundTransparency = 1
-Text_2.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
-Text_2.BorderSizePixel = 0
-Text_2.Position = UDim2.new(0.5, 0, 0.5, 0)
-Text_2.Size = UDim2.new(1, 0, 1, 0)
-Text_2.ZIndex = 2
-Text_2.Name = [[Text]]
-Text_2.Parent = Saitama
-Shadow_2.FontFace = Font.new("rbxassetid://11322590111", Enum.FontWeight.Bold, Enum.FontStyle.Normal)
-Shadow_2.Text = [[SAITAMA ULTIMATE]]
-Shadow_2.TextColor3 = Color3.new(0.000, 0.000, 0.000)
-Shadow_2.TextScaled = true
-Shadow_2.TextSize = 14
-Shadow_2.TextStrokeTransparency = 0.7
-Shadow_2.TextTransparency = 0.7
-Shadow_2.TextWrapped = true
-Shadow_2.AnchorPoint = Vector2.new(0.500, 0.500)
-Shadow_2.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
-Shadow_2.BackgroundTransparency = 1
-Shadow_2.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
-Shadow_2.BorderSizePixel = 0
-Shadow_2.Position = UDim2.new(0.5, 2, 0.5, 2)
-Shadow_2.Size = UDim2.new(1, 0, 1, 0)
-Shadow_2.Name = [[Shadow]]
-Shadow_2.Parent = Text_2
-Gradiant_2.Color = ColorSequence.new({ColorSequenceKeypoint.new(0.000, Color3.new(1.000, 1.000, 1.000)), ColorSequenceKeypoint.new(1.000, Color3.new(0.392, 0.392, 0.392))})
-Gradiant_2.Rotation = 90
-Gradiant_2.Name = [[Gradiant]]
-Gradiant_2.Parent = Text_2
-Awaken.DepthMode = Enum.HighlightDepthMode.Occluded
-Awaken.FillColor = Color3.new(0.173, 0.643, 1.000)
-Awaken.FillTransparency = 0.3
-Awaken.OutlineColor = Color3.new(0.396, 0.757, 1.000)
-Awaken.OutlineTransparency = 0.3
-Awaken.Name = [[Awaken]]
-Awaken.Parent = VFX
-Tech.FontFace = Font.new("rbxasset://fonts/families/ComicNeueAngular.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-Tech.RichText = true
-Tech.Text = [[Tech: <font color="rgb(255,23,0)">Disabled</font>]]
-Tech.TextColor3 = Color3.new(1.000, 1.000, 1.000)
-Tech.TextScaled = true
-Tech.TextSize = 14
-Tech.TextStrokeTransparency = 0.4
-Tech.TextWrapped = true
-Tech.AnchorPoint = Vector2.new(0.500, 0.500)
-Tech.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
-Tech.BackgroundTransparency = 1
-Tech.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
-Tech.BorderSizePixel = 0
-Tech.Position = UDim2.new(0.5, 0, 0.6, 0)
-Tech.Size = UDim2.new(0.8, 0, 0.18, 0)
-Tech.ZIndex = 2
-Tech.Name = [[Tech]]
-Tech.Parent = GerpService
-Shadow_3.FontFace = Font.new("rbxasset://fonts/families/ComicNeueAngular.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-Shadow_3.RichText = true
-Shadow_3.Text = [[Tech: Disabled]]
-Shadow_3.TextColor3 = Color3.new(0.000, 0.000, 0.000)
-Shadow_3.TextScaled = true
-Shadow_3.TextSize = 14
-Shadow_3.TextTransparency = 0.5
-Shadow_3.TextWrapped = true
-Shadow_3.AnchorPoint = Vector2.new(0.500, 0.500)
-Shadow_3.BackgroundColor3 = Color3.new(1.000, 1.000, 1.000)
-Shadow_3.BackgroundTransparency = 1
-Shadow_3.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
-Shadow_3.BorderSizePixel = 0
-Shadow_3.Position = UDim2.new(0.5, 1, 0.5, 2)
-Shadow_3.Size = UDim2.new(1, 0, 1, 0)
-Shadow_3.Name = [[Shadow]]
-Shadow_3.Parent = Tech
-Input.FontFace = Font.new("rbxasset://fonts/families/PermanentMarker.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal)
-Input.Text = [[Input: [Key]]
-Input.TextColor3 = Color3.new(1.000, 1.000, 1.000)
-Input.TextScaled = true
-Input.TextSize = 14
-Input.TextStrokeTransparency = 0
-Input.TextWrapped = true
-Input.Active = false
-Input.BackgroundColor3 = Color3.new(0.224, 0.224, 0.224)
-Input.BorderColor3 = Color3.new(0.000, 0.000, 0.000)
-Input.BorderSizePixel = 0
-Input.Selectable = false
-Input.Size = UDim2.new(0.9, 0, 0.08, 0)
-Input.Name = [[Input]]
-Input.Parent = GerpService
-Stroke.ApplyStrokeMode = Enum.ApplyStrokeMode.Border
-Stroke.Color = Color3.new(0.149, 0.149, 0.149)
-Stroke.LineJoinMode = Enum.LineJoinMode.Miter
-Stroke.Thickness = 0.1
-Stroke.Name = [[Stroke]]
-Stroke.Parent = Input
+local item = {
+	id = 0;
+	type = "Folder";
+	children = {
+		[1] = {
+			id = 1;
+			type = "Folder";
+			children = {
+				[1] = {
+					id = 2;
+					type = "Part";
+					children = {
+						[1] = {
+							id = 3;
+							type = "BillboardGui";
+							children = {
+								[1] = {
+									id = 4;
+									type = "TextLabel";
+									children = {};
+									properties = {
+										FontFace = Font.new("rbxassetid://12187375716", Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+										Parent = {
+											[1] = 3;
+										};
+										TextColor3 = Color3.new(1, 1, 1);
+										BorderColor3 = Color3.new(0, 0, 0);
+										Text = "6";
+										TextWrapped = true;
+										TextStrokeTransparency = 0;
+										AnchorPoint = Vector2.new(0.5, 0.5);
+										TextSize = 14;
+										BackgroundTransparency = 1;
+										Position = UDim2.new(0.5, 0, 0.5, 0);
+										TextScaled = true;
+										Size = UDim2.new(1, 0, 1, 0);
+										BorderSizePixel = 0;
+										BackgroundColor3 = Color3.new(1, 1, 1);
+									};
+								};
+							};
+							properties = {
+								Parent = {
+									[1] = 2;
+								};
+								StudsOffset = Vector3.new(0, 1.5, 0);
+								Active = true;
+								ZIndexBehavior = Enum.ZIndexBehavior.Sibling;
+								ResetOnSpawn = false;
+								ClipsDescendants = true;
+								AlwaysOnTop = true;
+								Size = UDim2.new(1, 0, 1, 0);
+							};
+						};
+						[2] = {
+							id = 5;
+							type = "Highlight";
+							children = {};
+							properties = {
+								FillColor = Color3.new(1, 0.47451, 0.14902);
+								OutlineTransparency = 0.5;
+								OutlineColor = Color3.new(0.980392, 0.384314, 0.0392157);
+								FillTransparency = 0;
+								Parent = {
+									[1] = 2;
+								};
+							};
+						};
+					};
+					properties = {
+						BottomSurface = Enum.SurfaceType.Smooth;
+						CanCollide = false;
+						Color = Color3.new(0.937255, 0.345098, 0.0745098);
+						Anchored = true;
+						Parent = {
+							[1] = 1;
+						};
+						Shape = Enum.PartType.Ball;
+						TopSurface = Enum.SurfaceType.Smooth;
+						Name = "6";
+						BrickColor = BrickColor.new("Flame reddish orange");
+						Reflectance = 1;
+						Material = Enum.Material.Neon;
+						CastShadow = false;
+						Size = Vector3.new(1, 1, 1);
+					};
+				};
+				[2] = {
+					id = 6;
+					type = "Part";
+					children = {
+						[1] = {
+							id = 7;
+							type = "BillboardGui";
+							children = {
+								[1] = {
+									id = 8;
+									type = "TextLabel";
+									children = {};
+									properties = {
+										FontFace = Font.new("rbxassetid://12187375716", Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+										Parent = {
+											[1] = 7;
+										};
+										TextColor3 = Color3.new(1, 1, 1);
+										BorderColor3 = Color3.new(0, 0, 0);
+										Text = "5";
+										TextWrapped = true;
+										TextStrokeTransparency = 0;
+										AnchorPoint = Vector2.new(0.5, 0.5);
+										TextSize = 14;
+										BackgroundTransparency = 1;
+										Position = UDim2.new(0.5, 0, 0.5, 0);
+										TextScaled = true;
+										Size = UDim2.new(1, 0, 1, 0);
+										BorderSizePixel = 0;
+										BackgroundColor3 = Color3.new(1, 1, 1);
+									};
+								};
+							};
+							properties = {
+								Parent = {
+									[1] = 6;
+								};
+								StudsOffset = Vector3.new(0, 1.5, 0);
+								Active = true;
+								ZIndexBehavior = Enum.ZIndexBehavior.Sibling;
+								ResetOnSpawn = false;
+								ClipsDescendants = true;
+								AlwaysOnTop = true;
+								Size = UDim2.new(1, 0, 1, 0);
+							};
+						};
+						[2] = {
+							id = 9;
+							type = "Highlight";
+							children = {};
+							properties = {
+								FillColor = Color3.new(0.133333, 0.819608, 0.796079);
+								OutlineTransparency = 0.5;
+								OutlineColor = Color3.new(0.172549, 0.65098, 0.854902);
+								FillTransparency = 0;
+								Parent = {
+									[1] = 6;
+								};
+							};
+						};
+					};
+					properties = {
+						BottomSurface = Enum.SurfaceType.Smooth;
+						CanCollide = false;
+						Color = Color3.new(0, 1, 1);
+						Anchored = true;
+						Parent = {
+							[1] = 1;
+						};
+						Shape = Enum.PartType.Ball;
+						TopSurface = Enum.SurfaceType.Smooth;
+						Name = "5";
+						BrickColor = BrickColor.new("Toothpaste");
+						Reflectance = 1;
+						Material = Enum.Material.Neon;
+						CastShadow = false;
+						Size = Vector3.new(1, 1, 1);
+					};
+				};
+				[3] = {
+					id = 10;
+					type = "Part";
+					children = {
+						[1] = {
+							id = 11;
+							type = "BillboardGui";
+							children = {
+								[1] = {
+									id = 12;
+									type = "TextLabel";
+									children = {};
+									properties = {
+										FontFace = Font.new("rbxassetid://12187375716", Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+										Parent = {
+											[1] = 11;
+										};
+										TextColor3 = Color3.new(1, 1, 1);
+										BorderColor3 = Color3.new(0, 0, 0);
+										Text = "4";
+										TextWrapped = true;
+										TextStrokeTransparency = 0;
+										AnchorPoint = Vector2.new(0.5, 0.5);
+										TextSize = 14;
+										BackgroundTransparency = 1;
+										Position = UDim2.new(0.5, 0, 0.5, 0);
+										TextScaled = true;
+										Size = UDim2.new(1, 0, 1, 0);
+										BorderSizePixel = 0;
+										BackgroundColor3 = Color3.new(1, 1, 1);
+									};
+								};
+							};
+							properties = {
+								Parent = {
+									[1] = 10;
+								};
+								StudsOffset = Vector3.new(0, 1.5, 0);
+								Active = true;
+								ZIndexBehavior = Enum.ZIndexBehavior.Sibling;
+								ResetOnSpawn = false;
+								ClipsDescendants = true;
+								AlwaysOnTop = true;
+								Size = UDim2.new(1, 0, 1, 0);
+							};
+						};
+						[2] = {
+							id = 13;
+							type = "Highlight";
+							children = {};
+							properties = {
+								FillColor = Color3.new(0.886275, 1, 0.145098);
+								Parent = {
+									[1] = 10;
+								};
+								FillTransparency = 0;
+								OutlineColor = Color3.new(0.854902, 0.827451, 0.0705882);
+							};
+						};
+					};
+					properties = {
+						BottomSurface = Enum.SurfaceType.Smooth;
+						CanCollide = false;
+						Color = Color3.new(1, 1, 0);
+						Anchored = true;
+						Parent = {
+							[1] = 1;
+						};
+						Shape = Enum.PartType.Ball;
+						TopSurface = Enum.SurfaceType.Smooth;
+						Name = "4";
+						BrickColor = BrickColor.new("New Yeller");
+						Reflectance = 1;
+						Material = Enum.Material.Neon;
+						CastShadow = false;
+						Size = Vector3.new(1, 1, 1);
+					};
+				};
+				[4] = {
+					id = 14;
+					type = "Part";
+					children = {
+						[1] = {
+							id = 15;
+							type = "BillboardGui";
+							children = {
+								[1] = {
+									id = 16;
+									type = "TextLabel";
+									children = {};
+									properties = {
+										FontFace = Font.new("rbxassetid://12187375716", Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+										Parent = {
+											[1] = 15;
+										};
+										TextColor3 = Color3.new(1, 1, 1);
+										BorderColor3 = Color3.new(0, 0, 0);
+										Text = "3";
+										TextWrapped = true;
+										TextStrokeTransparency = 0;
+										AnchorPoint = Vector2.new(0.5, 0.5);
+										TextSize = 14;
+										BackgroundTransparency = 1;
+										Position = UDim2.new(0.5, 0, 0.5, 0);
+										TextScaled = true;
+										Size = UDim2.new(1, 0, 1, 0);
+										BorderSizePixel = 0;
+										BackgroundColor3 = Color3.new(1, 1, 1);
+									};
+								};
+							};
+							properties = {
+								Parent = {
+									[1] = 14;
+								};
+								StudsOffset = Vector3.new(0, 1.5, 0);
+								Active = true;
+								ZIndexBehavior = Enum.ZIndexBehavior.Sibling;
+								ResetOnSpawn = false;
+								ClipsDescendants = true;
+								AlwaysOnTop = true;
+								Size = UDim2.new(1, 0, 1, 0);
+							};
+						};
+						[2] = {
+							id = 17;
+							type = "Highlight";
+							children = {};
+							properties = {
+								FillColor = Color3.new(0.0823529, 0.0823529, 1);
+								OutlineTransparency = 0.5;
+								OutlineColor = Color3.new(0.180392, 0.152941, 0.517647);
+								FillTransparency = 0;
+								Parent = {
+									[1] = 14;
+								};
+							};
+						};
+					};
+					properties = {
+						BottomSurface = Enum.SurfaceType.Smooth;
+						CanCollide = false;
+						Color = Color3.new(0, 0, 1);
+						Anchored = true;
+						Parent = {
+							[1] = 1;
+						};
+						Shape = Enum.PartType.Ball;
+						TopSurface = Enum.SurfaceType.Smooth;
+						Name = "3";
+						BrickColor = BrickColor.new("Really blue");
+						Reflectance = 1;
+						Material = Enum.Material.Neon;
+						CastShadow = false;
+						Size = Vector3.new(1, 1, 1);
+					};
+				};
+				[5] = {
+					id = 18;
+					type = "Part";
+					children = {
+						[1] = {
+							id = 19;
+							type = "BillboardGui";
+							children = {
+								[1] = {
+									id = 20;
+									type = "TextLabel";
+									children = {};
+									properties = {
+										FontFace = Font.new("rbxassetid://12187375716", Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+										Parent = {
+											[1] = 19;
+										};
+										TextColor3 = Color3.new(1, 1, 1);
+										BorderColor3 = Color3.new(0, 0, 0);
+										Text = "2";
+										TextWrapped = true;
+										TextStrokeTransparency = 0;
+										AnchorPoint = Vector2.new(0.5, 0.5);
+										TextSize = 14;
+										BackgroundTransparency = 1;
+										Position = UDim2.new(0.5, 0, 0.5, 0);
+										TextScaled = true;
+										Size = UDim2.new(1, 0, 1, 0);
+										BorderSizePixel = 0;
+										BackgroundColor3 = Color3.new(1, 1, 1);
+									};
+								};
+							};
+							properties = {
+								Parent = {
+									[1] = 18;
+								};
+								StudsOffset = Vector3.new(0, 1.5, 0);
+								Active = true;
+								ZIndexBehavior = Enum.ZIndexBehavior.Sibling;
+								ResetOnSpawn = false;
+								ClipsDescendants = true;
+								AlwaysOnTop = true;
+								Size = UDim2.new(1, 0, 1, 0);
+							};
+						};
+						[2] = {
+							id = 21;
+							type = "Highlight";
+							children = {};
+							properties = {
+								FillColor = Color3.new(1, 0, 0.0156863);
+								OutlineTransparency = 0.5;
+								OutlineColor = Color3.new(0.517647, 0, 0.00784314);
+								FillTransparency = 0;
+								Parent = {
+									[1] = 18;
+								};
+							};
+						};
+					};
+					properties = {
+						BottomSurface = Enum.SurfaceType.Smooth;
+						CanCollide = false;
+						Color = Color3.new(1, 0, 0);
+						Anchored = true;
+						Parent = {
+							[1] = 1;
+						};
+						Shape = Enum.PartType.Ball;
+						TopSurface = Enum.SurfaceType.Smooth;
+						Name = "2";
+						BrickColor = BrickColor.new("Really red");
+						Reflectance = 1;
+						Material = Enum.Material.Neon;
+						CastShadow = false;
+						Size = Vector3.new(1, 1, 1);
+					};
+				};
+				[6] = {
+					id = 22;
+					type = "Part";
+					children = {
+						[1] = {
+							id = 23;
+							type = "BillboardGui";
+							children = {
+								[1] = {
+									id = 24;
+									type = "TextLabel";
+									children = {};
+									properties = {
+										FontFace = Font.new("rbxassetid://12187375716", Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+										Parent = {
+											[1] = 23;
+										};
+										TextColor3 = Color3.new(1, 1, 1);
+										BorderColor3 = Color3.new(0, 0, 0);
+										Text = "1";
+										TextWrapped = true;
+										TextStrokeTransparency = 0;
+										AnchorPoint = Vector2.new(0.5, 0.5);
+										TextSize = 14;
+										BackgroundTransparency = 1;
+										Position = UDim2.new(0.5, 0, 0.5, 0);
+										TextScaled = true;
+										Size = UDim2.new(1, 0, 1, 0);
+										BorderSizePixel = 0;
+										BackgroundColor3 = Color3.new(1, 1, 1);
+									};
+								};
+							};
+							properties = {
+								Parent = {
+									[1] = 22;
+								};
+								StudsOffset = Vector3.new(0, 1.5, 0);
+								Active = true;
+								ZIndexBehavior = Enum.ZIndexBehavior.Sibling;
+								ResetOnSpawn = false;
+								ClipsDescendants = true;
+								AlwaysOnTop = true;
+								Size = UDim2.new(1, 0, 1, 0);
+							};
+						};
+						[2] = {
+							id = 25;
+							type = "Highlight";
+							children = {};
+							properties = {
+								FillColor = Color3.new(0.431373, 1, 0.572549);
+								Parent = {
+									[1] = 22;
+								};
+								FillTransparency = 0;
+								OutlineColor = Color3.new(0.423529, 0.92549, 0.360784);
+							};
+						};
+					};
+					properties = {
+						BottomSurface = Enum.SurfaceType.Smooth;
+						CanCollide = false;
+						Color = Color3.new(0, 1, 0);
+						Anchored = true;
+						Parent = {
+							[1] = 1;
+						};
+						Shape = Enum.PartType.Ball;
+						TopSurface = Enum.SurfaceType.Smooth;
+						Name = "1";
+						BrickColor = BrickColor.new("Lime green");
+						Reflectance = 1;
+						Material = Enum.Material.Neon;
+						CastShadow = false;
+						Size = Vector3.new(1, 1, 1);
+					};
+				};
+				[7] = {
+					id = 26;
+					type = "Part";
+					children = {
+						[1] = {
+							id = 27;
+							type = "BillboardGui";
+							children = {
+								[1] = {
+									id = 28;
+									type = "TextLabel";
+									children = {};
+									properties = {
+										FontFace = Font.new("rbxassetid://12187375716", Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+										Parent = {
+											[1] = 27;
+										};
+										TextColor3 = Color3.new(1, 1, 1);
+										BorderColor3 = Color3.new(0, 0, 0);
+										Text = "?";
+										TextWrapped = true;
+										TextStrokeTransparency = 0;
+										AnchorPoint = Vector2.new(0.5, 0.5);
+										TextSize = 14;
+										BackgroundTransparency = 1;
+										Position = UDim2.new(0.5, 0, 0.5, 0);
+										TextScaled = true;
+										Size = UDim2.new(1, 0, 1, 0);
+										BorderSizePixel = 0;
+										BackgroundColor3 = Color3.new(1, 1, 1);
+									};
+								};
+							};
+							properties = {
+								Parent = {
+									[1] = 26;
+								};
+								StudsOffset = Vector3.new(0, 1.5, 0);
+								Active = true;
+								ZIndexBehavior = Enum.ZIndexBehavior.Sibling;
+								ResetOnSpawn = false;
+								ClipsDescendants = true;
+								AlwaysOnTop = true;
+								Size = UDim2.new(1, 0, 1, 0);
+							};
+						};
+						[2] = {
+							id = 29;
+							type = "Highlight";
+							children = {};
+							properties = {
+								FillColor = Color3.new(0.623529, 0.192157, 1);
+								OutlineTransparency = 0.5;
+								OutlineColor = Color3.new(0.529412, 0.4, 0.67451);
+								FillTransparency = 0;
+								Parent = {
+									[1] = 26;
+								};
+							};
+						};
+					};
+					properties = {
+						BottomSurface = Enum.SurfaceType.Smooth;
+						CanCollide = false;
+						Color = Color3.new(0.384314, 0.145098, 0.819608);
+						Anchored = true;
+						Parent = {
+							[1] = 1;
+						};
+						Shape = Enum.PartType.Ball;
+						TopSurface = Enum.SurfaceType.Smooth;
+						Name = "nil";
+						BrickColor = BrickColor.new("Royal purple");
+						Reflectance = 1;
+						Material = Enum.Material.Neon;
+						CastShadow = false;
+						Size = Vector3.new(1, 1, 1);
+					};
+				};
+			};
+			properties = {
+				Name = "Gerpie";
+				Parent = {
+					[1] = 0;
+				};
+			};
+		};
+		[2] = {
+			id = 30;
+			type = "Folder";
+			children = {
+				[1] = {
+					id = 31;
+					type = "Highlight";
+					children = {};
+					properties = {
+						Parent = {
+							[1] = 30;
+						};
+						OutlineTransparency = 1;
+						FillTransparency = 1;
+						Name = "Target";
+					};
+				};
+				[2] = {
+					id = 32;
+					type = "BillboardGui";
+					children = {
+						[1] = {
+							id = 33;
+							type = "TextLabel";
+							children = {
+								[1] = {
+									id = 34;
+									type = "TextLabel";
+									children = {};
+									properties = {
+										FontFace = Font.new("rbxassetid://11322590111", Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+										TextTransparency = 0.699999988079071;
+										TextStrokeTransparency = 0.699999988079071;
+										AnchorPoint = Vector2.new(0.5, 0.5);
+										BorderSizePixel = 0;
+										Size = UDim2.new(1, 0, 1, 0);
+										TextColor3 = Color3.new(0, 0, 0);
+										BorderColor3 = Color3.new(0, 0, 0);
+										Text = "DEATH COUNTER";
+										Parent = {
+											[1] = 33;
+										};
+										TextWrapped = true;
+										Name = "Shadow";
+										Position = UDim2.new(0.5, 2, 0.5, 2);
+										TextSize = 14;
+										BackgroundTransparency = 1;
+										TextScaled = true;
+										BackgroundColor3 = Color3.new(1, 1, 1);
+									};
+								};
+								[2] = {
+									id = 35;
+									type = "UIGradient";
+									children = {};
+									properties = {
+										Color = ColorSequence.new({ColorSequenceKeypoint.new(0, Color3.new(1, 1, 1)), ColorSequenceKeypoint.new(1, Color3.new(0.392157, 0.392157, 0.392157))});
+										Parent = {
+											[1] = 33;
+										};
+										Name = "Gradiant";
+										Rotation = 90;
+									};
+								};
+							};
+							properties = {
+								Parent = {
+									[1] = 32;
+								};
+								FontFace = Font.new("rbxassetid://11322590111", Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+								TextWrapped = true;
+								TextColor3 = Color3.new(1, 0, 0);
+								BorderColor3 = Color3.new(0, 0, 0);
+								Text = "DEATH COUNTER";
+								TextSize = 14;
+								TextScaled = true;
+								AnchorPoint = Vector2.new(0.5, 0.5);
+								Name = "Text";
+								BackgroundTransparency = 1;
+								Position = UDim2.new(0.5, 0, 0.5, 0);
+								Size = UDim2.new(1, 0, 1, 0);
+								ZIndex = 2;
+								BorderSizePixel = 0;
+								BackgroundColor3 = Color3.new(1, 1, 1);
+							};
+						};
+					};
+					properties = {
+						LightInfluence = 1;
+						Name = "Death";
+						Active = true;
+						Parent = {
+							[1] = 30;
+						};
+						ClipsDescendants = true;
+						AlwaysOnTop = true;
+						Size = UDim2.new(8, 0, 2, 0);
+					};
+				};
+				[3] = {
+					id = 36;
+					type = "BillboardGui";
+					children = {
+						[1] = {
+							id = 37;
+							type = "TextLabel";
+							children = {
+								[1] = {
+									id = 38;
+									type = "TextLabel";
+									children = {};
+									properties = {
+										FontFace = Font.new("rbxassetid://12187360881", Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+										TextTransparency = 0.699999988079071;
+										TextStrokeTransparency = 0.699999988079071;
+										AnchorPoint = Vector2.new(0.5, 0.5);
+										BorderSizePixel = 0;
+										Size = UDim2.new(1, 0, 1, 0);
+										TextColor3 = Color3.new(0, 0, 0);
+										BorderColor3 = Color3.new(0, 0, 0);
+										Text = "TECH NAME";
+										Parent = {
+											[1] = 37;
+										};
+										TextWrapped = true;
+										Name = "Shadow";
+										Position = UDim2.new(0.5, 2, 0.5, 2);
+										TextSize = 14;
+										BackgroundTransparency = 1;
+										TextScaled = true;
+										BackgroundColor3 = Color3.new(1, 1, 1);
+									};
+								};
+								[2] = {
+									id = 39;
+									type = "UIGradient";
+									children = {};
+									properties = {
+										Color = ColorSequence.new({ColorSequenceKeypoint.new(0, Color3.new(1, 1, 1)), ColorSequenceKeypoint.new(1, Color3.new(0.054902, 0.141176, 0.345098))});
+										Parent = {
+											[1] = 37;
+										};
+										Name = "Gradiant";
+										Rotation = 90;
+									};
+								};
+							};
+							properties = {
+								Parent = {
+									[1] = 36;
+								};
+								FontFace = Font.new("rbxassetid://12187360881", Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+								TextWrapped = true;
+								TextColor3 = Color3.new(0.254902, 0.737255, 1);
+								BorderColor3 = Color3.new(0, 0, 0);
+								Text = "TECH NAME";
+								TextSize = 14;
+								TextScaled = true;
+								AnchorPoint = Vector2.new(0.5, 0.5);
+								Name = "Text";
+								BackgroundTransparency = 1;
+								Position = UDim2.new(0.5, 0, 0.5, 0);
+								Size = UDim2.new(1, 0, 1, 0);
+								ZIndex = 2;
+								BorderSizePixel = 0;
+								BackgroundColor3 = Color3.new(1, 1, 1);
+							};
+						};
+					};
+					properties = {
+						LightInfluence = 1;
+						Name = "TechVFX";
+						Active = true;
+						Parent = {
+							[1] = 30;
+						};
+						ClipsDescendants = true;
+						AlwaysOnTop = true;
+						Size = UDim2.new(6, 0, 1, 0);
+					};
+				};
+				[4] = {
+					id = 40;
+					type = "BillboardGui";
+					children = {
+						[1] = {
+							id = 41;
+							type = "TextLabel";
+							children = {
+								[1] = {
+									id = 42;
+									type = "TextLabel";
+									children = {};
+									properties = {
+										FontFace = Font.new("rbxassetid://11322590111", Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+										TextTransparency = 0.699999988079071;
+										TextStrokeTransparency = 0.699999988079071;
+										AnchorPoint = Vector2.new(0.5, 0.5);
+										BorderSizePixel = 0;
+										Size = UDim2.new(1, 0, 1, 0);
+										TextColor3 = Color3.new(0, 0, 0);
+										BorderColor3 = Color3.new(0, 0, 0);
+										Text = "SAITAMA ULTIMATE";
+										Parent = {
+											[1] = 41;
+										};
+										TextWrapped = true;
+										Name = "Shadow";
+										Position = UDim2.new(0.5, 2, 0.5, 2);
+										TextSize = 14;
+										BackgroundTransparency = 1;
+										TextScaled = true;
+										BackgroundColor3 = Color3.new(1, 1, 1);
+									};
+								};
+								[2] = {
+									id = 43;
+									type = "UIGradient";
+									children = {};
+									properties = {
+										Color = ColorSequence.new({ColorSequenceKeypoint.new(0, Color3.new(1, 1, 1)), ColorSequenceKeypoint.new(1, Color3.new(0.392157, 0.392157, 0.392157))});
+										Parent = {
+											[1] = 41;
+										};
+										Name = "Gradiant";
+										Rotation = 90;
+									};
+								};
+							};
+							properties = {
+								Parent = {
+									[1] = 40;
+								};
+								FontFace = Font.new("rbxassetid://11322590111", Enum.FontWeight.Bold, Enum.FontStyle.Normal);
+								TextWrapped = true;
+								TextColor3 = Color3.new(0.956863, 1, 0.458824);
+								BorderColor3 = Color3.new(0, 0, 0);
+								Text = "SAITAMA ULTIMATE";
+								TextSize = 14;
+								TextScaled = true;
+								AnchorPoint = Vector2.new(0.5, 0.5);
+								Name = "Text";
+								BackgroundTransparency = 1;
+								Position = UDim2.new(0.5, 0, 0.5, 0);
+								Size = UDim2.new(1, 0, 1, 0);
+								ZIndex = 2;
+								BorderSizePixel = 0;
+								BackgroundColor3 = Color3.new(1, 1, 1);
+							};
+						};
+					};
+					properties = {
+						LightInfluence = 1;
+						Name = "Saitama";
+						Active = true;
+						Parent = {
+							[1] = 30;
+						};
+						ClipsDescendants = true;
+						AlwaysOnTop = true;
+						Size = UDim2.new(8, 0, 2, 0);
+					};
+				};
+				[5] = {
+					id = 44;
+					type = "Highlight";
+					children = {};
+					properties = {
+						FillColor = Color3.new(0.172549, 0.643137, 1);
+						Name = "Awaken";
+						DepthMode = Enum.HighlightDepthMode.Occluded;
+						OutlineColor = Color3.new(0.396078, 0.756863, 1);
+						Parent = {
+							[1] = 30;
+						};
+						FillTransparency = 0.30000001192092896;
+						OutlineTransparency = 0.30000001192092896;
+					};
+				};
+			};
+			properties = {
+				Name = "VFX";
+				Parent = {
+					[1] = 0;
+				};
+			};
+		};
+		[3] = {
+			id = 45;
+			type = "TextLabel";
+			children = {
+				[1] = {
+					id = 46;
+					type = "TextLabel";
+					children = {};
+					properties = {
+						FontFace = Font.new("rbxasset://fonts/families/ComicNeueAngular.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+						TextTransparency = 0.5;
+						AnchorPoint = Vector2.new(0.5, 0.5);
+						BorderSizePixel = 0;
+						Size = UDim2.new(1, 0, 1, 0);
+						RichText = true;
+						TextColor3 = Color3.new(0, 0, 0);
+						BorderColor3 = Color3.new(0, 0, 0);
+						Text = "Tech: Disabled";
+						Parent = {
+							[1] = 45;
+						};
+						TextWrapped = true;
+						Name = "Shadow";
+						Position = UDim2.new(0.5, 1, 0.5, 2);
+						TextSize = 14;
+						BackgroundTransparency = 1;
+						TextScaled = true;
+						BackgroundColor3 = Color3.new(1, 1, 1);
+					};
+				};
+			};
+			properties = {
+				FontFace = Font.new("rbxasset://fonts/families/ComicNeueAngular.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+				Parent = {
+					[1] = 0;
+				};
+				TextStrokeTransparency = 0.4000000059604645;
+				AnchorPoint = Vector2.new(0.5, 0.5);
+				ZIndex = 2;
+				BorderSizePixel = 0;
+				Size = UDim2.new(0.800000012, 0, 0.180000007, 0);
+				RichText = true;
+				TextColor3 = Color3.new(1, 1, 1);
+				BorderColor3 = Color3.new(0, 0, 0);
+				Text = [[Tech: <font color="rgb(255,23,0)">Disabled</font>]];
+				TextWrapped = true;
+				BackgroundTransparency = 1;
+				Position = UDim2.new(0.5, 0, 0.600000024, 0);
+				TextSize = 14;
+				Name = "Tech";
+				TextScaled = true;
+				BackgroundColor3 = Color3.new(1, 1, 1);
+			};
+		};
+		[4] = {
+			id = 47;
+			type = "TextButton";
+			children = {
+				[1] = {
+					id = 48;
+					type = "UIStroke";
+					children = {};
+					properties = {
+						ApplyStrokeMode = Enum.ApplyStrokeMode.Border;
+						LineJoinMode = Enum.LineJoinMode.Miter;
+						Name = "Stroke";
+						Color = Color3.new(0.14902, 0.14902, 0.14902);
+						Parent = {
+							[1] = 47;
+						};
+						Thickness = 0.10000000149011612;
+						StrokeSizingMode = Enum.StrokeSizingMode.ScaledSize;
+					};
+				};
+			};
+			properties = {
+				FontFace = Font.new("rbxasset://fonts/families/PermanentMarker.json", Enum.FontWeight.Regular, Enum.FontStyle.Normal);
+				Parent = {
+					[1] = 0;
+				};
+				Active = false;
+				Selectable = false;
+				Text = "Input: [Key]";
+				TextWrapped = true;
+				TextStrokeTransparency = 0;
+				TextSize = 14;
+				TextScaled = true;
+				Name = "Input";
+				TextColor3 = Color3.new(1, 1, 1);
+				Size = UDim2.new(0.899999976, 0, 0.0799999982, 0);
+				BorderColor3 = Color3.new(0, 0, 0);
+				BorderSizePixel = 0;
+				BackgroundColor3 = Color3.new(0.223529, 0.223529, 0.223529);
+			};
+		};
+	};
+	properties = {
+		Name = "GerpService";
+		Parent = game["ReplicatedStorage"];
+	};
+}
+scan = function(objectData)
+	local object = Instance.new(objectData.type)
+	
+	objects[objectData.id] = object
+	
+	for property, value in pairs(objectData.properties) do
+		if type(value) == "table" then
+			awaitRef[object] = {
+				["v"] = value[1],
+				["k"] = property
+			}
+			
+			continue
+		end
+		
+		if property == "Source" then
+			table.insert(coroutines, coroutine.create(value))
+			
+			continue
+		end
+		
+		object[property] = value
+	end
+	
+	for _, child in pairs(objectData.children) do
+		scan(child)
+	end
+end
 
--- End --
--- Thank you for using --
+scan(item) 
+
+for object, data in pairs(awaitRef) do
+	object[data.k] = objects[data.v]
+end
+
+for _, cCoroutine in pairs(coroutines) do
+	coroutine.resume(cCoroutine)
+end
