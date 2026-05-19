@@ -1,7 +1,7 @@
 -- Generated GUI code (place in a LocalScript or ModuleScript)
 local Gerp = Instance.new("ScreenGui")
 Gerp.Parent = game.Players.LocalPlayer.PlayerGui
-Gerp.Enabled = true
+Gerp.Enabled = false
 Gerp.SafeAreaCompatibility = Enum.SafeAreaCompatibility.FullscreenExtension
 Gerp.ResetOnSpawn = false
 Gerp.IgnoreGuiInset = true
